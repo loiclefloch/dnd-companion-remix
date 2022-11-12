@@ -35,6 +35,8 @@
     "@remix-run/react": "*",
     "@remix-run/serve": "*",
     "@remix-run/server-runtime": "*",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.8",
     "bcryptjs": "^2.4.3",
     "clsx": "^1.2.1",
     "fuse.js": "^6.6.2",
