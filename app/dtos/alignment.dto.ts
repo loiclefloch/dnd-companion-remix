@@ -9,3 +9,11 @@ export type AlignmentDtoEnum =
   | "lawful-evil"
   | "neutral-evil"
   | "chaotic-evil"; 
+
+export interface AlignmentDto {
+  index: AlignmentDtoEnum;
+  name: string;
+  abbreviation: string;
+  desc: string;
+  url: string;
+}

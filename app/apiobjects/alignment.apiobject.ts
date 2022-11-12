@@ -9,3 +9,11 @@ export type AlignmentApiEnum =
   | "lawful-evil"
   | "neutral-evil"
   | "chaotic-evil"; 
+
+export interface AlignmentApiObject {
+  index: AlignmentApiEnum;
+  name: string;
+  abbreviation: string;
+  desc: string;
+  url: string;
+}

@@ -31,6 +31,8 @@ function initCharacterCreation() {
       first: "",
       second: "",
     },
+		alignment: null,
+		idealsAlignments:  ["lawful-good"],  // TODO: remove default data
   };
 }
 
@@ -112,4 +114,12 @@ export async function updateCreateCharacterChooseIdealsStep(ideals: string, idea
 		ideals,
 		idealsAlignments,
 	})
+}
+
+export async function updateCreateCharacterChooseAlignmentStep(alignment: AlignmentApiEnum) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+    alignment,
+  });
 }

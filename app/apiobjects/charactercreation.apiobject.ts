@@ -1,15 +1,17 @@
 import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
-import { CharacterDetailsApiObject } from './character.apiobject';
+import type { CharacterDetailsApiObject, PersonalityTraitsApiObject } from './character.apiobject';
 import type { RaceApiEnum } from './race.apiobject';
-import { PersonalityTraitsApiObject } from './background.apiobject';
+import type { AlignmentApiEnum } from './alignment.apiobject';
 
 export interface CharacterCreationApiObject {
-	name?: string;
-	raceIndex?: RaceApiEnum;
-	classIndex?: ClassApiEnum;
-	backgroundIndex?: string;
-	characterDetails: CharacterDetailsApiObject;
-	personalityTraits: PersonalityTraitsApiObject;
+  name?: string;
+  raceIndex?: RaceApiEnum;
+  classIndex?: ClassApiEnum;
+  backgroundIndex?: string;
+  characterDetails: CharacterDetailsApiObject;
+  personalityTraits: PersonalityTraitsApiObject;
+  alignment: AlignmentApiEnum;
+  idealsAlignments: Array<AlignmentApiEnum>;
 }
 
 type CharacterCreationFeatureTypeApiEnum = 'background'
