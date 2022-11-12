@@ -1,13 +1,17 @@
 import ButtonBottomScreen from "~/components/ButtonBottomScreen";
 import Screen from "~/components/Screen";
 import Textarea from "~/components/Textarea";
-import { LoaderArgs, redirect } from "@remix-run/server-runtime";
+import type { ActionArgs, LoaderArgs} from "@remix-run/server-runtime";
+import { redirect } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { getCharacterCreation, updateCreateCharacterChooseCharacterDetailsStep } from "~/services/createcaracter.server";
+import {
+  getCharacterCreation,
+  updateCreateCharacterChooseCharacterDetailsStep,
+} from "~/services/createcaracter.server";
 import { requireUser } from "~/services/session.server";
 import { Form, useLoaderData } from "@remix-run/react";
-import type { CharacterDetailsDto } from "../../../dtos/character.dto";
 import { transformCharacterDetails } from "~/mappers/character.mapper";
+import type { InputHTMLAttributes, ReactElement } from "react";
 
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
@@ -24,18 +28,20 @@ export async function loader({ request, params }: LoaderArgs) {
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
 
-	await updateCreateCharacterChooseCharacterDetailsStep({
-		age: formData.get('age'),
-		genre: formData.get('genre'),
-		height: formData.get('height'),
-		weight: formData.get('weight'),
-		hairColor: formData.get('hairColor'),
-		eyeColor: formData.get('eyeColor'),
-		skinColor: formData.get('skinColor'),
-		physicalCaracteristics: formData.get('physicalCaracteristics'),
-	});
+  // TODO: validate form
 
-  return redirect("/character/create/personnality-traits")
+  await updateCreateCharacterChooseCharacterDetailsStep({
+    age: formData.get("age"),
+    genre: formData.get("genre"),
+    height: formData.get("height"),
+    weight: formData.get("weight"),
+    hairColor: formData.get("hairColor"),
+    eyeColor: formData.get("eyeColor"),
+    skinColor: formData.get("skinColor"),
+    physicalCaracteristics: formData.get("physicalCaracteristics"),
+  });
+
+  return redirect("/character/create/personnality-traits");
 }
 
 // TODO: put on race data
@@ -59,7 +65,13 @@ export async function action({ request }: ActionArgs) {
 //   },
 // };
 
-function FormControl({ label, id, children }) {
+interface FormControlProps {
+  label: string;
+  id: string;
+  children: ReactElement;
+}
+
+function FormControl({ label, id, children }: FormControlProps) {
   return (
     <div className="mb-4">
       <label
@@ -73,7 +85,12 @@ function FormControl({ label, id, children }) {
   );
 }
 
-function Input({ label, id, type, defaultValue, ...props }) {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  id: string;
+}
+
+function Input({ label, id, type, defaultValue, ...props }: InputProps) {
   return (
     <FormControl id={id} label={label}>
       <input
@@ -81,96 +98,9 @@ function Input({ label, id, type, defaultValue, ...props }) {
         id={id}
         type={type}
         defaultValue={defaultValue}
-				{...props}
+        {...props}
       />
     </FormControl>
-  );
-}
-
-function FormView({
-  characterDetails,
-}: {
-  characterDetails: CharacterDetailsDto;
-}) {
-  return (
-    <Form method="post">
-      <div className="flex flex-col">
-        <div className="relative mt-12 w-full px-4">
-          <Input
-            type="number"
-            id="age"
-            name="age"
-            defaultValue={characterDetails.age}
-            label="Age"
-          />
-
-          <div>
-            <Input
-              type="text"
-              id="genre"
-              name="genre"
-              defaultValue={characterDetails.genre}
-              label="Genre"
-            />
-          </div>
-          <div>
-            <Input
-              type="number"
-              id="height"
-              name="height"
-              defaultValue={characterDetails.height}
-              label="Taille"
-            />
-            <Input
-              type="number"
-              id="weight"
-              name="weight"
-              defaultValue={characterDetails.weight}
-              label="Poids"
-            />
-          </div>
-          <div>
-            <Input
-              type="text"
-              id="hairColor"
-              name="hairColor"
-              defaultValue={characterDetails.hairColor}
-              label="Couleur des cheveux"
-            />
-          </div>
-          <div>
-            <Input
-              type="text"
-              id="eyeColor"
-              name="eyeColor"
-              defaultValue={characterDetails.eyeColor}
-              label="Couleur des yeux"
-            />
-          </div>
-          <div>
-            <Input
-              type="text"
-              id="skinColor"
-              name="skinColor"
-              defaultValue={characterDetails.skinColor}
-              label="Couleur de la peau"
-            />
-          </div>
-
-          <FormControl label="Caractéristiques physiques">
-            <Textarea
-              id="physicalCaracteristics"
-              name="physicalCaracteristics"
-              defaultValue={characterDetails.physicalCaracteristics}
-            />
-          </FormControl>
-        </div>
-
-        <ButtonBottomScreen variant="cta" type="submit">
-          Suivant
-        </ButtonBottomScreen>
-      </div>
-    </Form>
   );
 }
 
@@ -178,10 +108,86 @@ function CreateCharacterDetailsScreen() {
   const { characterDetails } = useLoaderData<typeof loader>();
   return (
     <Screen title={"Nouveau personnage"}>
-      <FormView characterDetails={characterDetails} />
+      <Form method="post">
+        <div className="flex flex-col">
+          <div className="relative mt-12 w-full px-4">
+            <Input
+              type="number"
+              id="age"
+              name="age"
+              defaultValue={characterDetails.age}
+              label="Age"
+            />
+
+            <div>
+              <Input
+                type="text"
+                id="genre"
+                name="genre"
+                defaultValue={characterDetails.genre}
+                label="Genre"
+              />
+            </div>
+            <div>
+              <Input
+                type="number"
+                id="height"
+                name="height"
+                defaultValue={characterDetails.height}
+                label="Taille"
+              />
+              <Input
+                type="number"
+                id="weight"
+                name="weight"
+                defaultValue={characterDetails.weight}
+                label="Poids"
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                id="hairColor"
+                name="hairColor"
+                defaultValue={characterDetails.hairColor}
+                label="Couleur des cheveux"
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                id="eyeColor"
+                name="eyeColor"
+                defaultValue={characterDetails.eyeColor}
+                label="Couleur des yeux"
+              />
+            </div>
+            <div>
+              <Input
+                type="text"
+                id="skinColor"
+                name="skinColor"
+                defaultValue={characterDetails.skinColor}
+                label="Couleur de la peau"
+              />
+            </div>
+
+            <FormControl label="Caractéristiques physiques" id="physicalCaracteristics">
+              <Textarea
+                id="physicalCaracteristics"
+                name="physicalCaracteristics"
+                defaultValue={characterDetails.physicalCaracteristics}
+              />
+            </FormControl>
+          </div>
+
+          <ButtonBottomScreen variant="cta" type="submit">
+            Suivant
+          </ButtonBottomScreen>
+        </div>
+      </Form>
     </Screen>
   );
 }
 
 export default CreateCharacterDetailsScreen;
-

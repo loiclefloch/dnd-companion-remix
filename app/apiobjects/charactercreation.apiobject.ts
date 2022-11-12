@@ -21,6 +21,7 @@ export interface CharacterCreationApiObject {
 	bonds: Array<string>;
   flaws: Array<string>;
   proficiencies: Array<CharacterCreationProficiencyApiObject>;
+  ideals: string;
 }
 
 type CharacterCreationFeatureTypeApiEnum = 'background'

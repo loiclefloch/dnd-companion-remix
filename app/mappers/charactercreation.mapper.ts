@@ -4,6 +4,6 @@ import type { CharacterCreationApiObject } from '../apiobjects/charactercreation
 
 export function transformCharacterCreation(characterCreationApiObject: CharacterCreationApiObject): CharacterCreationDto {
 	return {
-		name: characterCreationApiObject.name
+		name: characterCreationApiObject.name || ""
 	}
 }

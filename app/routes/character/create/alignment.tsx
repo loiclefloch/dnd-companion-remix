@@ -6,19 +6,20 @@ import Screen from "~/components/Screen";
 import useTipAlignment from "~/components/useTipAlignment";
 import ListSelector from "~/components/ListSelector";
 import { Form, Link, useLoaderData } from "@remix-run/react";
-import {
-  LoaderArgs,
-  json,
-  ActionArgs,
-  redirect,
-} from "@remix-run/server-runtime";
+import type { LoaderArgs, ActionArgs } from "@remix-run/server-runtime";
+import { json, redirect } from "@remix-run/server-runtime";
 import type { AlignmentApiEnum } from "~/apiobjects/alignment.apiobject";
-import { getCharacterCreation, updateCreateCharacterChooseAlignmentStep } from "~/services/createcaracter.server";
+import {
+  getCharacterCreation,
+  updateCreateCharacterChooseAlignmentStep,
+} from "~/services/createcaracter.server";
 import { requireUser } from "~/services/session.server";
 import { getAlignments } from "~/services/alignment.server";
 import { transformAlignment } from "~/mappers/alignment.mapper";
-import type { AlignmentDto, AlignmentDtoEnum } from '../../../dtos/alignment.dto';
-import { AlignmentDto } from '../../../dtos/alignment.dto';
+import type {
+  AlignmentDto,
+  AlignmentDtoEnum,
+} from "../../../dtos/alignment.dto";
 
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
@@ -29,19 +30,19 @@ export async function loader({ request, params }: LoaderArgs) {
     throw new Error(`Missing backgroundIndex`);
   }
 
-	const alignmentApiObjects = await getAlignments()
+  const alignmentApiObjects = await getAlignments();
 
   return json({
     idealsAlignments: characterCreationApiObject.idealsAlignments,
     alignment: characterCreationApiObject.alignment,
-		alignments: alignmentApiObjects.map(transformAlignment),
+    alignments: alignmentApiObjects.map(transformAlignment),
   });
 }
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
 
-	console.log("->  " + formData.get("alignment"))
+  console.log("->  " + formData.get("alignment"));
 
   await updateCreateCharacterChooseAlignmentStep(
     formData.get("alignment") as AlignmentApiEnum
@@ -51,9 +52,10 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function CreateCharacterAlignment() {
-  const { alignments, alignment, idealsAlignments } = useLoaderData<typeof loader>();
-  const [selectedAlignment, setSelectedAlignment] = useState<AlignmentDtoEnum>(
-    alignments.find(a => a.index === alignment)?.index
+  const { alignments, alignment, idealsAlignments } =
+    useLoaderData<typeof loader>();
+  const [selectedAlignment, setSelectedAlignment] = useState<AlignmentDtoEnum | null>(
+    alignments.find((a) => a.index === alignment)?.index || null
   );
 
   const { showTipAlignment } = useTipAlignment();

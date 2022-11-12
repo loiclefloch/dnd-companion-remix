@@ -1,7 +1,23 @@
 import clsx from 'clsx'
 import { Link } from "@remix-run/react";
+import type { ButtonHTMLAttributes } from 'react';
+import type { RemixLinkProps } from '@remix-run/react/dist/components';
 
-function Button({ children, to, className, variant = "none", size = "medium", color, ...props }) {
+type CommonProps = {
+	// to?: string;
+	classsName: string;
+	// children: string;
+	size?: 'small' | 'medium' | 'big';
+	color?: 'success' | 'info' | 'warning' | 'error';
+	variant?: 'none' | 'contained' | 'outlined' | 'text' | 'cta';
+}
+
+type ButtonAsButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & CommonProps
+type ButtonAsLinkProps = RemixLinkProps & React.RefAttributes<HTMLAnchorElement> & CommonProps//& { to: string }
+
+export type ButtonsProps = ButtonAsButtonProps | ButtonAsLinkProps
+
+function Button({ children, to, className, variant = "none", size = "medium", color, ...props }: ButtonsProps) {
 	const classNames = clsx("flex justify-center w-full p-2 uppercase", {
 		"p-2": size === "medium",
 		"p-1": size === "medium",

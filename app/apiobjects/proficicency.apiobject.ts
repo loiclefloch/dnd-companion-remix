@@ -10,6 +10,13 @@ export interface StartingProficiencyOptionsApiObject {
 	from: Array<ProficicencyReferenceApiObject>
 }
 
+export interface StartingProficiencyApiObject {
+	index: string;
+	name: string;
+	url: string;
+	typeLabel: string;
+}
+
 export interface ProficicencyApiObject {
 
 }

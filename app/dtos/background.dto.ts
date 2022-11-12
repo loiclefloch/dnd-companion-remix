@@ -1,4 +1,4 @@
-import { AlignmentDtoEnum } from "./alignment.dto";
+import type { AlignmentDtoEnum } from "./alignment.dto";
 import type { ClassDtoEnum } from "./class.dto";
 
 interface GoodForClassDto {
@@ -17,12 +17,18 @@ export interface BackgroundPersonalityTraitsDto {
 	from: Array<String>
 }
 
-export interface BackgroundIdealDto {
-	index: number;
-	desc: string;
-	alignments: Array<AlignmentDtoEnum>;
+export interface BackgroundAlignmentDto {
+  index: AlignmentDtoEnum;
+  name: string;
 }
 
+export interface BackgroundIdealDto {
+	index: number;
+	name: string;
+	title: string;
+	desc: string;
+	alignments: Array<BackgroundAlignmentDto>;
+}
 
 export interface BackgroundIdealsDto {
 	choose: number;

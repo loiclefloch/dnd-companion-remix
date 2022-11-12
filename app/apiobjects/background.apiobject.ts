@@ -1,6 +1,7 @@
 import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
 import type { AlignmentApiEnum } from './alignment.apiobject';
-import type { StartingProficiencyOptionsApiObject } from './proficicency.apiobject';
+import { StartingProficiencyApiObject, StartingProficiencyOptionsApiObject } from './proficicency.apiobject';
+import type { Array<StartingProficiencyApiObject>, StartingProficiencyOptionsApiObject } from './proficicency.apiobject';
 
 interface GoodForClassApiObject {
 	name: string;
@@ -47,4 +48,5 @@ export interface BackgroundApiObject {
 	bonds: BackgroundBondApiObject;
 	flaws: BackgroundFlawApiObject;
 	startingProficiencyOptions: StartingProficiencyOptionsApiObject;
+	startingProficiencies: Array<StartingProficiencyApiObject>;
 }

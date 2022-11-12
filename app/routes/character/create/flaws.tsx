@@ -96,7 +96,7 @@ type Mode = "LIST" | "CUSTOM";
 export default function CreateCharacterFlaws() {
 	const { flaws, backgroundsFlaws } = useLoaderData<typeof loader>();
 	const [chosenFlaws, setChosenFlaws] = useState(flaws || [])
-	const [mode, setMode] = useState(null)
+	const [mode, setMode] = useState<Mode | null>(null)
 
 	return (
     <Screen title={"Imperfections"} withBottomSpace>

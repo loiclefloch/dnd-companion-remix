@@ -171,7 +171,7 @@ export const mergeArray = (array, source, getValueFunc, appendMode = false) => {
   return res
 }
 
-export const toggleValueOnArray = (arrayParam, value) => {
+export function toggleValueOnArray<T>(arrayParam: T[], value: T): T[] {
   const array = copyArray(arrayParam)
 
   if (array.includes(value)) {
@@ -183,7 +183,9 @@ export const toggleValueOnArray = (arrayParam, value) => {
   return array
 }
 
-export const asArray = param => (isArray(param) ? param : [param])
+export function asArray<T>(param: T[] | T): T[] {
+  return (isArray(param) ? param : [param])
+} 
 
 /**
  * Modify the given target array, to add the source array on it, with an optimize way.

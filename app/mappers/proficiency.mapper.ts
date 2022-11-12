@@ -1,5 +1,5 @@
-import { ProficicencyApiObject } from "~/apiobjects/proficicency.apiobject"
-import { ProficicencyDto } from "~/dtos/proficicency.dtocopy"
+import type { ProficicencyApiObject } from "~/apiobjects/proficicency.apiobject"
+import type { ProficicencyDto } from "~/dtos/proficicency.dtocopy"
 import proficiencies from "../database/data/proficiencies.json"
 import skills from "../database/data/skills.json"
 

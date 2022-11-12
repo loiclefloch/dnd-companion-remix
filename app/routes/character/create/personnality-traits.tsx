@@ -21,6 +21,7 @@ import { transformPersonalityTraits } from "~/mappers/character.mapper";
 import { requireUser } from "~/services/session.server";
 import { getBackground } from "~/services/background.server";
 import { transformBackgroundPersonalityTraits } from "~/mappers/background.mapper";
+import type { PersonalityTraitsDto } from '~/dtos/character.dto';
 
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
@@ -50,7 +51,12 @@ export async function action({ request }: ActionArgs) {
   return redirect("/character/create/ideals");
 }
 
-function Custom({ personalityTraits, setPersonalityTraits }) {
+interface CustomProps {
+  personalityTraits: PersonalityTraitsDto;
+  setPersonalityTraits: (personalityTraits: PersonalityTraitsDto) => void
+}
+
+function Custom({ personalityTraits, setPersonalityTraits }: CustomProps) {
   return (
     <>
       <div className="mt-2 px-4 pt-2">
@@ -118,17 +124,16 @@ function List({
   );
 }
 
-function FormView({ backgroundPersonalityTraits, personalityTraits: defaultPersonalityTraits }) {
-  const Mode = {
-    LIST: "LIST",
-    CUSTOM: "CUSTOM",
-  };
+type Mode = 'CUSTOM' | 'LIST';
 
-  const [personalityTraits, setPersonalityTraits] = useState(defaultPersonalityTraits);
-  const [mode, setMode] = useState(null);
+export default function CreateCharacterPersonnalityTraits() {
+  const { personalityTraits: defaultPersonalityTraits, backgroundPersonalityTraits } = useLoaderData<typeof loader>();
+  const [ personalityTraits, setPersonalityTraits ] = useState<PersonalityTraitsDto>(defaultPersonalityTraits);
+  const [mode, setMode] = useState<Mode | null>(null);
 
   return (
-    <Form method="post">
+    <Screen title={"Traits de personnalités"} withBottomSpace>
+       <Form method="post">
       <div className="flex flex-col">
         <ScreenIntroduction
           title="Choisissez les traits de personnalités de votre personnage"
@@ -141,7 +146,7 @@ function FormView({ backgroundPersonalityTraits, personalityTraits: defaultPerso
         />
 
         <>
-          {mode === Mode.LIST && (
+          {mode === 'LIST' && (
             <List
               backgroundPersonalityTraits={backgroundPersonalityTraits}
               personalityTraits={personalityTraits}
@@ -149,7 +154,7 @@ function FormView({ backgroundPersonalityTraits, personalityTraits: defaultPerso
             />
           )}
 
-          {mode === Mode.CUSTOM && (
+          {mode === 'CUSTOM' && (
             <Custom
               personalityTraits={personalityTraits}
               setPersonalityTraits={setPersonalityTraits}
@@ -157,20 +162,20 @@ function FormView({ backgroundPersonalityTraits, personalityTraits: defaultPerso
           )}
 
           <div className="px-4">
-            {mode !== Mode.LIST && (
+            {mode !== 'LIST' && (
               <Button
                 variant="outlined"
                 className="mt-2"
-                onClick={() => setMode(Mode.LIST)}
+                onClick={() => setMode('LIST')}
               >
                 Choisir dans une liste prédéfinie
               </Button>
             )}
-            {mode !== Mode.CUSTOM && (
+            {mode !== 'CUSTOM' && (
               <Button
                 variant="outlined"
                 className="mt-2"
-                onClick={() => setMode(Mode.CUSTOM)}
+                onClick={() => setMode('CUSTOM')}
               >
                 Customiser
               </Button>
@@ -183,18 +188,7 @@ function FormView({ backgroundPersonalityTraits, personalityTraits: defaultPerso
         </ButtonBottomScreen>
       </div>
     </Form>
-  );
-}
 
-export default function CreateCharacterPersonnalityTraits() {
-  const { personalityTraits, backgroundPersonalityTraits } = useLoaderData<typeof loader>();
-
-  return (
-    <Screen title={"Traits de personnalités"} withBottomSpace>
-      <FormView
-        personalityTraits={personalityTraits}
-        backgroundPersonalityTraits={backgroundPersonalityTraits}
-      />
     </Screen>
   );
 }

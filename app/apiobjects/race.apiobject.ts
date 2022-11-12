@@ -1,4 +1,4 @@
-import type { StartingProficiencyOptionsApiObject } from "./proficicency.apiobject";
+import type { StartingProficiencyApiObject, StartingProficiencyOptionsApiObject } from "./proficicency.apiobject";
 
 export type RaceApiEnum = 'high-elf' // TODO:
 
@@ -10,4 +10,5 @@ export interface RaceApiObject {
 	index: RaceApiEnum;
 	abilityBonuses: Array<AbilityBonusDto>;
 	startingProficiencyOptions: StartingProficiencyOptionsApiObject;
+	startingProficiencies: Array<StartingProficiencyApiObject>;
 }

@@ -1,7 +1,18 @@
-import clsx from "clsx"
+import clsx from "clsx";
+import type { ReactNode } from "react";
 import { toggleValueOnArray } from "~/modules/utils/array"
 
-function ListSelectorRow({
+interface ListSelectorRowProps<T> {
+	label: string;
+	selected?: boolean;
+	rightView?: ReactNode;
+	className?: string;
+	disabled?: boolean;
+	onClick?: () => void;
+	item: T; // used for dev tools
+}
+
+function ListSelectorRow<T>({
 	label,
 	selected,
 	rightView,
@@ -9,7 +20,7 @@ function ListSelectorRow({
 	disabled,
 	onClick,
 	item, // used for dev tools
-}) {
+}: ListSelectorRowProps<T>) {
 	return (
 		<div 
 			className={clsx(className, "flex items-center w-full p-2 py-1 select-none hover:bg-coolGray-100")}
@@ -36,7 +47,25 @@ function ListSelectorRow({
 	)
 }
 
-function ListSelector({ value, options, onChange, multiple = false, nbMaxValues = null, className }) {
+interface Option<T> {
+	key?: string;
+	value: T;
+	label: string;
+	selected?: boolean;
+	disabled?: boolean;
+	rightView?: ReactNode;
+}
+
+interface ListSelectorProps<T> {
+	value: T | T[];
+	options: Option<T>[];
+	onChange: (value: T | T[]) => void;
+	multiple?: boolean; 
+	nbMaxValues?: number;
+	className?: string;
+}
+
+function ListSelector<T>({ value, options, onChange, multiple = false, nbMaxValues = -1, className }: ListSelectorProps<T>) {
 	return (
 		<div className={clsx("relative w-full gap-2 px-2 divide-y divider", className)}>
 			{options?.map(option => (
@@ -52,8 +81,8 @@ function ListSelector({ value, options, onChange, multiple = false, nbMaxValues 
 							return
 						}
 						if (multiple) {
-							const updated = toggleValueOnArray(value, option.value, a => a)
-							if (!nbMaxValues) {
+							const updated = toggleValueOnArray(value as T[], option.value)
+							if (nbMaxValues === -1) {
 								onChange(updated)
 							} else {
 								if (updated.length > nbMaxValues) {

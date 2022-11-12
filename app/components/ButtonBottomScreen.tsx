@@ -1,8 +1,15 @@
 import clsx from 'clsx'
-
 import BottomScreen from "./BottomScreen"
+import type { ButtonsProps } from "./Button";
 import Button from "./Button"
-function ButtonBottomScreen({ children, className, hide = false, ...props }) {
+
+type ButtonBottomScreenProps = ButtonsProps & {
+	children: string;
+	className: string;
+	hide?: boolean,
+}
+
+function ButtonBottomScreen({ children, className, hide = false, ...props }: ButtonBottomScreenProps) {
 	return (
 		<BottomScreen
 			className={clsx("border-t border-solid border-slate-300",

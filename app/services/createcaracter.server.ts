@@ -32,6 +32,7 @@ function initCharacterCreation() {
       second: "",
     },
 		alignment: null,
+		ideals: [],
 		idealsAlignments:  ["lawful-good"],  // TODO: remove default data
 		bonds: [],
 		flaws: [],

@@ -5,7 +5,6 @@ import ScreenIntroduction from "~/components/ScreenIntroduction";
 import ListSelector from "~/components/ListSelector";
 import Screen from "~/components/Screen";
 import { Form, Link, useLoaderData } from "@remix-run/react";
-import useI18n from "~/modules/i18n/useI18n";
 import useTipProficiency from "~/components/useTipProficiency";
 import { getRace } from "~/services/race.server";
 import type { LoaderArgs, ActionArgs } from "@remix-run/server-runtime";
@@ -18,28 +17,76 @@ import {
   updateCreateCharacterChooseFlawsStep,
 } from "~/services/createcaracter.server";
 import { requireUser } from "~/services/session.server";
-import type { RaceApiEnum } from "../../../apiobjects/race.apiobject";
-import type { ClassApiEnum } from "../../../apiobjects/class.apiobject";
-import proficiencies from "~/database/data/proficiencies.json";
 import { formDataGetArrayValue } from "~/utils/form";
-import { CharacterCreationProficiencyApiObject } from "~/apiobjects/charactercreation.apiobject";
+import type { CharacterCreationProficiencyApiObject } from "~/apiobjects/charactercreation.apiobject";
 import invariant from "tiny-invariant";
+import {
+  StartingProficiencyApiObject,
+  StartingProficiencyOptionsApiObject,
+} from "~/apiobjects/proficicency.apiobject";
+import { RaceApiObject } from "~/apiobjects/race.apiobject";
+import { ClassApiObject } from "~/apiobjects/class.apiobject";
+import { BackgroundApiObject } from "~/apiobjects/background.apiobject";
+
+interface StartingProficiencyInheritedApiObject
+  extends StartingProficiencyApiObject {
+  sourceType: string;
+}
+
+// TODO: on helper / mapper
+function getInheritedProficiencies(
+  backgroundApiObject: BackgroundApiObject,
+  raceApiObject: RaceApiObject,
+  classApiObject: ClassApiObject
+): Array<StartingProficiencyInheritedApiObject> {
+  return uniqBy(
+    [
+      ...raceApiObject.startingProficiencies.map((p) => ({
+        ...p,
+        sourceType: "race",
+      })),
+      ...backgroundApiObject.startingProficiencies?.map((p) => ({
+        ...p,
+        sourceType: "background",
+      })),
+      ...classApiObject.proficiencies?.map((p) => ({
+        ...p,
+        sourceType: "class",
+      })),
+    ],
+    (p) => p.index
+  ).map(formatProficiency);
+}
 
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
 
   const characterCreationApiObject = await getCharacterCreation();
 
-  invariant(characterCreationApiObject.backgroundIndex, `Missing backgroundIndex`);
+  invariant(
+    characterCreationApiObject.backgroundIndex,
+    `Missing backgroundIndex`
+  );
   invariant(characterCreationApiObject.raceIndex, `Missing raceIndex`);
   invariant(characterCreationApiObject.classIndex, `Missing classIndex`);
 
-  const backgroundApiObject = await getBackground(characterCreationApiObject.backgroundIndex);
+  const backgroundApiObject = await getBackground(
+    characterCreationApiObject.backgroundIndex
+  );
   const raceApiObject = await getRace(characterCreationApiObject.raceIndex);
+  const classApiObject = await getClass(characterCreationApiObject.classIndex);
+
+  const inheritedProficiencies = getInheritedProficiencies(
+    backgroundApiObject,
+    raceApiObject,
+    classApiObject
+  );
 
   return json({
+    inheritedProficiencies, // TODO: format add typeLabel cf formatProficiency
     proficiencies: characterCreationApiObject.proficiencies,
-    backgroundStartingProficiencyOptions: backgroundApiObject.startingProficiencyOptions,
+    backgroundStartingProficiencyOptions:
+      backgroundApiObject.startingProficiencyOptions,
     raceStartingProficiencyOptions: raceApiObject.startingProficiencyOptions,
   });
 }
@@ -62,26 +109,18 @@ export async function action({ request }: ActionArgs) {
   const raceApiObject = await getRace(characterCreationApiObject.raceIndex);
   const classApiObject = await getClass(characterCreationApiObject.classIndex);
 
-  const allProficiencies = uniqBy(
-    [
-      ...raceApiObject.startingProficiencies.map((p) => ({
-        ...p,
-        sourceType: "race",
-      })),
-      ...backgroundApiObject.startingProficiencies?.map((p) => ({
-        ...p,
-        sourceType: "background",
-      })),
-      ...classApiObject.proficiencies?.map((p) => ({
-        ...p,
-        sourceType: "class",
-      })),
-    ],
-    (p) => p.index
-  ).map(formatProficiency);
+  const inheritedProficiencies = getInheritedProficiencies(
+    backgroundApiObject,
+    raceApiObject,
+    classApiObject
+  );
 
   const proficiencies: Array<CharacterCreationProficiencyApiObject> = [
-    ...allProficiencies,
+    ...inheritedProficiencies.map((proficiency) => ({
+      index: proficiency.index,
+      sourceType: proficiency.sourceType,
+      // TODO: mark has chosen?
+    })),
     ...formDataGetArrayValue(formData, "proficiency[race]").map((index) => ({
       index,
       sourceType: "race",
@@ -101,7 +140,11 @@ export async function action({ request }: ActionArgs) {
   return redirect("/character/create/proficiencies");
 }
 
-function Proficiency({ proficiency }) {
+function Proficiency({
+  proficiency,
+}: {
+  proficiency: StartingProficiencyInheritedApiObject;
+}) {
   const { showTipProficiency } = useTipProficiency();
 
   return (
@@ -122,55 +165,22 @@ function Proficiency({ proficiency }) {
   );
 }
 
-function ChooseRaceProficiency({
-  selectedRaceProficiencies,
-  setSelectedRaceProficiencies,
-  raceStartingProficiencyOptions,
-}) {
-  const { showTipProficiency } = useTipProficiency();
-
-  const options = raceStartingProficiencyOptions;
-  if (!options) {
-    return null;
-  }
-
-  return (
-    <div>
-      <h3>Choisissez</h3>
-      <div>
-        <ListSelector
-          multiple
-          nbMaxValues={options.choose}
-          value={selectedRaceProficiencies}
-          onChange={setSelectedRaceProficiencies}
-          options={options.from.map((proficiency) => ({
-            label: proficiency.name,
-            value: proficiency,
-            selected: selectedRaceProficiencies.includes(proficiency),
-            // disabled: raceSelectedLanguages.includes(proficiency.index),
-            rightView: (
-              <div
-                className="text-meta px-4 py-2 text-xs"
-                onClick={() => showTipProficiency(proficiency)}
-              >
-                ?
-              </div>
-            ),
-          }))}
-        />
-      </div>
-    </div>
-  );
+interface ChooseProficiencyProps {
+  selectedProficiencies: CharacterCreationProficiencyApiObject[];
+  setSelectedProficiencies: (
+    selectedProficiencies: CharacterCreationProficiencyApiObject[]
+  ) => void;
+  startingProficiencyOptions: StartingProficiencyOptionsApiObject;
 }
 
-function ChooseBackgroundProficiency({
-  selectedBackgroundProficiencies,
-  setSelectedBackgroundProficiencies,
-  backgroundStartingProficiencyOptions,
-}) {
+function ChooseProficiency({
+  selectedProficiencies,
+  setSelectedProficiencies,
+  startingProficiencyOptions,
+}: ChooseProficiencyProps) {
   const { showTipProficiency } = useTipProficiency();
 
-  const options = backgroundStartingProficiencyOptions;
+  const options = startingProficiencyOptions;
   if (!options) {
     return null;
   }
@@ -182,13 +192,12 @@ function ChooseBackgroundProficiency({
         <ListSelector
           multiple
           nbMaxValues={options.choose}
-          value={selectedBackgroundProficiencies}
-          onChange={setSelectedBackgroundProficiencies}
+          value={selectedProficiencies}
+          onChange={setSelectedProficiencies}
           options={options.from.map((proficiency) => ({
             label: proficiency.name,
             value: proficiency,
-            selected: selectedBackgroundProficiencies.includes(proficiency),
-            // disabled: raceSelectedLanguages.includes(proficiency.index),
+            selected: selectedProficiencies.includes(proficiency),
             rightView: (
               <div
                 className="text-meta px-4 py-2 text-xs"
@@ -206,18 +215,23 @@ function ChooseBackgroundProficiency({
 
 export default function CreateCharacterProficiencies() {
   const {
-    allProficiencies,
+    inheritedProficiencies,
     proficiencies,
     backgroundStartingProficiencyOptions,
     raceStartingProficiencyOptions,
   } = useLoaderData<typeof loader>();
-  const [selectedRaceProficiencies, setSelectedRaceProficiencies] = useState(
-    proficiencies.filter((p) => p.sourceType === "race")
-  );
-  const [selectedBackgroundProficiencies, setSelectedBackgroundProficiencies] =
-    useState(proficiencies.filter((p) => p.from === "background"));
 
-  const grouped = groupBy(allProficiencies, (item) => item.typeLabel);
+  const [selectedRaceProficiencies, setSelectedRaceProficiencies] =
+    useState<CharacterCreationProficiencyApiObject[]>(
+      proficiencies.filter((p) => p.sourceType === "race")
+    );
+
+  const [selectedBackgroundProficiencies, setSelectedBackgroundProficiencies] =
+    useState<CharacterCreationProficiencyApiObject[]>(
+      proficiencies.filter((p) => p.sourceType === "background")
+    );
+
+  const grouped = groupBy(inheritedProficiencies, (item) => item.typeLabel);
 
   return (
     <Screen title={"Maîtrises"} withBottomSpace>
@@ -233,7 +247,7 @@ export default function CreateCharacterProficiencies() {
             }
           />
 
-          {selectedRaceProficiencies.map((p, index) => (
+          {selectedRaceProficiencies.map((p: CharacterCreationProficiencyApiObject, index: number) => (
             <input
               key={index}
               type="hidden"
@@ -242,7 +256,7 @@ export default function CreateCharacterProficiencies() {
             />
           ))}
 
-          {selectedBackgroundProficiencies.map((p, index) => (
+          {selectedBackgroundProficiencies.map((p: CharacterCreationProficiencyApiObject, index: number) => (
             <input
               key={index}
               type="hidden"
@@ -253,24 +267,18 @@ export default function CreateCharacterProficiencies() {
 
           <div className="prose px-4">
             <div>
-              <ChooseRaceProficiency
-                selectedRaceProficiencies={selectedRaceProficiencies}
-                setSelectedRaceProficiencies={setSelectedRaceProficiencies}
-                raceStartingProficiencyOptions={raceStartingProficiencyOptions}
+              <ChooseProficiency
+                selectedProficiencies={selectedRaceProficiencies}
+                setSelectedProficiencies={setSelectedRaceProficiencies}
+                startingProficiencyOptions={raceStartingProficiencyOptions}
               />
             </div>
 
             <div>
-              <ChooseBackgroundProficiency
-                selectedBackgroundProficiencies={
-                  selectedBackgroundProficiencies
-                }
-                setSelectedBackgroundProficiencies={
-                  setSelectedBackgroundProficiencies
-                }
-                backgroundStartingProficiencyOptions={
-                  backgroundStartingProficiencyOptions
-                }
+              <ChooseProficiency
+                selectedProficiencies={selectedBackgroundProficiencies}
+                setSelectedProficiencies={setSelectedBackgroundProficiencies}
+                startingProficiencyOptions={backgroundStartingProficiencyOptions}
               />
             </div>
 

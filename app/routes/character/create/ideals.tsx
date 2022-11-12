@@ -13,6 +13,8 @@ import { getBackground } from "~/services/background.server";
 import { getCharacterCreation, updateCreateCharacterChooseIdealsStep } from "~/services/createcaracter.server";
 import { requireUser } from "~/services/session.server";
 import type { AlignmentApiEnum } from '~/apiobjects/alignment.apiobject';
+import { IdealsDto } from "~/dtos/character.dto";
+import { BackgroundIdealDto, BackgroundIdealsDto } from "~/dtos/background.dto";
 
 // TODO: could we choose multiple?
 
@@ -46,11 +48,12 @@ export async function action({ request }: ActionArgs) {
 }
 
 export default function CreateCharacterIdeals() {
-	const { ideals, backgroundIdeals } = useLoaderData<typeof loader>();
-	const [selectedIdeals, setSelectedIdeals] = useState(ideals)
-	const { showTip } = useTip()
+  // TODO: use default ideals
+  const { ideals, backgroundIdeals } = useLoaderData<typeof loader>();
+  const [selectedIdeals, setSelectedIdeals] = useState<BackgroundIdealDto | null>();
+  const { showTip } = useTip();
 
-	return (
+  return (
     <Screen title={"Idéaux"} withBottomSpace>
       <Form method="post">
         <div className="flex flex-col">
@@ -78,6 +81,7 @@ export default function CreateCharacterIdeals() {
 
             <ListSelector
               value={selectedIdeals}
+              onChange={setSelectedIdeals}
               options={backgroundIdeals?.from?.map((ideal) => {
                 return {
                   key: ideal.index,
@@ -110,7 +114,6 @@ export default function CreateCharacterIdeals() {
                   ),
                 };
               })}
-              onChange={setSelectedIdeals}
             />
           </div>
 

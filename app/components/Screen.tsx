@@ -39,6 +39,21 @@ function CharacterMenuButton() {
   )
 }
 
+export interface ScreenProps {
+	title?: string, // TODO: remix remove
+	titleIcon?: ReactNode, 
+	isLoading?: boolean, 
+	rightAction?: ReactNode,
+	children: import('react').ReactNode, 
+	root?: boolean, 
+	fullScreen?: boolean, 
+	withBottomSpace?: boolean, 
+	// for screen that takes the whole screen only, no scroll. Ex: 404
+	contentFull?: boolean,
+	iconClassName?: string, 
+	withCharacterMenu?: boolean
+}
+
 function Screen({ 
 	title, // TODO: remix remove
 	titleIcon, 
@@ -52,7 +67,7 @@ function Screen({
 	contentFull = false,
 	iconClassName, 
 	withCharacterMenu 
-}) {
+}: ScreenProps) {
 	const { show: sidebarMenuShown, showSidebarMenu } =  useSidebarMenu()
 
 	const router = useRouter()
