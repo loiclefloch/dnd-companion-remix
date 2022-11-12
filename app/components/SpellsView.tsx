@@ -110,7 +110,7 @@ function Spell({ spell, filters, character /*onSelect*/ }) {
 
 interface Props {
   spells: Array<SpellDto>;
-  contextCharacter?: MyCharacterDto;
+  contextCharacter?: CharacterDto;
 }
 
 function Spells({ spells, contextCharacter }: Props) {

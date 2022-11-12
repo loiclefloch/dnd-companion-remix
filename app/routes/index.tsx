@@ -10,7 +10,7 @@ const useI18n = makeI18n({
     fr: 'Dashboard',
     en: 'Dashboard',
   },
-  'title.myCharacter': {
+  'title.character': {
     fr: 'Mon personnage',
     en: 'My character',
   },
@@ -27,7 +27,7 @@ function CurrentCharacterView() {
   if (!currentCharacter) {
     return (
       <div className="px-4 py-2">
-        <h3 className="prose">{tr`title.myCharacter`}</h3>       
+        <h3 className="prose">{tr`title.character`}</h3>       
         <Link to={`/characters`} >
           <Button variant="outlined" className="mt-2">
            {tr`select character`} 
@@ -39,7 +39,7 @@ function CurrentCharacterView() {
 
   return (
     <div className="px-4 py-2 prose">
-      <h2 className="prose">{tr`title.myCharacter`}</h2>
+      <h2 className="prose">{tr`title.character`}</h2>
 
       <div>
         <ListSelectRowAsCard

@@ -11,7 +11,7 @@ import { useLoaderData } from '@remix-run/react';
 import { requireUser } from '~/services/session.server';
 import type { LoaderArgs} from '@remix-run/server-runtime';
 import { json} from '@remix-run/server-runtime';
-import { formatCurrentCharacter } from '~/mappers/mycharacter.mapper';
+import { formatCurrentCharacter } from '~/mappers/character.mapper';
 import { formatSpell } from '~/mappers/spell.mapper';
 import { getCurrentCharacter } from '~/services/currentcharacter.server';
 import { getSpell } from '~/services/spells.server';

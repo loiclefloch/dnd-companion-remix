@@ -1,4 +1,4 @@
-import type { MyCharacterApiObject } from '~/apiobjects/mycharacters.apiobject';
+import type { CharacterApiObject } from '~/apiobjects/characters.apiobject';
 import characters from '~/database/fixtures/characters';
 
 let currentCharacterId: string = null // TODO: move on db
@@ -11,7 +11,7 @@ export async function getCurrentCharacterId(): Promise<string | null> {
 	return currentCharacterId
 }
 
-export async function getCurrentCharacter(): Promise<MyCharacterApiObject | null> {
+export async function getCurrentCharacter(): Promise<CharacterApiObject | null> {
 	if (!currentCharacterId) {
 		return null
 	}

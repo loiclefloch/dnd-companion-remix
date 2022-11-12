@@ -1,4 +1,3 @@
-import ButtonBottomScreen from "~/components/ButtonBottomScreen";
 import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow";
 import ScreenIntroduction from "~/components/ScreenIntroduction";
 import Screen from "~/components/Screen";

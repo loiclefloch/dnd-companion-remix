@@ -16,13 +16,13 @@ import { useLoaderData } from "@remix-run/react";
 import { requireUser } from "~/services/session.server";
 import type { LoaderArgs } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { getMyCharacters } from "~/services/mycharacters.server";
-import type { MyCharacterDto } from "~/dtos/mycharacters.dto";
+import { getcharacters } from "~/services/characters.server";
+import type { CharacterDto } from "~/dtos/characters.dto";
 
 export async function loader({ request }: LoaderArgs) {
   const token = await requireUser(request);
 
-  const characters = await getMyCharacters();
+  const characters = await getcharacters();
 
   return json({
     characters: characters.map(formatCharacter),
@@ -44,7 +44,7 @@ const useI18n = makeI18n({
 });
 
 interface CharacterRowProps {
-  character: MyCharacterDto;
+  character: CharacterDto;
   selected: boolean;
 }
 

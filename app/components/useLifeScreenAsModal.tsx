@@ -7,7 +7,7 @@ import Button from "./Button"
 import ButtonBottomScreen from "./ButtonBottomScreen"
 import IconMinus from "./icons/IconMinus"
 import IconPlus from "./icons/IconPlus"
-import type { MyCharacterDto } from '~/dtos/mycharacters.dto';
+import type { CharacterDto } from '~/dtos/characters.dto';
 
 function KoView() {
 	// TODO: death throws + tuto
@@ -15,7 +15,7 @@ function KoView() {
 }
 
 interface LifeScreenAsModalProps {
-	character: MyCharacterDto;
+	character: CharacterDto;
 	onCloseScreen: () => void;
 }
 
@@ -137,7 +137,7 @@ export default function useLifeScreenAsModal() {
 	const { showScreenAsModal } = useScreenAsModal()
 
 	return {
-		showLifeScreenAsModal: (character: MyCharacterDto) => {
+		showLifeScreenAsModal: (character: CharacterDto) => {
 			showScreenAsModal(LifeScreenAsModal, {
 				character,
 			})

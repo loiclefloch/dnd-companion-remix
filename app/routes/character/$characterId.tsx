@@ -23,18 +23,18 @@ import CharacterLevelTag from "~/components/CharacterLevelTag";
 import { json } from "@remix-run/server-runtime";
 import type { LoaderArgs } from "@remix-run/server-runtime";
 import { formatCharacter } from "~/mappers/character.mapper";
-import { getCurrentCharacter } from "~/services/currentcharacter.server";
 import { requireUser } from "~/services/session.server";
 import { notFound } from "~/utils/response";
 import { setCurrentCharacter } from "~/services/currentcharacter.server"
 import type { AcDto } from "~/dtos/character.dto";
+import { getCharacter } from "~/services/characters.server";
 
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
 
   const characterId = params.characterId as string;
 
-  const character = await getCurrentCharacter(characterId);
+  const character = await getCharacter(characterId);
 
   await setCurrentCharacter(characterId);
 
@@ -88,7 +88,7 @@ function AcView({ ac }: { ac: AcDto }) {
   );
 }
 
-function Content({ character } : { character: MyCharacterDto }) {
+function Content({ character } : { character: CharacterDto }) {
   const { tr } = useI18n();
   const { showTipPassivePerception } = useTip(); // TODO: use
   const { showRestModalAsScreen } = useRestScreenAsModal();

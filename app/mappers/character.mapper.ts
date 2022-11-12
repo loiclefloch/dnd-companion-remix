@@ -1,4 +1,3 @@
-// TODO: remix: move to mapper
 import { map, uniqBy, isEmpty, sortBy } from 'lodash'
 import camelize from "../modules/utils/camelize"
 import levels from "../database/data/levels.json"
@@ -24,7 +23,13 @@ import applyFeatsOnCharacter from "../modules/character/applyFeatsOnCharacter"
 import getCharacterHasProficiencyForItem from "../modules/character/getCharacterHasProficiencyForItem"
 import { formatSpell } from '~/mappers/spell.mapper';
 import { formatEquipmentItem } from '~/mappers/equipment.mapper';
-import type { MyCharacterApiObject } from '~/apiobjects/mycharacters.apiobject'
+import { formatRace } from "~/mappers/race.mapper"
+import type { CharacterApiObject } from '~/apiobjects/characters.apiobject'
+import { CharacterDto } from '~/dtos/characters.dto'
+import { formatClass, formatSubclass } from './class.mapper'
+import { formatFeat } from './feat.mapper'
+import { formatFeature } from './feature.mapper'
+import { formatProficiency } from './proficiency.mapper'
 
 function formatCurrencies(walletHistory) {
 	const currencies = {
@@ -165,8 +170,8 @@ function formatItem(character, item) {
 }
 
 export function formatCharacter(
-  character: MyCharacterApiObject
-): MyCharacterDto {
+  character: CharacterApiObject
+): CharacterDto {
   character.feats = character.feats || [];
   // character.feats.push({
   // 	index: 'observant'
@@ -548,16 +553,29 @@ export function formatCharacter(
   character.spellsList = [
     ...(character.spellsList || []),
     ...(character.subclass ? getSpellsForCharacterSubclass(character) : []),
-  ].map((spell) => {
+  ]
+  .filter(Boolean)
+  .map((characterSpell) => {
+    const spell = spells.find((s) => s.index === characterSpell.index)
+    if (!spell) {
+      console.log({ characterSpell })
+      throw new Error(`could not found spell ${characterSpell}`)
+    }
     return {
-      ...formatSpell(spells.find((s) => s.index === spell.index)),
-      ...spell,
+      ...formatSpell(spell),
+      ...characterSpell,
     };
   });
 
-  character.spellsUsed = (character.spellsUsed || []).map((spellUsed) => {
+  character.spellsUsed = (character.spellsUsed || []).filter(Boolean).map((spellUsed) => {
+    const spell = spells.find((s) => s.index === spellUsed.spell)
+    if (!spell) {
+      console.log({ spellUsed })
+      throw new Error(`could not found spell used ${spellUsed}`)
+    }
     return {
-      ...formatSpell(spells.find((s) => s.index === spellUsed.index)),
+      ...formatSpell(spell),
+      // TODO:
       ...spellUsed, // spellLevel
     };
   });
