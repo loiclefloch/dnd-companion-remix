@@ -33,7 +33,7 @@ import underwaterCombat from "./rule-sections/underwater-combat.mdx"
 import usingEachAbility from "./rule-sections/using-each-ability.mdx"
 import whatIsAspell from "./rule-sections/what-is-a-spell.mdx"
 
-function RuleContent({ index, rule }) {
+function RuleContent({ index }) {
 	const map = {
 		"ability-checks": abilityChecks,
 		"ability-scores-and-modifiers": abilityScoresAndModifiers,

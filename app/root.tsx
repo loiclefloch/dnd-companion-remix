@@ -18,9 +18,7 @@ import features from "~/database/data/features"
 import magicSchools from '~/database/data/magic-schools.json'
 import magicItems from "~/database/data/magic-items.json"
 import feats from '~/database/data/feats'
-import ruleSections from '~/database/data/rule-sections.json'
 import allRaces from '~/database/data/allRaces'
-import rules from '~/database/data/rules.json'
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "~/services/session.server";
 import clsx from "clsx";
@@ -62,8 +60,6 @@ export async function loader({ request }: LoaderArgs) {
     magicItems,
     magicSchools,
     allRaces,
-    ruleSections,
-    rules,
     skills,
     spells,
     currentCharacter: null,//formatCharacter({})

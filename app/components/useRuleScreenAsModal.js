@@ -2,7 +2,6 @@ import useScreenAsModal from "./screenAsModal/useScreenAsModal"
 
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import { makeI18n } from "~/modules/i18n/useI18n";
-import useRule from "~/modules/api/useRule";
 import RuleContent from "./RuleContent"
 
 const useI18n = makeI18n({
@@ -14,7 +13,7 @@ const useI18n = makeI18n({
 
 function RuleScreenAsModal({ index, onCloseScreen }) {
 	const { tr } = useI18n()
-	const rule = useRule(index)
+	const rule = null // TODO: remix
 
 	return (
 		<ScreenAsModal 

@@ -1,7 +1,22 @@
-import { Link } from "@remix-run/react"
+import { Link, useLoaderData } from '@remix-run/react';
 import Screen from "~/components/Screen"
 import IconAcademicCap from "~/components/icons/IconAcademicCap"
 import useRules from "../../modules/api/useRules";
+import type { LoaderArgs} from "@remix-run/server-runtime";
+import { json } from "@remix-run/server-runtime";
+import { formatRuleSection } from "~/mappers/rule.mapper";
+import { getRuleSections } from "~/services/rule.server";
+import { requireUser } from "~/services/session.server";
+
+export async function loader({ request }: LoaderArgs) {
+  const token = await requireUser(request);
+
+  const ruleSections = await getRuleSections();
+
+  return json({
+    ruleSections: ruleSections.map(formatRuleSection),
+  });
+}
 
 function RuleSection({ title, subItems }) {
 	return (
@@ -30,7 +45,7 @@ function SubItem({ title, href }) {
 }
 
 function Rules() {
-	const rules = useRules()
+	const { ruleSections } = useLoaderData<typeof loader>();
 
 	return (
 		<Screen
@@ -100,7 +115,7 @@ function Rules() {
 				/>
 
 
-				{rules.map(section => (
+				{ruleSections.map(section => (
 					<RuleSection
 						key={section.index}
 						title={section.name}
