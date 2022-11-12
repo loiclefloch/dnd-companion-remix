@@ -1,11 +1,10 @@
-import { Link } from "@remix-run/react"
+import { Link, useLoaderData } from "@remix-run/react"
 import Image from "~/components/Image"
 import isEmpty from "lodash/isEmpty"
 import clsx from "clsx"
 import { FilterType, getMonsterFiltersMatchingData } from "../../modules/monsters/monstersFilter"
 import { sortMonsters } from "../../modules/monsters/monstersSorter"
 import useI18n from "../../modules/i18n/useI18n";
-import useMonsters from "../../modules/api/useMonsters";
 import useMonstersListFilterScreenAsModal from "~/components/useMonstersListFilterScreenAsModal"
 import Screen from "~/components/Screen";
 import IconFilter from "~/components/icons/IconFilter";
@@ -13,6 +12,21 @@ import Tag from "~/components/Tag"
 import IconMonster from "~/components/icons/IconMonster"
 import useLocalSearch from "~/components/useLocalSearch"
 import InputSearch from "~/components/InputSearch"
+import type { LoaderArgs} from "@remix-run/server-runtime";
+import { json } from "@remix-run/server-runtime"
+import { formatMonster } from "~/mappers/monster.mapper"
+import { getMonsters } from "~/services/monster.server"
+import { requireUser } from "~/services/session.server"
+
+export async function loader({ request }: LoaderArgs) {
+  const token = await requireUser(request);
+
+  const monsters = await getMonsters();
+
+  return json({
+    monsters: monsters.map(formatMonster),
+  });
+}
 
 function MonsterFilters({ monster, filters }) {
 	// ignore some filters, because the data is already displayed
@@ -86,8 +100,8 @@ function Monster({ monster, filters, /*onSelect*/ }) {
 }
 
 function Monsters() {
+  const { monsters } = useLoaderData<typeof loader>();
   const { lang } = useI18n()
-  const monsters = useMonsters();
 	// TODO: how to keep filters when we go back on the page?
   const { filters, filterMonsters, showMonstersListFilterScreen } = useMonstersListFilterScreenAsModal([])
   

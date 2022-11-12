@@ -20,7 +20,6 @@ import magicSchools from '~/database/data/magic-schools.json'
 import magicItems from "~/database/data/magic-items.json"
 import feats from '~/database/data/feats'
 import ruleSections from '~/database/data/rule-sections.json'
-import monsters from '~/database/data/monsters.json'
 import allRaces from '~/database/data/allRaces'
 import rules from '~/database/data/rules.json'
 import tailwindStylesheetUrl from "./styles/tailwind.css";
@@ -64,7 +63,6 @@ export async function loader({ request }: LoaderArgs) {
     features,
     magicItems,
     magicSchools,
-    monsters,
     allRaces,
     ruleSections,
     rules,
