@@ -1,7 +1,8 @@
 
 
 export interface CharacterApiObject {
-
+  details: CharacterDetailsApiObject;
+  traits: PersonalityTraitsApiObject;
 }
 
 export interface CharacterDetailsApiObject {
@@ -13,4 +14,9 @@ export interface CharacterDetailsApiObject {
   eyeColor: string;
   skinColor: string;
   physicalCaracteristics: string;
+}
+
+export interface PersonalityTraitsApiObject {
+  first: string;
+  second: string;
 }

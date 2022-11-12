@@ -49,9 +49,9 @@ const Entertainer = (api) => ({
 			]
 		}
 	],
-	"personality_traits": {
+	"personalityTraits": {
 		"choose": 2,
-		"type": "personality_traits",
+		"type": "personalityTraits",
 		"from": [
 			"I know a story relevant to almost every situation.",
 			"Whenever I come to a new place, I collect local rumors and spread gossip.",

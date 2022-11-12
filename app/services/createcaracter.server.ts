@@ -1,21 +1,36 @@
 import type { CharacterCreationApiObject, CharacterCreationFeatureApiObject } from "~/apiobjects/charactercreation.apiobject";
-import { CharacterDetailsApiObject } from '../apiobjects/character.apiobject';
+import { CharacterDetailsApiObject, PersonalityTraitsApiObject } from '../apiobjects/character.apiobject';
 
 function initCharacterCreation() {
 	return {
-		name: undefined,
-		raceIndex: 'high-elf',	// TODO: remove default data
-		classIndex: 'druid', // TODO: remove default data
-		abilities: { // stats chosen without bonuses applied
-			STR: 15,
-			DEX: 14,
-			CON: 12,
-			INT: 12,
-			WIS: 10,
-			CHA: 8,
-		},
-		characterDetails: {}
-	}
+    name: undefined,
+    raceIndex: "high-elf", // TODO: remove default data
+    classIndex: "druid", // TODO: remove default data
+    backgroundIndex: "acolyte", // TODO: remove default data
+    abilities: {
+      // stats chosen without bonuses applied
+      STR: 15,
+      DEX: 14,
+      CON: 12,
+      INT: 12,
+      WIS: 10,
+      CHA: 8,
+    },
+    characterDetails: {
+      age: "",
+      genre: "",
+      height: "",
+      weight: "",
+      hairColor: "",
+      eyeColor: "",
+      skinColor: "",
+      physicalCaracteristics: "",
+    },
+    personalityTraits: {
+      first: "",
+      second: "",
+    },
+  };
 }
 
 export async function getCharacterCreation(): Promise<CharacterCreationApiObject> {
@@ -78,5 +93,13 @@ export async function updateCreateCharacterChooseCharacterDetailsStep(characterD
 
 	return updateCharacterCreationData({
 		characterDetails,
+	})
+}
+
+export async function updateCreateCharacterChoosePersonalityTraitsStep(personalityTraits: PersonalityTraitsApiObject) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+		personalityTraits,
 	})
 }

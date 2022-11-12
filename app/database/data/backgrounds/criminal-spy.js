@@ -30,9 +30,9 @@ const CriminalSpy = (api) => ({
 			"You know how to get messages to and from your contact, even over great distances; specifically, you know the local messengers, corrupt caravan masters, and seedy sailors who can deliver messages for you."
 		]
 	}],
-	"personality_traits": {
+	"personalityTraits": {
 		"choose": 2,
-		"type": "personality_traits",
+		"type": "personalityTraits",
 		"from": [
 			"I always have a plan for what to do when things go wrong.",
 			"I am always calm, no matter what the situation. I never raise my voice or let my emotions control me.",

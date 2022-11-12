@@ -46,9 +46,9 @@ const Acolyte = (api) => ({
 			"You might also have ties to a specific temple dedicated to your chosen deity or pantheon, and you have a residence there. This could be the temple where you used to serve, if you remain on good terms with it, or a temple where you have found a new home. While near your temple, you can call upon the priests for assistance, provided the assistance you ask for is not hazardous and you remain in good standing with your temple."
 		]
 	}],
-	"personality_traits": {
+	"personalityTraits": {
 		"choose": 2,
-		"type": "personality_traits",
+		"type": "personalityTraits",
 		"from": [
 			"I idolize a particular hero of my faith, and constantly refer to that person's deeds and example.",
 			"I can find common ground between the fiercest enemies, empathizing with them and always working toward peace.",

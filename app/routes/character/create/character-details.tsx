@@ -24,9 +24,6 @@ export async function loader({ request, params }: LoaderArgs) {
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();
 
-	for (var pair of formData.entries()) {
-    console.log(pair[0]+ ', ' + pair[1]); 
-}
 	await updateCreateCharacterChooseCharacterDetailsStep({
 		age: formData.get('age'),
 		genre: formData.get('genre'),

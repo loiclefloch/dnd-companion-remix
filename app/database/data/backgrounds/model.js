@@ -38,9 +38,9 @@ const Model = (api) => ({
 			]
 		}
 	],
-	"personality_traits": {
+	"personalityTraits": {
 		"choose": 2,
-		"type": "personality_traits",
+		"type": "personalityTraits",
 		"from": [
 			"",
 			"",

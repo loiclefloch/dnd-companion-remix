@@ -45,9 +45,9 @@ const Sage = (api) => ({
 			]
 		}
 	],
-	"personality_traits": {
+	"personalityTraits": {
 		"choose": 2,
-		"type": "personality_traits",
+		"type": "personalityTraits",
 		"from": [
 			"I use polysyllabic words that convey the impression of great erudition.",
 			"I've read every book in the world's greatest libraries – or I like to boast that I have.",

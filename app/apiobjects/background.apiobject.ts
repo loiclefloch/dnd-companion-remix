@@ -11,7 +11,14 @@ export interface BackgroundFeatureApiObject {
 	desc: string;
 }
 
+export interface BackgroundPersonalityTraitsApiObject {
+	choose: number;
+	from: Array<String>
+}
+
 export interface BackgroundApiObject {
+	index: string;
 	goodForClasses: Array<GoodForClassApiObject>;
 	features: Array<BackgroundFeatureApiObject>;
+	personalityTraits: BackgroundPersonalityTraitsApiObject;
 }

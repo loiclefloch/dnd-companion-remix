@@ -3,18 +3,19 @@ import equipment from '~/database/data/equipment.json'
 import camelize from "../modules/utils/camelize"
 import { formatEquipmentItem } from './equipment.mapper';
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
-import type { BackgroundApiObject } from '~/apiobjects/background.apiobject'
-import type { BackgroundDto, BackgroundForCharacterDto } from '~/dtos/background.dto'
+import type { BackgroundApiObject, BackgroundPersonalityTraitsApiObject } from '~/apiobjects/background.apiobject'
 import { formatProficiency } from './proficiency.mapper';
 import classes from '~/database/data/classes';
-import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
+import type { BackgroundDto, BackgroundPersonalityTraitsDto } from '~/dtos/background.dto';
 
-export function formatBackgroundForCharacter(backgroundApiObject: BackgroundApiObject, classIndex: ClassApiEnum): BackgroundForCharacterDto {
+
+export function transformBackgroundPersonalityTraits(backgroundPersonalityTraits: BackgroundPersonalityTraitsApiObject): BackgroundPersonalityTraitsDto {
   return {
-    ...formatBackground(backgroundApiObject),
-    isGoodForClass: backgroundApiObject.goodForClasses && backgroundApiObject.goodForClasses.some(c => c.index === classIndex)
+    choose: backgroundPersonalityTraits.choose,
+    from: backgroundPersonalityTraits.from,
   }
 }
+
 
 export function formatBackground(backgroundApiObject: BackgroundApiObject): BackgroundDto {
   const background = camelize(cloneDeep(backgroundApiObject))

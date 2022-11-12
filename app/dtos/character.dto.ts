@@ -25,3 +25,9 @@ export interface CharacterDetailsDto {
   skinColor: string;
   physicalCaracteristics: string;
 }
+
+
+export interface PersonalityTraitsDto {
+  first: string;
+  second: string;
+}
