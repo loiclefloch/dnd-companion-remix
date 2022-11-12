@@ -1,5 +1,4 @@
 import { v4 as uuid } from 'uuid';
-import { formatEquipmentItem  } from '../api/useEquipmentItem'
 import equipmentList from '~/database/data/equipment.json'
 
 export function actionAddXp(label, amount) {
@@ -171,7 +170,7 @@ export function actionAddEquipment(list) {
 
 // format item to access properties, on the data we only have the index / quantity
 function getFormattedEquipmentItem(equipmentItem) {
-	return formatEquipmentItem({
+	return formatEquipment({
 		...equipmentItem,
 		...equipmentList.find(i => i.index === equipmentItem.index),
 	})	

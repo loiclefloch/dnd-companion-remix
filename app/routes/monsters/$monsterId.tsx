@@ -22,7 +22,6 @@ export async function loader({ request, params }: LoaderArgs) {
 }
 
 
-
 function Monster() {
   const { monster } = useLoaderData<typeof loader>();
 	const router = useRouter()

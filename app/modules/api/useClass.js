@@ -3,7 +3,6 @@ import useRootData from "~/hooks/useRootData"
 import equipment from '~/database/data/equipment.json'
 import proficiencies from '~/database/data/proficiencies.json'
 import camelize from '../utils/camelize'
-import { formatEquipmentItem  } from './useEquipmentItem'
 import { formatProficiency } from "./useProficiency"
 import formatStartingEquipmentOptions from "./formatStartingEquipmentOptions"
 
@@ -23,7 +22,7 @@ export function formatClass(clssParam) {
   if (clss.startingEquipment) {
     clss.startingEquipment = clss.startingEquipment.map(item => {
       return {
-        ...formatEquipmentItem(equipment.find(i => i.index === item.equipment.index)),
+        ...formatEquipment(equipment.find(i => i.index === item.equipment.index)),
         ...item,
         equipment: undefined
       }

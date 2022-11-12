@@ -47,7 +47,7 @@ function Group({ title, items }) {
 	)
 }
 
-function Character() {
+export default function CharacterEquipment() {
 	const character = useCurrentCharacter()
 	const { showChooseEquipmentModal } = useChooseEquipmentScreenAsModal()
 	const grouped = groupBy(character?.equipment, item => item.itemCategory)
@@ -175,5 +175,3 @@ function Character() {
 		</Screen>
 	)
 }
-
-export default Character

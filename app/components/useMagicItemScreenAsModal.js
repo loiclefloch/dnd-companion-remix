@@ -1,5 +1,4 @@
 import useScreenAsModal from "./screenAsModal/useScreenAsModal"
-import useMagicItem from "~/modules/api/useMagicItem";
 
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import useI18n from "~/modules/i18n/useI18n";
@@ -7,7 +6,7 @@ import EquipmentItemView from "./EquipmentItemView";
 
 function MagicItemScreenAsModal({ index, onCloseScreen }) {
 	const { tr } = useI18n()
-	const item = useMagicItem(index)
+	const item = null // TODO: remix
 
 	return (
 		<ScreenAsModal 

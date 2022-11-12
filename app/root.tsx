@@ -13,7 +13,6 @@ import spells from '~/database/data/spells.json'
 import subclasses from '~/database/data/subclasses.json'
 import classes from '~/database/data/classes'
 import backgrounds from '~/database/data/backgrounds'
-import equipmentCategories from '~/database/data/equipment-categories.json'
 import equipment from "~/database/data/equipment.json"
 import features from "~/database/data/features"
 import magicSchools from '~/database/data/magic-schools.json'
@@ -57,7 +56,6 @@ export async function loader({ request }: LoaderArgs) {
     // TODO: add more backgrounds
     backgrounds,
     classes,
-    equipmentCategories,
     equipment,
     feats,
     features,
@@ -87,7 +85,7 @@ function Document({ children }: { children: ReactNode }) {
         <SidebarMenuProvider>
           <ScreenAsModalProvider>
             <CharacterMenuProvider>
-              <CreateCharacterProvider>{children}</CreateCharacterProvider>
+              {children}
             </CharacterMenuProvider>
           </ScreenAsModalProvider>
         </SidebarMenuProvider>

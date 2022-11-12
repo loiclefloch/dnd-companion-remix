@@ -1,5 +1,9 @@
-import camelize from "../utils/camelize"
-import useRootData from "~/hooks/useRootData"
+import equipment from "~/database/data/equipment.json";
+import magicItems from "~/database/data/magic-items.json";
+import camelize from "~/utils/camelize"
+import uniqBy from "lodash/uniqBy";
+import type { EquipmentCategoriesApiObject } from "~/apiobjects/equipmentcategories.apiobject";
+import type { EquipmentCategoriesDto } from "~/dtos/equipmentcategories.dto";
 
 // possible equipment_category
 // - weapon
@@ -8,7 +12,7 @@ import useRootData from "~/hooks/useRootData"
 // - tools
 // - mounts-and-vehicles
 
-export function formatEquipmentItem(itemParam) {
+export function formatEquipment(itemParam) {
 	if (!itemParam) {
 		return null
 	}
@@ -84,9 +88,50 @@ export function formatEquipmentItem(itemParam) {
 	return item
 }
 
-function useEquipmentItem(index) {
-	const { equipment } = useRootData()
-	return formatEquipmentItem(equipment.find(item => item.index === index))
+export function formatMagicItem(itemParam) {
+	if (!itemParam) {
+		return null
+	}
+	const item = camelize(itemParam)
+	item.isMagicItem = true
+	item.nameLocalized = {
+		en: item.name
+	}
+
+	item.resume = {
+		en: '',
+	}
+
+	item.description = {
+		en: item.desc
+	}
+
+	delete item.desc
+
+	// TODO: add resume
+	// TODO: add description
+	// TODO: add image
+	return item
 }
 
-export default useEquipmentItem
+export function formatEquipmentCategory(
+  category: EquipmentCategoriesApiObject
+): EquipmentCategoriesDto {
+  category.nameLocalized = {
+    en: category.name,
+  };
+
+  // equipment array as items duplicates, clean it
+  category.equipment = uniqBy(category.equipment, (item) => item.index);
+
+  category.equipment = category.equipment.map((item) => {
+    if (item.url.startsWith("/api/equipment/")) {
+      return formatEquipment(equipment.find((i) => i.index === item.index));
+    }
+    if (item.url.startsWith("/api/magic-items")) {
+      return formatMagicItem(magicItems.find((i) => i.index === item.index));
+    }
+  });
+
+  return category;
+}

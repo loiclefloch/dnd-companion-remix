@@ -4,7 +4,6 @@ import clsx from "clsx"
 import useScreenAsModal from "./screenAsModal/useScreenAsModal"
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import { makeI18n } from "~/modules/i18n/useI18n";
-import useEquipmentCategories from "~/modules/api/useEquipmentCategories";
 import useTipDamageType from "./useTipDamageType"
 import useEquipmentItemScreenAsModal from "./useEquipmentItemScreenAsModal"
 import ButtonBottomScreen from "./ButtonBottomScreen"
@@ -144,7 +143,7 @@ function Category({ category, selectedItems, onSelect }) {
 function ChooseEquipmentScreenAsModal({ onChooseEquipment, onCloseScreen }) {
 	const { tr } = useI18n()
 	const [selectedItems, setSelectedItems] = useState([])
-	const equipmentCategories = useEquipmentCategories()
+	const equipmentCategories = null// TODO: remix 
 
 	const equipmentList = useMemo(
 		() => uniqBy(equipmentCategories.map(group => group.equipment).flat(), item => item.index), 

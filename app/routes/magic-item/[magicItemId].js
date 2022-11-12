@@ -2,12 +2,10 @@ import useRouter from "~/hooks/useRouter";
 import Screen from "~/components/Screen"
 import EquipmentItemView from "~/components/EquipmentItemView"
 import useI18n from "../../modules/i18n/useI18n";
-import useMagicItem from "../../modules/api/useMagicItem";
 
 function MagicItem() {
 	const { tr } = useI18n()
-	const router = useRouter()
-	const item = useMagicItem(router.query.magicItemId)
+	const item = null// TODO: remix 
 
   return (
 		<Screen

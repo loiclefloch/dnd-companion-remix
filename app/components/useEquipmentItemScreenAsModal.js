@@ -1,6 +1,4 @@
 import useScreenAsModal from "./screenAsModal/useScreenAsModal"
-import useEquipmentItem from "~/modules/api/useEquipmentItem";
-
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import useI18n from "~/modules/i18n/useI18n";
 import EquipmentItemView from "./EquipmentItemView";

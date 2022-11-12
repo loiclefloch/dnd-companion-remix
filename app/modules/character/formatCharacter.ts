@@ -16,7 +16,6 @@ import traits from '~/database/data/traits.json'
 import { formatRace } from "../api/useRace"
 import { formatClass } from "../api/useClass"
 import { getLevellingDataForClassesAndLevel, getLevelExperienceStage, getNextLevelExperienceStage } from "../levelling"
-import { formatEquipmentItem } from "../api/useEquipmentItem"
 import { getProficiencyBonus } from "../levelling"
 import { getSpellsForCharacterSubclass } from "./subclass"
 import { valueToModifier, valueToModifierLabel, modifierToModifierLabel } from "../stats"
@@ -308,7 +307,7 @@ export function formatCharacter(character: MyCharacterApiObject): MyCharacterDto
 			hasProficiency: getCharacterHasProficiencyForItem(character, item)
 		}
 	})
-		.map(formatEquipmentItem)
+		.map(formatEquipment)
 
 	character.hasNoEquipment = isEmpty(character?.equipment)
 
@@ -342,7 +341,7 @@ export function formatCharacter(character: MyCharacterApiObject): MyCharacterDto
 
 
 	character.actionsEquipment = [
-		formatEquipmentItem(equipmentList.find(i => i.index === "unarmed-strike")),
+		formatEquipment(equipmentList.find(i => i.index === "unarmed-strike")),
 		...character.equipment.filter(item => item.equipmentCategory?.index === "weapon")
 	]
 	.map(camelize)

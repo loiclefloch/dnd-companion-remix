@@ -3,8 +3,6 @@ import equipment from '~/database/data/equipment.json'
 import backgrounds from '~/database/data/backgrounds'
 import classes from '~/database/data/classes'
 import camelize from "../utils/camelize"
-import useRootData from "~/hooks/useRootData"
-import { formatEquipmentItem  } from './useEquipmentItem'
 import { formatProficiency } from "./useProficiency"
 import formatStartingEquipmentOptions from "./formatStartingEquipmentOptions"
 
@@ -39,7 +37,7 @@ export function formatBackground(backgroundParam) {
   if (background.startingEquipment) {
     background.startingEquipment = background.startingEquipment.map(item => {
       return {
-        ...formatEquipmentItem(equipment.find(i => i.index === item.equipment.index)),
+        ...formatEquipment(equipment.find(i => i.index === item.equipment.index)),
         ...item,
         equipment: undefined
       }

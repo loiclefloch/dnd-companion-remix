@@ -72,7 +72,7 @@ function Screen({
 			>
 				<div className="py-1 pl-1 pr-4 cursor-pointer">
 					{!root && (
-						<IconBack className={clsx("w-4 h-4", iconClassName)} onClick={router.back} />
+						<IconBack className={clsx("w-4 h-4", iconClassName)} onClick={router.goBack} />
 					)}
 					{root && (
 						<IconMenu className={clsx("w-5 h-5", iconClassName)} onClick={showSidebarMenu} />
