@@ -1,4 +1,5 @@
 import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
+import { AlignmentApiEnum } from './alignment.apiobject';
 
 interface GoodForClassApiObject {
 	name: string;
@@ -16,9 +17,20 @@ export interface BackgroundPersonalityTraitsApiObject {
 	from: Array<String>
 }
 
+export interface BackgroundIdealApiObject {
+	desc: string;
+	alignments: Array<AlignmentApiEnum>;
+}
+
+export interface BackgroundIdealsApiObject {
+	choose: number;
+	from: Array<BackgroundIdealApiObject>
+}
+
 export interface BackgroundApiObject {
 	index: string;
 	goodForClasses: Array<GoodForClassApiObject>;
 	features: Array<BackgroundFeatureApiObject>;
 	personalityTraits: BackgroundPersonalityTraitsApiObject;
+	ideals: BackgroundIdealsApiObject;
 }

@@ -20,3 +20,5 @@ export interface PersonalityTraitsApiObject {
   first: string;
   second: string;
 }
+
+export type IdealsApiObject = string;

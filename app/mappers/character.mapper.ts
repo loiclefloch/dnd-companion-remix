@@ -28,7 +28,12 @@ import { formatClass, formatSubclass } from './class.mapper'
 import { formatFeat } from './feat.mapper'
 import { formatFeature } from './feature.mapper'
 import { formatProficiency } from './proficiency.mapper'
-import type { CharacterDetailsApiObject, CharacterDetailsApiObject } from '../apiobjects/character.apiobject';
+import type { CharacterDetailsApiObject, PersonalityTraitsApiObject, IdealsApiObject } from '../apiobjects/character.apiobject';
+import type { IdealsDto, PersonalityTraitsDto, CharacterDetailsDto } from '~/dtos/character.dto'
+
+export function transformIdeals(ideals: IdealsApiObject): IdealsDto {
+  return ideals
+}
 
 export function transformPersonalityTraits(personalityTraits: PersonalityTraitsApiObject): PersonalityTraitsDto {
   return {

@@ -1,3 +1,4 @@
+import { AlignmentApiEnum } from "~/apiobjects/alignment.apiobject";
 import type { CharacterCreationApiObject, CharacterCreationFeatureApiObject } from "~/apiobjects/charactercreation.apiobject";
 import { CharacterDetailsApiObject, PersonalityTraitsApiObject } from '../apiobjects/character.apiobject';
 
@@ -101,5 +102,14 @@ export async function updateCreateCharacterChoosePersonalityTraitsStep(personali
 
 	return updateCharacterCreationData({
 		personalityTraits,
+	})
+}
+
+export async function updateCreateCharacterChooseIdealsStep(ideals: string, idealsAlignments: Array<AlignmentApiEnum>) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+		ideals,
+		idealsAlignments,
 	})
 }

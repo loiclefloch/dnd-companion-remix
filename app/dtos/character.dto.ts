@@ -31,3 +31,5 @@ export interface PersonalityTraitsDto {
   first: string;
   second: string;
 }
+
+export type IdealsDto = string;

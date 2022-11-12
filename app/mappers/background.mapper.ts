@@ -3,11 +3,21 @@ import equipment from '~/database/data/equipment.json'
 import camelize from "../modules/utils/camelize"
 import { formatEquipmentItem } from './equipment.mapper';
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
-import type { BackgroundApiObject, BackgroundPersonalityTraitsApiObject } from '~/apiobjects/background.apiobject'
+import type { BackgroundApiObject, BackgroundIdealsApiObject, BackgroundPersonalityTraitsApiObject } from '~/apiobjects/background.apiobject'
 import { formatProficiency } from './proficiency.mapper';
 import classes from '~/database/data/classes';
-import type { BackgroundDto, BackgroundPersonalityTraitsDto } from '~/dtos/background.dto';
+import type { BackgroundDto, BackgroundIdealsDto, BackgroundPersonalityTraitsDto } from '~/dtos/background.dto';
 
+export function transformBackgroundIdeals(backgroundIdealsApiObject: BackgroundIdealsApiObject): BackgroundIdealsDto {
+  return {
+    choose: backgroundIdealsApiObject.choose,
+    from: backgroundIdealsApiObject.from.map((f, index) => ({
+      index,
+      desc: f.desc,
+      alignments: f.alignments,
+    }))
+  }
+}
 
 export function transformBackgroundPersonalityTraits(backgroundPersonalityTraits: BackgroundPersonalityTraitsApiObject): BackgroundPersonalityTraitsDto {
   return {

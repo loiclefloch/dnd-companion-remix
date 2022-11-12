@@ -1,3 +1,4 @@
+import { AlignmentDtoEnum } from "./alignment.dto";
 import type { ClassDtoEnum } from "./class.dto";
 
 interface GoodForClassDto {
@@ -16,10 +17,22 @@ export interface BackgroundPersonalityTraitsDto {
 	from: Array<String>
 }
 
+export interface BackgroundIdealDto {
+	index: number;
+	desc: string;
+	alignments: Array<AlignmentDtoEnum>;
+}
+
+
+export interface BackgroundIdealsDto {
+	choose: number;
+	from: Array<BackgroundIdealDto>
+}
 
 export interface BackgroundDto {
 	index: string;
 	features: Array<BackgroundFeatureDto>;
 	goodForClasses: Array<GoodForClassDto>
 	personalityTraits: Array<BackgroundPersonalityTraitsDto>;
+	ideals: BackgroundIdealsDto;
 }
