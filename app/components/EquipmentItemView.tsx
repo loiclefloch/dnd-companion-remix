@@ -1,7 +1,6 @@
 import { isEmpty } from "lodash"
 import { makeI18n } from "~/modules/i18n/useI18n";
 import useEquipmentItemScreenAsModal from "~/components/useEquipmentItemScreenAsModal"
-import useCurrentCharacter from "./useCurrentCharacter";
 import { 
 	actionEquip,
 	actionUnequip,
@@ -113,7 +112,8 @@ const useI18n = makeI18n({
 function EquipmentItemView({ item, onCloseScreen }) {
 	const { showTipWeaponProperty } = useTipWeaponProperty()
 	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
-	const { characterDispatch } = useCurrentCharacter()
+	// TODO: remix
+	// const { characterDispatch } = useCurrentCharacter()
 	const { showTipDamageType } = useTipDamageType()
 	const { rollDamage } = useDice()
 	const { tr } = useI18n()
@@ -142,7 +142,8 @@ function EquipmentItemView({ item, onCloseScreen }) {
 										variant="outlined"
 										className="w-36"
 										onClick={() => {
-											characterDispatch(actionUnequip(item))
+											// TODO: remix post
+											// characterDispatch(actionUnequip(item))
 											onCloseScreen()
 										}}
 									>
@@ -156,7 +157,8 @@ function EquipmentItemView({ item, onCloseScreen }) {
 										variant="outlined"
 										className="w-36"
 										onClick={() => {
-											characterDispatch(actionEquip(item))
+											// TODO: remix post
+											// characterDispatch(actionEquip(item))
 											onCloseScreen()
 										}}
 									>

@@ -1,5 +1,4 @@
+import type { CharacterDto } from "./character.dto";
 
-
-export interface MyCharacterDto {
-
+export interface MyCharacterDto extends CharacterDto {
 }

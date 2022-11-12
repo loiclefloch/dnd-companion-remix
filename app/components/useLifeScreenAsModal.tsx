@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import useScreenAsModal from "./screenAsModal/useScreenAsModal"
-
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import useI18n from "~/modules/i18n/useI18n";
 import { actionModifyCurrentHp } from "~/modules/character/action"
@@ -8,13 +7,19 @@ import Button from "./Button"
 import ButtonBottomScreen from "./ButtonBottomScreen"
 import IconMinus from "./icons/IconMinus"
 import IconPlus from "./icons/IconPlus"
+import type { MyCharacterDto } from '~/dtos/mycharacters.dto';
 
-function KoView({ character, characterDispatch }) {
+function KoView() {
 	// TODO: death throws + tuto
 	return null
 }
 
-function LifeScreenAsModal({ character, characterDispatch, onCloseScreen }) {
+interface LifeScreenAsModalProps {
+	character: MyCharacterDto;
+	onCloseScreen: () => void;
+}
+
+function LifeScreenAsModal({ character, onCloseScreen }: LifeScreenAsModalProps) {
 	const [hpToModify, _setHpToModify] = useState(0)
 	const [hpToModifyInput, setHpToModifyInput] = useState(0)
 
@@ -76,7 +81,7 @@ function LifeScreenAsModal({ character, characterDispatch, onCloseScreen }) {
 				</div>
 
 				{character.isKo && (
-					<KoView character={character} characterDispatch={characterDispatch} />
+					<KoView character={character} />
 				)}
 
 				<div className='px-4 text-center'>
@@ -110,12 +115,13 @@ function LifeScreenAsModal({ character, characterDispatch, onCloseScreen }) {
 					hide={hpToModify === 0}
 					variant="cta"
 					onClick={() => {
-						characterDispatch(actionModifyCurrentHp({
-							hpToModify,
-							willBeKo,
-							willStabilize,
-							isAboveMaximumHp,
-						}))
+						// TODO: remix post
+						// actionModifyCurrentHp({
+						// 	hpToModify,
+						// 	willBeKo,
+						// 	willStabilize,
+						// 	isAboveMaximumHp,
+						// })
 						onCloseScreen()
 					}}
 				>
@@ -131,10 +137,9 @@ export default function useLifeScreenAsModal() {
 	const { showScreenAsModal } = useScreenAsModal()
 
 	return {
-		showLifeScreenAsModal: (character, characterDispatch) => {
+		showLifeScreenAsModal: (character: MyCharacterDto) => {
 			showScreenAsModal(LifeScreenAsModal, {
 				character,
-				characterDispatch,
 			})
 		}
 	}

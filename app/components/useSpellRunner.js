@@ -10,8 +10,6 @@ import IconPlusMd from "./icons/IconPlusMd"
 import IconMinusMd from "./icons/IconMinusMd"
 import { CharacterProvider } from "~/modules/character/ContextCharacter"
 import useDice from "./useDice"
-import useCurrentCharacter from "~/components/useCurrentCharacter"
-import { actionCastSpell } from "~/modules/character/action"
 
 const MAX_SPELL_LEVEL = 9 // maximum spell level
 const MAX_CHARACTER_LEVEL = 20 // maximum character level
@@ -106,6 +104,7 @@ function ChooseNumber({ level, onChange, maxLevel, label = '', isCharacter }) {
 }
 
 function Warn({ show, message }) {
+	const { tr } = useI18n()
 	if (!show) {
 		return null
 	}
@@ -456,11 +455,12 @@ function SpellRun({ contextCharacter, spell, options, onRun }) {
 
 function SpellRunnerScreenAsModal({ contextCharacter, spell, options, onCloseScreen }) {
 	const { tr } = useI18n()
-	const { characterDispatch } = useCurrentCharacter()
+	// const { characterDispatch } = useCurrentCharacter()
 
 	function onRun(spellLevel) {
 		// TODO: impact spell slot from contextCharacter if given
-		characterDispatch(actionCastSpell(spell, spellLevel))
+		// TODO: remix post
+		// characterDispatch(actionCastSpell(spell, spellLevel))
 		onCloseScreen()
 	}
 

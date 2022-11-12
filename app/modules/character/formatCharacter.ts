@@ -1,3 +1,4 @@
+// TODO: remix: move to mapper
 import { map, uniqBy, isEmpty, sortBy } from 'lodash'
 import camelize from "../utils/camelize"
 import levels from "../../database/data/levels.json"
@@ -18,7 +19,7 @@ import { getLevellingDataForClassesAndLevel, getLevelExperienceStage, getNextLev
 import { formatEquipmentItem } from "../api/useEquipmentItem"
 import { formatSpell } from "../api/useSpell"
 import { getProficiencyBonus } from "../levelling"
-import { getSpellsForCharacterSubclass } from "../character/subclass"
+import { getSpellsForCharacterSubclass } from "./subclass"
 import { valueToModifier, valueToModifierLabel, modifierToModifierLabel } from "../stats"
 import { filterDuplicates } from '../utils/array'
 import { formatProficiency } from "../api/useProficiency"
@@ -167,7 +168,7 @@ function formatItem(character, item) {
 
 	return item
 }
-export function formatCharacter(character) {
+export function formatCharacter(character: MyCharacterApiObject): MyCharacterDto {
 	if (!character) {
 		return null
 	}

@@ -26,7 +26,7 @@ function Finalize({
 			</h4>
 
 			<div className="flex flex-col gap-8 mt-16">
-				<Link to={`/character/levelling`} passHref>
+				<Link to={`/character/levelling`} >
 					<Button variant="outlined" color="warning">
 						Mettre en pause ma montée de niveau
 					</Button>

@@ -20,10 +20,10 @@ function ScreenLoading() {
 function CharacterMenuButton() {
 	const { show: sidebarMenuShown } =  useSidebarMenu()
 	const { show: screenAsModalShown } = useScreenAsModal()
-	const { character } = useCurrentCharacter()
+	const currentCharacter = useCurrentCharacter()
   const { show: characterMenuShown, showCharacterMenu } = useCharacterMenu()
 
-  const hideButton = characterMenuShown || sidebarMenuShown || screenAsModalShown || !character
+  const hideButton = characterMenuShown || sidebarMenuShown || screenAsModalShown || !currentCharacter
 
   // do not display if character menu is open
   return (

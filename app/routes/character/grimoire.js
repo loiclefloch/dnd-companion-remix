@@ -34,7 +34,7 @@ function Spell({ spell, character /*onSelect*/ }) {
 			<div className="pl-3">
 				<div className="flex flex-row">
 					<div className="flex flex-col flex-1">
-						<Link to={`/character/spells/${spell.index}`} passHref>
+						<Link to={`/character/spells/${spell.index}`} >
 							<span className="flex flex-row items-center font-semibold">
 								{/* <IconMagicSchool
               school={spell.school.name}
@@ -103,7 +103,7 @@ function Spell({ spell, character /*onSelect*/ }) {
 					<CharacterSpellSource character={character} spell={spell} />
 				</div>
 
-				<Link to={`/character/spells/${spell.index}`} passHref>
+				<Link to={`/character/spells/${spell.index}`} >
 					<p className="pt-2 pr-2 text-sm">{tr(spell.resume)}</p>
 				</Link>
 			</div>
@@ -150,7 +150,7 @@ function SpellLevelHeader({ level, spellsSlots, characterDispatch }) {
 }
 
 function Grimoire() {
-	const { character, characterDispatch } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 
 	const groupedBySpellLevel = groupBy(character?.spellsList, spell => spell.level)
 	const spellsSlots = character?.spellsSlots

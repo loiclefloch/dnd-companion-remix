@@ -15,10 +15,10 @@ function buildRest(character) {
 
 function RestScreenAsModal({ onCloseScreen }) {
 	const { tr } = useI18n()
-	const { character } = useCurrentCharacter()
+	const currentCharacter = useCurrentCharacter()
 	const { showRuleScreenAsModal } = useRuleScreenAsModal()
 
-	const rest = buildRest(character)
+	const rest = buildRest(currentCharacter)
 
 	return (
 		<ScreenAsModal 
@@ -35,7 +35,7 @@ function RestScreenAsModal({ onCloseScreen }) {
 			<>
 				<div>
 					{/* TODO: */}
-					<h3>Hit dices: {character.maximumHitDice}</h3>
+					<h3>Hit dices: {currentCharacter.maximumHitDice}</h3>
 				</div>
 				<div className="flex flex-col flex-1 mt-4 mb-12">
 					<h3 className="w-full pb-1 mx-4 text-lg font-semibold border-b border-solid border-slate-300">Repos court</h3>

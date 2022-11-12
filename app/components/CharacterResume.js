@@ -178,7 +178,7 @@ export function BackgroundSection({ character }) {
 	return (
 		<Section title={tr(`background.title`, { backgroundName: background.name })}>
 			<div className="px-4">
-				<Link to={`/background/${background.index}`} passHref>
+				<Link to={`/background/${background.index}`} >
 					<span className="text-link">{tr`link to background`}</span>
 				</Link>
 			</div>

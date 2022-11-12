@@ -6,7 +6,7 @@ import FeatsListView from "~/components/FeatsListView"
  * Feats list with the character as context
  */
 function CharacterFeats() {
-	const { character } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 
 	// define character on context
 	// automatic filtering for the character

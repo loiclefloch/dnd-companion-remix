@@ -44,7 +44,7 @@ function Monster({ monster, filters, /*onSelect*/ }) {
 	// TODO: isLegendary
 
   return (
-    <Link to={`/monsters/${monster.index}`} passHref>
+    <Link to={`/monsters/${monster.index}`} >
       <div
         // onClick={onSelect}
         className={clsx("cursor-pointer py-4 p-4 border-b border-slate-100 dark:border-gray-50 border-solid flex")}

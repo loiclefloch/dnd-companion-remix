@@ -60,10 +60,11 @@ function Progress({ currentXp, percent, level, clss }) {
 function CharacterLevelling() {
 	const router = useRouter()
 	const { showLevellingAddScreenAsModal } = useLevellingAddScreenAsModal()
-	const { character, characterDispatch } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 
 	function onAddLevelling(label, amount) {
-		characterDispatch(actionAddXp(label, amount))
+		// TODO: remix post
+		// characterDispatch(actionAddXp(label, amount))
 	}
 
 	// define character on context
@@ -112,7 +113,7 @@ function CharacterLevelling() {
 					{/* // - ask user to level up its character (popup screen) -> Yes - Later */}
 					{character.levelling.shouldLevelUp && (
 						<div className="mt-4 px-4">
-							<Link to="/level-up/introduction" passHref>
+							<Link to="/level-up/introduction" >
 								<Button variant="contained" color="info">
 									Monter au niveau {character.level + 1}
 								</Button>

@@ -59,7 +59,7 @@ function Spell({ spell, filters, character /*onSelect*/ }) {
   // TODO: if context character has the spell -> style with star / background
 
   return (
-    <Link to={isContextCharacter ? `/character/spells/${spell.index}` : `/spells/${spell.index}`} passHref>
+    <Link to={isContextCharacter ? `/character/spells/${spell.index}` : `/spells/${spell.index}`} >
       <div
         // onClick={onSelect}
         className={`cursor-pointer py-1 border-b border-slate-100 dark:border-gray-50 border-solid  relative`}

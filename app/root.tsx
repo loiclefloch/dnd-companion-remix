@@ -33,10 +33,11 @@ import { SidebarMenuProvider } from "./components/sidebarMenu/sidebarMenuContext
 import { CreateCharacterProvider } from "~/components/useCreateCharacter"
 import type { ReactNode } from "react";
 import type { UserDto } from "./dtos/User.dto";
-import formatCharacter from "~/modules/character/formatCharacter"
 
 export const links: LinksFunction = () => {
-  return [{ rel: "stylesheet", href: tailwindStylesheetUrl }];
+  return [
+    { rel: "stylesheet", href: tailwindStylesheetUrl },
+  ];
 };
 
 export const meta: MetaFunction = () => ({
@@ -69,14 +70,18 @@ export async function loader({ request }: LoaderArgs) {
     rules,
     skills,
     spells,
-    currentCharacter: null//formatCharacter({})
+    currentCharacter: null,//formatCharacter({})
+    currentRawCharacter: null,
   });
 }
 
 function Document({ children }: { children: ReactNode }) {
+  // TODO: allow choose theme on settings
+  const theme = "light";
+
   return (
     <div
-      className={clsx("//dark bg-app", {
+      className={clsx("bg-app", theme, {
         debug: false,
       })}
     >

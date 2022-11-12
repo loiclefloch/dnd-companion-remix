@@ -22,15 +22,15 @@ const useI18n = makeI18n({
 })
 
 function CurrentCharacterView() {
-  const { character } = useCurrentCharacter();
+  const currentCharacter = useCurrentCharacter();
   const router = useRouter()
   const { tr } = useI18n()
 
-  if (!character) {
+  if (!currentCharacter) {
     return (
       <div className="px-4 py-2">
         <h3 className="prose">{tr`title.myCharacter`}</h3>       
-        <Link to={`/characters`} passHref>
+        <Link to={`/characters`} >
           <Button variant="outlined" className="mt-2">
            {tr`select character`} 
           </Button>
@@ -45,14 +45,14 @@ function CurrentCharacterView() {
 
       <div>
         <ListSelectRowAsCard
-          title={character.name}
+          title={currentCharacter.name}
           subtitle={
             <span>
-              {tr(character.race.nameLocalized)} - {character.classes.map(clss => tr(clss.nameLocalized)).join(', ')}
+              {tr(currentCharacter.race.nameLocalized)} - {currentCharacter.classes.map(clss => tr(clss.nameLocalized)).join(', ')}
             </span>
           }
           selected
-          onClick={() => router.push(`character/${character.id}`)}
+          onClick={() => router.push(`character/${currentCharacter.id}`)}
         />
       </div>
     </div>

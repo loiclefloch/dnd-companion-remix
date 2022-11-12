@@ -70,8 +70,7 @@ function CharacterRow({ character, selected }: CharacterRowProps) {
 function CharactersScreen() {
   const { characters } = useLoaderData<typeof loader>();
   const { tr } = useI18n();
-  const router = useRouter();
-  const { character: currentCharacter } = useCurrentCharacter();
+  const currentCharacter = useCurrentCharacter();
 
   return (
     <Screen
@@ -92,7 +91,7 @@ function CharactersScreen() {
             <p>{tr`no characters yet`}</p>
             <Link
               to="/character/create"
-              variant="cta"
+              // variant="cta" TODO: remix
               className="mt-4"
             >
               {tr`btn.create my character`}

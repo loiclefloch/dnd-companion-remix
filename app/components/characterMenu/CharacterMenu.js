@@ -50,7 +50,7 @@ function Item({ label, href, route, onClick }) {
 	const selected = router.asPath === href
 
 	return (
-		<Link to={href} passHref>
+		<Link to={href} >
 			<div
 				onClick={onClick}
 				className={clsx("w-full py-2 text-lg text-center text-gray-600 border-solid",
@@ -68,19 +68,19 @@ function Item({ label, href, route, onClick }) {
 
 function CharacterMenu({ open }) {
 	const router = useRouter()
-	const { character } = useCurrentCharacter()
+	const currrentCharacter = useCurrentCharacter()
 	const { hideCharacterMenu } = useCharacterMenu()
 	const { showDiceHistoryScreen } = useDiceHistory()
 	const { tr } = useI18n()
 
-	if (!character) {
+	if (!currrentCharacter) {
 		return null
 	}
 
 	const menuItems = [
 		{
 			label: tr`menuItem.character`,
-			href: `/character/${character.id}`,
+			href: `/character/${currrentCharacter.id}`,
 		},
 		{
 			label: tr`menuItem.grimoire`,
@@ -132,7 +132,7 @@ function CharacterMenu({ open }) {
 			>
 				<IconD8 className="w-8 h-8 text-gray-700" />
 			</button>
-			<Link to="/characters" passHref>
+			<Link to="/characters" >
 				<div
 					className="absolute right-0 px-2 pt-2"
 					onClick={() => hideCharacterMenu()}
@@ -143,25 +143,25 @@ function CharacterMenu({ open }) {
 			<div className="mt-6">
 				<div className="flex justify-center">
 					<div className="p-3 border border-gray-500 border-solid rounded-full">
-						<IconClass clss={character.classes[0].index} className="w-12 h-12 fill-slate-600" />
+						<IconClass clss={currrentCharacter.classes[0].index} className="w-12 h-12 fill-slate-600" />
 					</div>
 				</div>
 				<h1 className="mt-4 text-2xl text-center">
-					{character.name}
+					{currrentCharacter.name}
 				</h1>
 				<div className="flex flex-col items-center justify-center px-10 mt-1">
 					<div>
-						{character.classes.map(clss => tr(clss.name)).join(" / ")}
+						{currrentCharacter.classes.map(clss => tr(clss.name)).join(" / ")}
 					</div>
 					<div className="mt-4">
 						<div
 							className="flex items-center justify-center text-xl text-gray-700 border-2 border-solid rounded-full w-9 h-9 border-slate-600"
 							onClick={() => {
-								router.replace(`/levelling/${character.classes[0].index}/${character.level}`)
+								router.replace(`/levelling/${currrentCharacter.classes[0].index}/${currrentCharacter.level}`)
 								hideCharacterMenu()
 							}}
 						>
-							{character.level}
+							{currrentCharacter.level}
 						</div>
 					</div>
 				</div>

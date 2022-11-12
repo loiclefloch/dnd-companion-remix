@@ -16,7 +16,7 @@ function Spell() {
 	const { tr } = useI18n()
 	const spell = useSpell(router.query.index);
 	const { showEditCharacterSpellModal } = useEditEditCharacterSpellScreenAsModal()
-	const { character, characterDispatch } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 
 	return (
 		<CharacterProvider character={character}>
@@ -26,7 +26,7 @@ function Spell() {
 				rightAction={
 					<IconPencil
 						className="w-5 h-5 text-slate-700"
-						onClick={() => showEditCharacterSpellModal(spell, character, characterDispatch)}
+						onClick={() => showEditCharacterSpellModal(spell, character)}
 					/>
 				}
 			>

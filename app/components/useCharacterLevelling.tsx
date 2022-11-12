@@ -2,6 +2,7 @@ import { useState, useMemo, useCallback } from "react"
 import useRouter from "~/hooks/useRouter"
 import { LevellingStorage, BackupStorage } from "~/modules/db"
 import useCurrentCharacter from "./useCurrentCharacter"
+import useCurrentRawCharacter from "./useCurrentRawCharacter"
 import { getLevellingDataForClassesAndLevel, getSpellsSlotsForCharacterLevel } from "~/modules/levelling"
 import getLevellingSteps from "~/modules/levelling/getLevellingSteps"
 import formatCharacter from "~/modules/character/formatCharacter"
@@ -14,10 +15,14 @@ const initialState = () => LevellingStorage.getItem() || []
 
 function useCharacterLevelling() {
   const router = useRouter()
-	const { character, rawCharacter, updateCharacter } = useCurrentCharacter()
+  // TODO: remix
+	// const { character, rawCharacter, updateCharacter } = useCurrentCharacter()
+	const currentCharacter = useCurrentCharacter()
+	const rawCharacter = useCurrentRawCharacter()
 
 	const [ levellingState, setLevellingState] = useState(initialState())
 
+  // TODO: remix post
   const updateLevellingState = useCallback((levellingState) => {
     LevellingStorage.setItem(levellingState)
     setLevellingState(levellingState)
@@ -28,19 +33,19 @@ function useCharacterLevelling() {
   //
 
 	const levellingContextData = useMemo(() => {
-		if (character) {
-			const newLevel = character.toLevel = character.level + 1
-			const levellingData = getLevellingDataForClassesAndLevel(character.classes, newLevel)
+		if (currentCharacter) {
+			const newLevel = currentCharacter.toLevel = currentCharacter.level + 1
+			const levellingData = getLevellingDataForClassesAndLevel(currentCharacter.classes, newLevel)
 
-			const race = character.race
-			const clss = character.classes[0]
+			const race = currentCharacter.race
+			const clss = currentCharacter.classes[0]
 
-			const background = character.background
+			const background = currentCharacter.background
 
-			const steps = getLevellingSteps(character, newLevel)
+			const steps = getLevellingSteps(currentCharacter, newLevel)
 
       const spellsSlots = getSpellsSlotsForCharacterLevel(
-        character.classes,
+        currentCharacter.classes,
         newLevel
       )
 
@@ -54,7 +59,7 @@ function useCharacterLevelling() {
         spellsSlots,
 			}
 		}
-	}, [character])
+	}, [currentCharacter])
 
   function levellingDispatch (action) {
     const currentStep = router.query.step
@@ -69,7 +74,7 @@ function useCharacterLevelling() {
 
     const stepLevellingState = action.apply({
       levellingState,
-      character,
+      character: currentCharacter,
       rawCharacter,
       newLevel: levellingContextData.newLevel,
     })
@@ -128,7 +133,7 @@ function useCharacterLevelling() {
     ...levellingContextData,
 
     levellingState,
-    character,
+    character: currentCharacter,
 		rawCharacter,
 
     levellingDispatch,

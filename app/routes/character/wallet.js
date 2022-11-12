@@ -157,7 +157,7 @@ function HistoryLine({ history }) {
 }
 
 function CharacterWallet() {
-	const { character, characterDispatch } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 	const {
 		showAddWalletIncome,
 		showAddWalletExpense,
@@ -186,7 +186,8 @@ function CharacterWallet() {
 								className="items-center w-10 h-10 rounded-full"
 								onClick={() => showAddWalletIncome({
 									onSubmit: (data) => {
-										characterDispatch(actionWalletAddIncome(data))
+										// TODO: remix post
+										// characterDispatch(actionWalletAddIncome(data))
 									}
 								})}
 								>

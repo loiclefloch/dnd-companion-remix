@@ -17,7 +17,7 @@ function FeatRow({ feat }) {
   const { tr } = useI18n();
 
   return (
-    <Link to={`/feat/${feat.index}`} passHref>
+    <Link to={`/feat/${feat.index}`} >
       <div
         // onClick={onSelect}
         className={`relative cursor-pointer border-b border-solid border-slate-100 py-1  pl-3 dark:border-gray-50 prose`}

@@ -41,20 +41,20 @@ function Group({ title, character, items }) {
 
 function Character() {
 	const { tr } = useI18n()
-	const { character, characterDispatch } = useCurrentCharacter()
+	const currentCharacter = useCurrentCharacter()
 	const { showChooseEquipmentModal } = useChooseEquipmentScreenAsModal()
-	const grouped = groupBy(character?.actionsEquipment, item => item.equipmentCategory.index)
+	const grouped = groupBy(currentCharacter?.actionsEquipment, item => item.equipmentCategory.index)
 
 	return (
 		<Screen
-			title={`${character?.name} - Actions`}
+			title={`${currentCharacter?.name} - Actions`}
 			titleIcon={<IconBriefcase className="w-6 h-6" />}
 			root
 			withCharacterMenu
 		>
-			{character && (
+			{currentCharacter && (
 				<>
-					<Group title="Armes" items={grouped.weapon} character={character} />
+					<Group title="Armes" items={grouped.weapon} character={currentCharacter} />
 				</>
 			)}
 		</Screen>

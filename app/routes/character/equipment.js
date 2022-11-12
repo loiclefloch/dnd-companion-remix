@@ -48,7 +48,7 @@ function Group({ title, items }) {
 }
 
 function Character() {
-	const { character, characterDispatch } = useCurrentCharacter()
+	const character = useCurrentCharacter()
 	const { showChooseEquipmentModal } = useChooseEquipmentScreenAsModal()
 	const grouped = groupBy(character?.equipment, item => item.itemCategory)
 	
@@ -69,7 +69,8 @@ function Character() {
 	function onShowChooseEquipmentModal() {
 		showChooseEquipmentModal(
 			function onChooseEquipment(list) {
-				characterDispatch(actionAddEquipment(list))
+				// TODO: remix post
+				// characterDispatch(actionAddEquipment(list))
 			}
 		)
 	}

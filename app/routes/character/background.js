@@ -21,11 +21,11 @@ const useI18n = makeI18n({
 
 function Background() {
 	const { tr } = useI18n()
-	const { character, rawCharacter } = useCurrentCharacter()
+	const currentCharacter = useCurrentCharacter()
 
 	return (
 		<Screen
-			title={tr('screen.title', { 'character.name': character?.name })}
+			title={tr('screen.title', { 'character.name': currentCharacter?.name })}
 			// titleIcon={<IconBriefcase className="w-6 h-6" />}
 			root
 			withCharacterMenu
@@ -44,7 +44,8 @@ function Background() {
 				<Button 
 					variant="outlined"
 					onClick={() => {
-						navigator.clipboard.writeText(JSON.stringify(rawCharacter, null, 2))
+						// TODO:
+						// navigator.clipboard.writeText(JSON.stringify(rawCharacter, null, 2))
 						alert(tr`data.copied`)
 					}}
 				>
@@ -52,9 +53,7 @@ function Background() {
 				</Button>
 			</div>
 
-			{character && (
-				<CharacterResume character={character} />
-			)}
+				<CharacterResume character={currentCharacter} />
 
 		</Screen>
 	)
