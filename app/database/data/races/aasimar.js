@@ -10,9 +10,9 @@ const Aasimar = (api) => ({
 	"size": "Medium",
 	"size_description": "Aasimar have the same range of height and weight as humans. Your size is Medium.",
 	// TODO:
-	// "starting_proficiencies": [
+	// "startingProficiencies": [
 	// ],
-	// "starting_proficiency_options": {
+	// "startingProficiencyOptions": {
 	// 	"choose": 1,
 	// 	"type": "proficiencies",
 	// 	"from": [

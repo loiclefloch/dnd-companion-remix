@@ -9,7 +9,7 @@ const elf = (api) => ({
 	"alignment": "Elves love freedom, variety, and self-expression, so they lean strongly toward the gentler aspects of chaos. They value and protect others' freedom as well as their own, and they are more often good than not. The drow are an exception; their exile has made them vicious and dangerous. Drow are more often evil than not.",
 	"size": "Medium",
 	"size_description": "Elves range from under 5 to over 6 feet tall and have slender builds. Your size is Medium.",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-perception")
 	],
 	"languages": [

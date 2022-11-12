@@ -3,7 +3,7 @@ const Model = (api) => ({
 	"name": "Acolyte",
 	"good_for_classes": [
 	],
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-insight"),
 		api.buildProficiency("skill-religion"),
 	],
@@ -29,7 +29,7 @@ const Model = (api) => ({
 		// api.buildChooseEquipmentFromCategory(1, "holy-symbols")
 	],
 
-	"starting_proficiency_options": api.buildProficiencyOption(1, "Artisan's Tools"),
+	"startingProficiencyOptions": api.buildProficiencyOption(1, "Artisan's Tools"),
 	"features": [
 		{
 			"name": "",

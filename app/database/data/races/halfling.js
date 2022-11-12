@@ -9,7 +9,7 @@ const halfling = api => ({
 	"alignment": "Most halflings are lawful good. As a rule, they are good-hearted and kind, hate to see others in pain, and have no tolerance for oppression. They are also very orderly and traditional, leaning heavily on the support of their community and the comfort of their old ways.",
 	"size": "Small",
 	"size_description": "Halflings average about 3 feet tall and weigh about 40 pounds. Your size is Small.",
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [
 		api.buildLanguage("common"),
 		api.buildLanguage("halfling"),

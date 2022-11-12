@@ -20,8 +20,8 @@ const halfElf = api => ({
 	"age": "Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years.",
 	"size": "Medium",
 	"size_description": "Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium.",
-	"starting_proficiencies": [],
-	"starting_proficiency_options": {
+	"startingProficiencies": [],
+	"startingProficiencyOptions": {
 		"choose": 2,
 		"type": "proficiencies",
 		"from": [

@@ -4,7 +4,7 @@ const Entertainer = (api) => ({
 	"good_for_classes": [
 		"bard"
 	],
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-acrobatics"),
 		api.buildProficiency("skill-performance"),
 		api.buildProficiency("disguise-kit"),

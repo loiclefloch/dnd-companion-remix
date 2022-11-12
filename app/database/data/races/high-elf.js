@@ -6,7 +6,7 @@ const highElf = api => ({
 	"abilitybonuses": [
 		api.buildAbilityBonus("int", 1),
 	],
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("longswords"),
 		api.buildProficiency("shortswords"),
 		api.buildProficiency("shortbows"),

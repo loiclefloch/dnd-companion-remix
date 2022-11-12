@@ -1,12 +1,12 @@
 const CriminalSpy = (api) => ({
 	"index": "criminal-spy",
 	"name": "Criminal / Spy",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-deception"),
 		api.buildProficiency("skill-stealth"),
 		api.buildProficiency("thieves-tools"),
 	],
-	"starting_proficiency_options": api.buildProficiencyOption(1, 'Gaming Sets'),
+	"startingProficiencyOptions": api.buildProficiencyOption(1, 'Gaming Sets'),
 	"language_options": null,
 	"starting_currencies": {
 		gp: 15,

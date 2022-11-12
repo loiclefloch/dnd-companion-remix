@@ -1,13 +1,13 @@
-import { AlignmentApiEnum } from "~/apiobjects/alignment.apiobject";
-import type { CharacterCreationApiObject, CharacterCreationFeatureApiObject } from "~/apiobjects/charactercreation.apiobject";
-import { CharacterDetailsApiObject, PersonalityTraitsApiObject } from '../apiobjects/character.apiobject';
+import type { AlignmentApiEnum } from "~/apiobjects/alignment.apiobject";
+import type { CharacterCreationApiObject, CharacterCreationFeatureApiObject, CharacterCreationProficiencyApiObject } from "~/apiobjects/charactercreation.apiobject";
+import type { CharacterDetailsApiObject, PersonalityTraitsApiObject } from '../apiobjects/character.apiobject';
 
 function initCharacterCreation() {
 	return {
     name: undefined,
-    raceIndex: "high-elf", // TODO: remove default data
+    raceIndex: "half-elf", // TODO: remove default data
     classIndex: "druid", // TODO: remove default data
-    backgroundIndex: "acolyte", // TODO: remove default data
+    backgroundIndex: "sage", // TODO: remove default data
     abilities: {
       // stats chosen without bonuses applied
       STR: 15,
@@ -33,6 +33,9 @@ function initCharacterCreation() {
     },
 		alignment: null,
 		idealsAlignments:  ["lawful-good"],  // TODO: remove default data
+		bonds: [],
+		flaws: [],
+		proficiencies: [],
   };
 }
 
@@ -121,5 +124,21 @@ export async function updateCreateCharacterChooseAlignmentStep(alignment: Alignm
 
 	return updateCharacterCreationData({
     alignment,
+  });
+}
+
+export async function updateCreateCharacterChooseBondsStep(bonds: Array<string>) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+    bonds,
+  });
+}
+
+export async function updateCreateCharacterChooseFlawsStep(proficiencies: Array<CharacterCreationProficiencyApiObject>) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+    proficiencies,
   });
 }

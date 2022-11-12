@@ -96,7 +96,7 @@ function Content({ race }) {
 			</Section>
 
 			{race.startingProficiencyOptions && (
-				<Section title="starting_proficiencies options" withToggle>
+				<Section title="startingProficiencies options" withToggle>
 					<h4>Choisir {race.startingProficiencyOptions.choose}</h4>
 					<LineInfo.Parent>
 						{race.startingProficiencyOptions.from.map((proficiency) => (

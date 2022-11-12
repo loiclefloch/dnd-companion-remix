@@ -5,11 +5,11 @@ const Sage = (api) => ({
 		"druid",
 		// TODO:
 	],
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-history"),
 		api.buildProficiency("skill-arcana"),
 	],
-	"starting_proficiency_options": null,
+	"startingProficiencyOptions": null,
 	"language_options": {
 		"choose": 2,
 		"type": "languages",

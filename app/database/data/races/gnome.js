@@ -9,7 +9,7 @@ const gnome = api => ({
 	"age": "Gnomes mature at the same rate humans do, and most are expected to settle down into an adult life by around age 40. They can live 350 to almost 500 years.",
 	"size": "Small",
 	"size_description": "Gnomes are between 3 and 4 feet tall and average about 40 pounds. Your size is Small.",
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [
 		api.buildLanguage("common"),
 		api.buildLanguage("gnomish"),

@@ -29,10 +29,23 @@ export interface BackgroundIdealsDto {
 	from: Array<BackgroundIdealDto>
 }
 
+export interface BackgroundBondDto {
+	choose: number;
+	from: Array<string>;
+}
+
+export interface BackgroundFlawDto {
+	choose: number;
+	from: Array<string>;
+}
+
+
 export interface BackgroundDto {
 	index: string;
 	features: Array<BackgroundFeatureDto>;
 	goodForClasses: Array<GoodForClassDto>
 	personalityTraits: Array<BackgroundPersonalityTraitsDto>;
 	ideals: BackgroundIdealsDto;
+	bonds: BackgroundBondDto;
+	flaws: BackgroundFlawDto;
 }

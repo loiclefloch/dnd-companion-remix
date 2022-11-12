@@ -7,10 +7,10 @@ const Rabittfolk = (api) => ({
 	"age": "",
 	"size": "Medium or small",
 	"size_description": "You are Medium or Small. You choose the size when you gain this race.",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-perception"),
 	],
-	// "starting_proficiency_options": {
+	// "startingProficiencyOptions": {
 	// 	"choose": 1,
 	// 	"type": "proficiencies",
 	// 	"from": [

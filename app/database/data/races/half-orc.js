@@ -10,7 +10,7 @@ const halfOrc = api => ({
 	"age": "Half-orcs mature a little faster than humans, reaching adulthood around age 14. They age noticeably faster and rarely live longer than 75 years.",
 	"size": "Medium",
 	"size_description": "Half-orcs are somewhat larger and bulkier than humans, and they range from 5 to well over 6 feet tall. Your size is Medium.",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-intimidation"),
 	],
 	"languages": [

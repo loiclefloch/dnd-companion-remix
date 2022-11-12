@@ -10,7 +10,7 @@ const tiefling = (api) => ({
 	"age": "Tieflings mature at the same rate as humans but live a few years longer.",
 	"size": "Medium",
 	"size_description": "Tieflings are about the same size and build as humans. Your size is Medium.",
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [
 		api.buildLanguage("common"),
 		api.buildLanguage("infernal"),

@@ -6,7 +6,7 @@ const protectorAasimar = api => ({
 	"abilitybonuses": [
 		api.buildAbilityBonus("wis", 1)
 	],
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [],
 	"traits": [
 		api.buildTrait("radiant-soul")

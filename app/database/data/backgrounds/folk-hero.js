@@ -1,12 +1,12 @@
 const FolkHero = (api) => ({
 	"index": "folk-hero",
 	"name": "Folk Hero",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-animal-handling"),
 		api.buildProficiency("skill-survival"),
 		api.buildProficiency("land-vehicles"),
 	],
-	"starting_proficiency_options": api.buildProficiencyOption(1, "Artisan's Tools"),
+	"startingProficiencyOptions": api.buildProficiencyOption(1, "Artisan's Tools"),
 	"language_options": null,
 	"starting_equipment": [
 		{

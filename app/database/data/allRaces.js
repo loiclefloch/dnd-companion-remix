@@ -126,7 +126,7 @@ function merge(race, sub) {
 	// arrays to merge
 	const arrayKeys = [
 		'abilitybonuses',
-		'starting_proficiencies',
+		'startingProficiencies',
 		'languages',
 		'traits'
 	]
@@ -174,8 +174,8 @@ function merge(race, sub) {
 		throw new Error(`Remaining`)
 	}
 	
-	if (final.starting_proficiency_options) {
-		final.starting_proficiency_options.from = final.starting_proficiency_options.from.map(o => ({
+	if (final.startingProficiencyOptions) {
+		final.startingProficiencyOptions.from = final.startingProficiencyOptions.from.map(o => ({
 			...o,
 			sourceType: 'race-option'
 		}))

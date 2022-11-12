@@ -3,10 +3,24 @@ import equipment from '~/database/data/equipment.json'
 import camelize from "../modules/utils/camelize"
 import { formatEquipmentItem } from './equipment.mapper';
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
-import type { BackgroundApiObject, BackgroundIdealsApiObject, BackgroundPersonalityTraitsApiObject } from '~/apiobjects/background.apiobject'
+import type { BackgroundApiObject, BackgroundBondApiObject, BackgroundFlawApiObject, BackgroundIdealsApiObject, BackgroundPersonalityTraitsApiObject } from '~/apiobjects/background.apiobject'
 import { formatProficiency } from './proficiency.mapper';
 import classes from '~/database/data/classes';
-import type { BackgroundDto, BackgroundIdealsDto, BackgroundPersonalityTraitsDto } from '~/dtos/background.dto';
+import type { BackgroundBondDto, BackgroundDto, BackgroundFlawDto, BackgroundIdealsDto, BackgroundPersonalityTraitsDto } from '~/dtos/background.dto';
+
+export function transformBackgroundFlaws(backgroundFlaw: BackgroundFlawApiObject): BackgroundFlawDto {
+  return {
+    choose: backgroundFlaw.choose,
+    from: backgroundFlaw.from,
+  };
+}
+
+export function transformBackgroundBonds(backgroundBond: BackgroundBondApiObject): BackgroundBondDto {
+  return {
+    choose: backgroundBond.choose,
+    from: backgroundBond.from,
+  };
+}
 
 export function transformBackgroundIdeals(backgroundIdealsApiObject: BackgroundIdealsApiObject): BackgroundIdealsDto {
   return {

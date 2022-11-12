@@ -9,13 +9,13 @@ const dwarf = (api) => ({
 	"age": "Dwarves mature at the same rate as humans, but they're considered young until they reach the age of 50. On average, they live about 350 years.",
 	"size": "Medium",
 	"size_description": "Dwarves stand between 4 and 5 feet tall and average about 150 pounds. Your size is Medium.",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("battleaxes"),
 		api.buildProficiency("handaxes"),
 		api.buildProficiency("light-hammers"),
 		api.buildProficiency("warhammers"),
 	],
-	"starting_proficiency_options": {
+	"startingProficiencyOptions": {
 		"choose": 1,
 		"type": "proficiencies",
 		"from": [

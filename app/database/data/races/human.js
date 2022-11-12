@@ -14,7 +14,7 @@ const human = api => ({
 	"alignment": "Humans tend toward no particular alignment. The best and the worst are found among them.",
 	"size": "Medium",
 	"size_description": "Humans vary widely in height and build, from barely 5 feet to well over 6 feet tall. Regardless of your position in that range, your size is Medium.",
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [
 		api.buildLanguage("common"),
 	],

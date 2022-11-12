@@ -10,7 +10,7 @@ const dragonborn = (api) => ({
 	"age": "Young dragonborn grow quickly. They walk hours after hatching, attain the size and development of a 10-year-old human child by the age of 3, and reach adulthood by 15. They live to be around 80.",
 	"size": "Medium",
 	"size_description": "Dragonborn are taller and heavier than humans, standing well over 6 feet tall and averaging almost 250 pounds. Your size is Medium.",
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [
 		api.buildLanguage("common"),
 		api.buildLanguage("draconic"),

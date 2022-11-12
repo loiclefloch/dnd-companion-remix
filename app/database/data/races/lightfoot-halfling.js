@@ -6,7 +6,7 @@ const lightfootHalfing = api => ({
 	"abilitybonuses": [
 		api.buildAbilityBonus("cha", 1)
 	],
-	"starting_proficiencies": [],
+	"startingProficiencies": [],
 	"languages": [],
 	"traits": [
 		api.buildTrait("naturally-stealthy"),

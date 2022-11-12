@@ -6,7 +6,7 @@ const rockGnome = api => ({
 	"abilitybonuses": [
 		api.buildAbilityBonus("con", 1)
 	],
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("tinkers-tools")
 	],
 	"languages": [],

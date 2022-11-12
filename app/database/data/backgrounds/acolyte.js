@@ -1,7 +1,7 @@
 const Acolyte = (api) => ({
 	"index": "acolyte",
 	"name": "Acolyte",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-insight"),
 		api.buildProficiency("skill-religion"),
 	],

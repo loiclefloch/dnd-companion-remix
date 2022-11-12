@@ -1,5 +1,6 @@
 import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
-import { AlignmentApiEnum } from './alignment.apiobject';
+import type { AlignmentApiEnum } from './alignment.apiobject';
+import type { StartingProficiencyOptionsApiObject } from './proficicency.apiobject';
 
 interface GoodForClassApiObject {
 	name: string;
@@ -27,10 +28,23 @@ export interface BackgroundIdealsApiObject {
 	from: Array<BackgroundIdealApiObject>
 }
 
+export interface BackgroundBondApiObject {
+	choose: number;
+	from: Array<string>;
+}
+
+export interface BackgroundFlawApiObject {
+	choose: number;
+	from: Array<string>;
+}
+
 export interface BackgroundApiObject {
 	index: string;
 	goodForClasses: Array<GoodForClassApiObject>;
 	features: Array<BackgroundFeatureApiObject>;
 	personalityTraits: BackgroundPersonalityTraitsApiObject;
 	ideals: BackgroundIdealsApiObject;
+	bonds: BackgroundBondApiObject;
+	flaws: BackgroundFlawApiObject;
+	startingProficiencyOptions: StartingProficiencyOptionsApiObject;
 }

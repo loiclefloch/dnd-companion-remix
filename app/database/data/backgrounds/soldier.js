@@ -1,7 +1,7 @@
 const Soldier = (api) => ({
 	"index": "soldier",
 	"name": "Soldier",
-	"starting_proficiencies": [
+	"startingProficiencies": [
 		api.buildProficiency("skill-athletics"),
 		api.buildProficiency("skill-intimidation"),
 		api.buildProficiency("land-vehicles"),
@@ -16,7 +16,7 @@ const Soldier = (api) => ({
 			"quantity": 1
 		},
 	],
-	"starting_proficiency_options": api.buildProficiencyOption(1, "Gaming Sets"),
+	"startingProficiencyOptions": api.buildProficiencyOption(1, "Gaming Sets"),
 	"features": [
 		{
 			"index": "specialty",
