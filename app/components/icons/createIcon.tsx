@@ -3,7 +3,11 @@ import clsx from "clsx"
 
 // icons from https://heroicons.com/
 
-const createIcon = (IconName, Component,  { className: creationClassName, ...creationProps } = {}) => {
+interface Props {
+	className?: string;
+}
+
+const createIcon = (IconName, Component,  { className: creationClassName, ...creationProps }: Props = {}) => {
 	const Icon = ({ className, children, ...props }) => {
 		return (
 			<svg xmlns="http://www.w3.org/2000/svg" className={clsx(creationClassName, className)} {...creationProps} {...props}>

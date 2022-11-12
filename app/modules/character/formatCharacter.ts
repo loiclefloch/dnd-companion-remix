@@ -17,7 +17,6 @@ import { formatRace } from "../api/useRace"
 import { formatClass } from "../api/useClass"
 import { getLevellingDataForClassesAndLevel, getLevelExperienceStage, getNextLevelExperienceStage } from "../levelling"
 import { formatEquipmentItem } from "../api/useEquipmentItem"
-import { formatSpell } from "../api/useSpell"
 import { getProficiencyBonus } from "../levelling"
 import { getSpellsForCharacterSubclass } from "./subclass"
 import { valueToModifier, valueToModifierLabel, modifierToModifierLabel } from "../stats"
@@ -30,6 +29,7 @@ import applyFeaturesOnCharacter from "./applyFeaturesOnCharacter"
 import applyTraitsOnCharacter from "./applyTraitsOnCharacter"
 import applyFeatsOnCharacter from "./applyFeatsOnCharacter"
 import getCharacterHasProficiencyForItem from "./getCharacterHasProficiencyForItem"
+import { formatSpell } from '~/mappers/spell.mapper';
 
 function formatCurrencies(walletHistory) {
 	const currencies = {

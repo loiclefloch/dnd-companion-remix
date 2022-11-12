@@ -23,7 +23,7 @@ import CharacterLevelTag from "~/components/CharacterLevelTag";
 import { json } from "@remix-run/server-runtime";
 import type { LoaderArgs } from "@remix-run/server-runtime";
 import formatCharacter from "~/modules/character/formatCharacter";
-import { getMyCharacter } from "~/services/mycharacters.server";
+import { getCurrentCharacter } from "~/services/currentcharacter.server";
 import { requireUser } from "~/services/session.server";
 import { notFound } from "~/utils/response";
 import { setCurrentCharacter } from "~/services/currentcharacter.server"
@@ -34,7 +34,7 @@ export async function loader({ request, params }: LoaderArgs) {
 
   const characterId = params.characterId as string;
 
-  const character = await getMyCharacter(characterId);
+  const character = await getCurrentCharacter(characterId);
 
   await setCurrentCharacter(characterId);
 
