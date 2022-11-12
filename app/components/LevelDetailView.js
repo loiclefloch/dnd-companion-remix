@@ -2,11 +2,9 @@ import { makeI18n } from "~/modules/i18n/useI18n";
 
 import ScreenIntroduction from "./ScreenIntroduction"
 import SpellLevelData from "./SpellLevelData"
-import { getLevellingDataForClassesAndLevel } from "~/modules/levelling"
 import { isEmpty } from "lodash";
 import useFeatureScreenAsModal from "./useFeatureScreenAsModal"
 import LevellingDetail from "./levellingDetail/LevellingDetail"
-import { getLevellingStages } from "~/modules/levelling"
 
 const useI18n = makeI18n({
 	'description': {
@@ -27,9 +25,8 @@ const useI18n = makeI18n({
 	},
 })
 
-function Feature({ index }) {
+function Feature({ feature }) {
 	const { tr } = useI18n()
-	const feature = null; // TODO: remix
 	const { showFeatureScreenAsModal } = useFeatureScreenAsModal()
 
 	return (
@@ -47,24 +44,24 @@ function Feature({ index }) {
 	)
 }
 
-function FeaturesLevelData({ classes, level }) {
+function FeaturesLevelData({ levellingData }) {
 	const { tr } = useI18n()
-	const levellingData = getLevellingDataForClassesAndLevel(classes, level)
 
-	if (isEmpty(levellingData.features)) {
+	// TODO: remix remove featuresData, use fullstack component
+	if (isEmpty(levellingData.featuresData)) {
 		return <p className="px-4 mt-2">{tr`no features`}</p>
 	}
 
 	return (
 		<div className="px-4 mt-2 divide divide-y">
-			{levellingData.features.map(feature => (
-				<Feature key={feature} index={feature} />
+			{levellingData.featuresData.map(feature => (
+				<Feature key={feature.index} feature={feature} />
 			))}
 		</div>
 	)
 }
 
-function LevelDetailView({ clss, level, onCloseScreen }) {
+function LevelDetailView({ levellingData, levellingStages, clss, level, onCloseScreen }) {
 	const { tr } = useI18n()
 
 	return (
@@ -74,23 +71,25 @@ function LevelDetailView({ clss, level, onCloseScreen }) {
 				description={tr('description', { level, 'clss.name': tr(clss.nameLocalized)}) }
 			/>
 
-			<div className="flex px-4 mt-2">
-				<div>
-					{tr`requiredXp`}
+			{level !== 1 && (
+				<div className="flex px-4 mt-2">
+					<div>
+						{tr`requiredXp`}
+					</div>
+					<div className="text-meta ml-2">
+						{levellingStages[level]} ({tr(`level.short`, { level: level - 1 })} + {levellingStages[level] - levellingStages[level - 1]})
+					</div>
 				</div>
-				<div className="text-meta ml-2">
-					{getLevellingStages()[level]} ({tr(`level.short`, { level: level -1 })} + {getLevellingStages()[level] - getLevellingStages()[level - 1]})
-				</div>
-			</div>
+			)}
 
 			<>
 				<h3 className="mx-4 mt-4 text-xl border-b border-slate-300">{tr`spellsSlots.title`}</h3>
-				<SpellLevelData classes={[clss]} level={level} />
+				<SpellLevelData levellingData={levellingData} />
 			</>
 
 			<>
 				<h3 className="mx-4 mt-4 text-xl border-b border-slate-300">{tr`features.title`}</h3>
-				<FeaturesLevelData classes={[clss]} level={level} />
+				<FeaturesLevelData levellingData={levellingData} />
 			</>
 			
 			<>

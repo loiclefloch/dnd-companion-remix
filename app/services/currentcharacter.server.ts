@@ -11,7 +11,11 @@ export async function getCurrentCharacterId(): Promise<string | null> {
 	return currentCharacterId
 }
 
-export async function getCurrentCharacter(): Promise<MyCharacterApiObject> {
+export async function getCurrentCharacter(): Promise<MyCharacterApiObject | null> {
+	if (!currentCharacterId) {
+		return null
+	}
+
 	const character = characters.find(character => character.id === currentCharacterId);
 	if (!character) {
 		throw new Error(`Character not found with id ${currentCharacterId}`);

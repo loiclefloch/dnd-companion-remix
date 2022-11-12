@@ -6,5 +6,11 @@ export async function getClasses(): Promise<Array<ClassApiObject>> {
 }
 
 export async function getClass(index: string): Promise<ClassApiObject> {
-	return classes.find(c => c.index === index)
+	const classApiObject = classes.find(c => c.index === index)
+
+	if (!classApiObject) {
+		throw new Error(`class not found for index ${index}`);
+	}
+
+	return classApiObject;
 }

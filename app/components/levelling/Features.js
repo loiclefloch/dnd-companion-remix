@@ -62,7 +62,8 @@ function formIsValid(features, featuresOptions) {
 function Features({ getBuildedCharacter, levellingData, step, levellingDispatch }) {
 	const { tr } = useI18n()
 	const [featuresOptions, setFeaturesOptions] = useState({})
-	const character = getBuildedCharacter()
+	{/* TODO: remix */ }
+	// const character = getBuildedCharacter()
 
 	const isValid = formIsValid(levellingData.features, featuresOptions)
 
@@ -71,7 +72,8 @@ function Features({ getBuildedCharacter, levellingData, step, levellingDispatch 
 			<h3 className="text-center">{step.label}</h3>
 
 			<div className="mt-2">
-				{levellingData.features.map(index => (
+				{/* TODO: remix */}
+				{/* {levellingData.features.map(index => (
 					<Feature 
 						key={index} 
 						index={index} 
@@ -82,7 +84,7 @@ function Features({ getBuildedCharacter, levellingData, step, levellingDispatch 
 						})}
 						character={character}
 					/>
-				))}
+				))} */}
 			</div>
 
 			{isEmpty(levellingData.features) && (

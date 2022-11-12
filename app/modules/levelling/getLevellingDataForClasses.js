@@ -1,5 +1,6 @@
 import camelize from "../utils/camelize"
 import levels from "../../database/data/levels.json"
+import { formatFeature } from "~/mappers/feature.mapper";
 
 // {
 // 	"_TEMPLATE": {
@@ -282,83 +283,84 @@ import levels from "../../database/data/levels.json"
 
 
 function getLevellingDataForClasses() {
-const classes = [
-  "barbarian",
-  "bard",
-  "druid",
-  "cleric",
-  "fighter",
-  "monk",
-  "paladin",
-  "ranger",
-  "rogue",
-  "sorcerer",
-  "warlock",
-  "wizard",
-];
+  const classes = [
+    "barbarian",
+    "bard",
+    "druid",
+    "cleric",
+    "fighter",
+    "monk",
+    "paladin",
+    "ranger",
+    "rogue",
+    "sorcerer",
+    "warlock",
+    "wizard",
+  ];
 
-const data = {};
+  const data = {};
 
-classes.forEach((className) => {
-  const levelling = {};
+  classes.forEach((className) => {
+    const levelling = {};
 
-  for (let level = 1; level <= 20; level++) {
-    const levelData = levels.find(
-      (l) => l.level === level && l.class.index === className
-    );
+    for (let level = 1; level <= 20; level++) {
+      const levelData = levels.find(
+        (l) => l.level === level && l.class.index === className
+      );
 
-    const slots = levelData.spellcasting
-    ? {
-        0: -1, // infinite
-        1: levelData.spellcasting.spell_slots_level_1 || 0,
-        2: levelData.spellcasting.spell_slots_level_2 || 0,
-        3: levelData.spellcasting.spell_slots_level_3 || 0,
-        4: levelData.spellcasting.spell_slots_level_4 || 0,
-        5: levelData.spellcasting.spell_slots_level_5 || 0,
-        6: levelData.spellcasting.spell_slots_level_6 || 0,
-        7: levelData.spellcasting.spell_slots_level_7 || 0,
-        8: levelData.spellcasting.spell_slots_level_8 || 0,
-        9: levelData.spellcasting.spell_slots_level_9 || 0,
-      }
-    : {
-        0: 0,
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0,
-        6: 0,
-        7: 0,
-        8: 0,
-        9: 0,
-      }
+      const slots = levelData.spellcasting
+        ? {
+          0: -1, // infinite
+          1: levelData.spellcasting.spell_slots_level_1 || 0,
+          2: levelData.spellcasting.spell_slots_level_2 || 0,
+          3: levelData.spellcasting.spell_slots_level_3 || 0,
+          4: levelData.spellcasting.spell_slots_level_4 || 0,
+          5: levelData.spellcasting.spell_slots_level_5 || 0,
+          6: levelData.spellcasting.spell_slots_level_6 || 0,
+          7: levelData.spellcasting.spell_slots_level_7 || 0,
+          8: levelData.spellcasting.spell_slots_level_8 || 0,
+          9: levelData.spellcasting.spell_slots_level_9 || 0,
+        }
+        : {
+          0: 0,
+          1: 0,
+          2: 0,
+          3: 0,
+          4: 0,
+          5: 0,
+          6: 0,
+          7: 0,
+          8: 0,
+          9: 0,
+        }
 
-    const nbTotalSlots = Object.values(slots).reduce((totalSlots, slots) => totalSlots + slots, 0)
-    const hasSlots = nbTotalSlots > 0
+      const nbTotalSlots = Object.values(slots).reduce((totalSlots, slots) => totalSlots + slots, 0)
+      const hasSlots = nbTotalSlots > 0
 
-    levelling[level] = {
-      features: levelData.features.map((f) => f.index),
-      classSpecific: levelData.class_specific,
-      abilityScoreBonuses: levelData.ability_score_bonuses,
-      profBonus: levelData.prof_bonus,
-      // spellcasting: levelData.spellcasting,
-      spellcasting: {
-        hasMagic: hasSlots
-          || levelData.spellcasting?.cantrips_known > 0
-          || levelData.spellcasting?.spells_known > 0,
-        // TODO: spellsKnown / cantripsKnown is not always defined, what to do?
-        spellsKnown: levelData.spellcasting?.spells_known || 0,
-        cantripsKnown: levelData.spellcasting?.cantrips_known || 0,
-      },
-      slots
-    };
-  }
+      levelling[level] = {
+        features: levelData.features.map((f) => f.index),
+        featuresData: levelData.features.map(formatFeature), // TODO: remix remove
+        classSpecific: levelData.class_specific,
+        abilityScoreBonuses: levelData.ability_score_bonuses,
+        profBonus: levelData.prof_bonus,
+        // spellcasting: levelData.spellcasting,
+        spellcasting: {
+          hasMagic: hasSlots
+            || levelData.spellcasting?.cantrips_known > 0
+            || levelData.spellcasting?.spells_known > 0,
+          // TODO: spellsKnown / cantripsKnown is not always defined, what to do?
+          spellsKnown: levelData.spellcasting?.spells_known || 0,
+          cantripsKnown: levelData.spellcasting?.cantrips_known || 0,
+        },
+        slots
+      };
+    }
 
-  data[className] = levelling;
-});
+    data[className] = levelling;
+  });
 
-const camelizedData = camelize(data);
-return camelizedData;
+  const camelizedData = camelize(data);
+  return camelizedData;
 }
 
 export default getLevellingDataForClasses

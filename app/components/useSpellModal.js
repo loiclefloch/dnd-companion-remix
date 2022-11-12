@@ -11,7 +11,7 @@ function SpellScreenAsModal({ index, onCloseScreen }) {
 
 	return (
 		<ScreenAsModal title={`Sort - ${tr(spell.nameLocalized)}`} onCloseScreen={onCloseScreen}>
-			<SpellView spell={spell} />
+			{/* <SpellView spell={spell} /> */}
 		</ScreenAsModal>
 	)
 }

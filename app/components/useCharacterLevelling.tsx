@@ -2,7 +2,6 @@ import { useState, useMemo, useCallback } from "react"
 import useRouter from "~/hooks/useRouter"
 import { LevellingStorage, BackupStorage } from "~/modules/db"
 import useCurrentCharacter from "./useCurrentCharacter"
-import useCurrentRawCharacter from "./useCurrentRawCharacter"
 import { getLevellingDataForClassesAndLevel, getSpellsSlotsForCharacterLevel } from "~/modules/levelling"
 import getLevellingSteps from "~/modules/levelling/getLevellingSteps"
 import { formatCharacter } from "~/mappers/character.mapper"
@@ -18,7 +17,7 @@ function useCharacterLevelling() {
   // TODO: remix
 	// const { character, rawCharacter, updateCharacter } = useCurrentCharacter()
 	const currentCharacter = useCurrentCharacter()
-	const rawCharacter = useCurrentRawCharacter()
+	const rawCharacter = null // TODO: remix
 
 	const [ levellingState, setLevellingState] = useState(initialState())
 

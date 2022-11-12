@@ -1,8 +1,7 @@
 import { getLevellingDataForClassesAndLevel } from "~/modules/levelling"
 
-function SpellLevelData({ classes, level }) {
+function SpellLevelData({ levellingData }) {
 	// TODO: how do we do with multy class?
-	const levellingData = getLevellingDataForClassesAndLevel(classes, level)
 	const maxSpellLevel = Math.max(...Object.keys(levellingData.slots))
 
 	return (

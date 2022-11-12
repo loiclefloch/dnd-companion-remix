@@ -46,7 +46,7 @@ function createCharacterClassTag(clss) {
   };
 }
 
-function SpellView({ character, spell }) {
+export default function SpellView({ character, spell }) {
   const { tr, getRangeUnit, isDefaultLang, trDefaultLang } = useI18n();
   const { showTipMagicSchool } = useTipMagicSchool()
   const { showTipConcentration } = useTipConcentration()
@@ -215,4 +215,3 @@ function SpellView({ character, spell }) {
   );
 }
 
-export default SpellView;

@@ -8,17 +8,6 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import skills from '~/database/data/skills.json'
-import spells from '~/database/data/spells.json'
-import subclasses from '~/database/data/subclasses.json'
-import classes from '~/database/data/classes'
-import backgrounds from '~/database/data/backgrounds'
-import equipment from "~/database/data/equipment.json"
-import features from "~/database/data/features"
-import magicSchools from '~/database/data/magic-schools.json'
-import magicItems from "~/database/data/magic-items.json"
-import feats from '~/database/data/feats'
-import allRaces from '~/database/data/allRaces'
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import { getUser } from "~/services/session.server";
 import clsx from "clsx";
@@ -26,9 +15,10 @@ import { CharacterMenuProvider } from "./components/characterMenu/CharacterMenuC
 import { ModalProvider } from "./components/modal/modalContext";
 import { ScreenAsModalProvider } from "./components/screenAsModal/useScreenAsModal";
 import { SidebarMenuProvider } from "./components/sidebarMenu/sidebarMenuContext";
-import { CreateCharacterProvider } from "~/components/useCreateCharacter"
 import type { ReactNode } from "react";
 import type { UserDto } from "./dtos/User.dto";
+import { getCurrentCharacter } from '~/services/currentcharacter.server';
+import { formatCharacter } from "./mappers/character.mapper";
 
 export const links: LinksFunction = () => {
   return [
@@ -48,22 +38,11 @@ export interface RootLoaderData {
 }
 
 export async function loader({ request }: LoaderArgs) {
+  const currentCharacterApiObject = await getCurrentCharacter()
+
   return json({
     user: await getUser(request),
-    subclasses,
-    // TODO: add more backgrounds
-    backgrounds,
-    classes,
-    equipment,
-    feats,
-    features,
-    magicItems,
-    magicSchools,
-    allRaces,
-    skills,
-    spells,
-    currentCharacter: null,//formatCharacter({})
-    currentRawCharacter: null,
+    currentCharacter: currentCharacterApiObject ? formatCharacter(currentCharacterApiObject) : null,
   });
 }
 
