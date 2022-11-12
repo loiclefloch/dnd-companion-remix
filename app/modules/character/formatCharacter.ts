@@ -13,7 +13,6 @@ import spells from '~/database/data/spells.json'
 import alignments from '~/database/data/alignments.json'
 import equipmentList from '~/database/data/equipment.json'
 import traits from '~/database/data/traits.json'
-import { formatRace } from "../api/useRace"
 import { formatClass } from "../api/useClass"
 import { getLevellingDataForClassesAndLevel, getLevelExperienceStage, getNextLevelExperienceStage } from "../levelling"
 import { getProficiencyBonus } from "../levelling"

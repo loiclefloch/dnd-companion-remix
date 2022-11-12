@@ -7,7 +7,6 @@ import ButtonBottomScreen from "~/components/ButtonBottomScreen";
 import ScreenIntroduction from "~/components/ScreenIntroduction";
 import ListSelector from "~/components/ListSelector";
 import Screen from "~/components/Screen";
-import useRace from '../../../modules/api/useRace';
 import { Link } from "@remix-run/react"
 import useTipLanguage from "~/components/useTipLanguage";
 import useI18n from "~/modules/i18n/useI18n";

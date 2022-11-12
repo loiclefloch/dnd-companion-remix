@@ -7,7 +7,6 @@ import { CharacterStorage } from "~/modules/db"
 import classes from '~/database/data/classes'
 import allRaces from "../database/data/allRaces"
 import backgrounds from "../database/data/backgrounds"
-import { formatRace } from "~/modules/api/useRace"
 import { formatBackground } from "~/modules/api/useBackground"
 import formatCharacter from "~/modules/character/formatCharacter"
 import createCharacterDefaultData from "~/modules/character/createCharacterDefaultData"
