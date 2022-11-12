@@ -4,6 +4,23 @@ import useI18n from '../../../../modules/i18n/useI18n';
 import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
 import IconClass from "~/components/icons/IconClass"
 import ScreenIntroduction from "~/components/ScreenIntroduction"
+import { useLoaderData } from '@remix-run/react';
+import { getClasses } from '~/services/class.server';
+import type { LoaderArgs} from '@remix-run/server-runtime';
+import { json } from '@remix-run/server-runtime';
+import { formatClass } from '~/mappers/class.mapper';
+import { requireUser } from '~/services/session.server';
+
+export async function loader({ request }: LoaderArgs) {
+  const token = await requireUser(request);
+
+  const classes = await getClasses();
+
+  return json({
+    classes: classes.map(formatClass),
+  });
+}
+
 
 function ClassRow({ clss }) {
 	const { tr } = useI18n()
@@ -25,7 +42,7 @@ function ClassRow({ clss }) {
 	)
 }
 
-function Form({ classes }) {
+function FormView({ classes }) {
 	return (
 		<div className="flex flex-col">
 			<ScreenIntroduction
@@ -37,8 +54,8 @@ function Form({ classes }) {
 			/>
 
 			<ListRowSelectContainer className="px-4 mt-6">
-				{classes?.map(clss => (
-					<ClassRow key={clss.index} clss={clss} />
+				{classes?.map(classDto => (
+					<ClassRow key={classDto.index} clss={classDto} />
 				))}
 			</ListRowSelectContainer>
 		</div>
@@ -46,13 +63,13 @@ function Form({ classes }) {
 }
 
 function ChooseCharacterClass() {
-	const classes = [] // TODO: remix
+	const { classes } = useLoaderData<typeof loader>();
 
 	return (
 		<Screen
 			title={"Choix de la classe"}
 		>
-			{classes && (<Form classes={classes} />)}
+			<FormView classes={classes} />
 		</Screen>
   );
 }

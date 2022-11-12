@@ -2,7 +2,7 @@ const Rabittfolk = (api) => ({
 	"index": "rabbitfolk",
 	"name": "Rabbitfolk",
 	"speed": 30,
-	"ability_bonus_options": {},
+	"abilityBonusOptions": {},
 	"alignment": "",
 	"age": "",
 	"size": "Medium or small",

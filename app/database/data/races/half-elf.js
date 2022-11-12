@@ -2,12 +2,12 @@ const halfElf = api => ({
 	"index": "half-elf",
 	"name": "Half-Elf",
 	"speed": 30,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("cha", 2)	
 	],
-	"ability_bonus_options": {
+	"abilityBonusOptions": {
 		"choose": 2,
-		"type": "ability_bonuses",
+		"type": "abilitybonuses",
 		"from": [
 			api.buildAbilityBonus("str", 1),
 			api.buildAbilityBonus("dex", 1),

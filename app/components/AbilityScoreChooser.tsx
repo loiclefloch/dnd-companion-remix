@@ -11,6 +11,7 @@ import {
 	getImportanceTip,
 } from "~/modules/character"
 import { makeI18n } from '~/modules/i18n/useI18n';
+import { useEffect, useState } from "react";
 
 const useI18n = makeI18n({
 
@@ -36,6 +37,8 @@ function Ability({
 
 	return (
 		<div className="flex flex-row items-center justify-center my-4 select-none">
+			<input type="hidden" name={ability} value={value} />
+
 			<div
 				className="w-20"
 			>
@@ -62,9 +65,6 @@ function Ability({
 					onClick={() => showTipAbilityScore(ability)}
 				>
 					{tr(ability)}
-				</div>
-				<div>
-
 				</div>
 			</div>
 			<div className="flex flex-row ml-4">
@@ -111,14 +111,14 @@ function Ability({
 }
 
 function AbilityScoreChooser({
-	clss,
+	classIndex,
 	abilities,
 	bonuses,
 	scoreDiff = {},
 	creationMode,
 	onChange,
 }) {
-	const importanceForClass = getImportanceForClass(clss)
+	const importanceForClass = getImportanceForClass(classIndex)
 
 	return (
 		<>

@@ -3,7 +3,7 @@ const hillDwarf = api => ({
 	"name": "Hill Dwarf",
 	"race": api.buildRace("dwarf"),
 	"desc": "As a hill dwarf, you have keen senses, deep intuition, and remarkable resilience.",
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("wis", 1)
 	],
 	"starting_proficiencies": [],

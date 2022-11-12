@@ -2,7 +2,7 @@ const halfling = api => ({
 	"index": "halfling",
 	"name": "Halfling",
 	"speed": 25,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("dex", 2)
 	],
 	"age": "A halfling reaches adulthood at the age of 20 and generally lives into the middle of his or her second century.",

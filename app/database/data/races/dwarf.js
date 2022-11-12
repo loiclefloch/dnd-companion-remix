@@ -2,7 +2,7 @@ const dwarf = (api) => ({
 	"index": "dwarf",
 	"name": "Dwarf",
 	"speed": 25,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("con", 2),
 	],
 	"alignment": "Most dwarves are lawful, believing firmly in the benefits of a well-ordered society. They tend toward good as well, with a strong sense of fair play and a belief that everyone deserves to share in the benefits of a just order.",

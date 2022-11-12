@@ -6,7 +6,6 @@ import useI18n from "../../modules/i18n/useI18n"
 import Screen from "~/components/Screen"
 import useCurrentCharacter from "~/components/useCurrentCharacter"
 import IconBookOpen from "~/components/icons/IconBookOpen"
-import IconPlus from "~/components/icons/IconPlus"
 import IconMagicSchool from "~/components/icons/IconMagicSchool"
 import SpellRunner from "~/components/SpellRunner"
 import useTipConcentration from "~/components/useTipConcentration"
@@ -14,11 +13,10 @@ import useTipRitual from "~/components/useTipRitual"
 import Tag from "~/components/Tag"
 import clsx from "clsx"
 import useEditSpellSlotsScreenAsModal from "~/components/useEditSpellSlotsScreenAsModal"
-import { actionEditSpellSlots } from "../../modules/character/action"
 import CharacterSpellSource from "~/components/CharacterSpellSource"
 import CharacterSpellTag from "~/components/CharacterSpellTag"
 
-function Spell({ spell, character /*onSelect*/ }) {
+function Spell({ spell, character }) {
 	const { tr } = useI18n();
 	const { showTipConcentration } = useTipConcentration()
 	const { showTipRitual } = useTipRitual()
@@ -111,7 +109,7 @@ function Spell({ spell, character /*onSelect*/ }) {
 	);
 }
 
-function SpellLevelHeader({ level, spellsSlots, characterDispatch }) {
+function SpellLevelHeader({ level, spellsSlots }) {
 	const { showEditSpellSlotsScreenAsModal } = useEditSpellSlotsScreenAsModal()
 	const spellSlot = spellsSlots.find(spell => spell.spellLevel === level)
 
@@ -126,7 +124,6 @@ function SpellLevelHeader({ level, spellsSlots, characterDispatch }) {
 						className="flex"
 						onClick={() => showEditSpellSlotsScreenAsModal({
 							spellSlot,
-							onEdit: data => characterDispatch(actionEditSpellSlots(data))
 						})}
 					>
 						{spellSlot.hasNoSlotsToDisplay && (
@@ -149,7 +146,7 @@ function SpellLevelHeader({ level, spellsSlots, characterDispatch }) {
 	)
 }
 
-function Grimoire() {
+export default function Grimoire() {
 	const character = useCurrentCharacter()
 
 	const groupedBySpellLevel = groupBy(character?.spellsList, spell => spell.level)
@@ -214,7 +211,6 @@ function Grimoire() {
 									<SpellLevelHeader
 										level={Number(level)}
 										spellsSlots={spellsSlots}
-										characterDispatch={characterDispatch}
 									/>
 								</>
 								{spells.map(spell =>
@@ -232,5 +228,3 @@ function Grimoire() {
 		</Screen>
 	)
 }
-
-export default Grimoire

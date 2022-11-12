@@ -2,7 +2,7 @@ const Aasimar = (api) => ({
 	"index": "aasimar",
 	"name": "Aasimar",
 	"speed": 30,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("cha", 2),
 	],
 	"alignment": "Imbued with celestial power, most aasimar are good. Outcast aasimar are most often neutral or even evil.",

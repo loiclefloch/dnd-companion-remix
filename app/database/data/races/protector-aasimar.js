@@ -3,7 +3,7 @@ const protectorAasimar = api => ({
 	"name": "Protector Aasimar",
 	"race": api.buildRace("aasimar"),
 	"desc": "",
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("wis", 1)
 	],
 	"starting_proficiencies": [],

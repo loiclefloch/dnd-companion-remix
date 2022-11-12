@@ -2,7 +2,7 @@ const tiefling = (api) => ({
 	"index": "tiefling",
 	"name": "Tiefling",
 	"speed": 30,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("int", 1),
 		api.buildAbilityBonus("cha", 2),
 	],

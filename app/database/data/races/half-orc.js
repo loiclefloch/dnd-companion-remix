@@ -2,7 +2,7 @@ const halfOrc = api => ({
 	"index": "half-orc",
 	"name": "Half-Orc",
 	"speed": 30,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("str", 2),
 		api.buildAbilityBonus("con", 1),
 	],

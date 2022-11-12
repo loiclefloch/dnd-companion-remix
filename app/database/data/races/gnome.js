@@ -2,7 +2,7 @@ const gnome = api => ({
 	"index": "gnome",
 	"name": "Gnome",
 	"speed": 25,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("int", 2)
 	],
 	"alignment": "Gnomes are most often good. Those who tend toward law are sages, engineers, researchers, scholars, investigators, or inventors. Those who tend toward chaos are minstrels, tricksters, wanderers, or fanciful jewelers. Gnomes are good-hearted, and even the tricksters among them are more playful than vicious.",

@@ -7,6 +7,10 @@ export async function getRaces(): Promise<Array<RaceApiObject>> {
 	return cloneDeep(allRaces);
 }
 
-export async function getRace(id: string): Promise<RaceApiObject> {
-	return cloneDeep(allRaces.find(r => r.index === id))
+export async function getRace(index: string): Promise<RaceApiObject> {
+	const race = allRaces.find(r => r.index === index)
+	if (!race) {
+		throw new Error(`Race not found for index ${index}`)
+	}
+	return cloneDeep(race)
 }

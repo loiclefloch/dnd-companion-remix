@@ -2,7 +2,7 @@ const human = api => ({
 	"index": "human",
 	"name": "Human",
 	"speed": 30,
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("str", 1),
 		api.buildAbilityBonus("dex", 1),
 		api.buildAbilityBonus("con", 1),

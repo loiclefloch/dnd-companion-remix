@@ -9,7 +9,7 @@ export const AbilityImportance = {
 
 
 // TODO: multi-build handling
-export function getAbilityOptimizedExample(clss) {
+export function getAbilityOptimizedExample(classIndex) {
 	const map = {
 		druid: { 
 			// https://rpgbot.net/dnd5/characters/classes/druid/
@@ -130,10 +130,10 @@ export function getAbilityOptimizedExample(clss) {
 			CHA: 8,
 		},
 	}
-	return map[clss]
+	return map[classIndex]
 }
 
-export function getImportanceForClass(clss) {
+export function getImportanceForClass(classIndex) {
 	const map = {
 		druid: { 
 			// from https://rpgbot.net/dnd5/characters/classes/druid/
@@ -386,7 +386,7 @@ export function getImportanceForClass(clss) {
 			CHA: AbilityImportance.BAD,
 		},
 	}
-	return map[clss]
+	return map[classIndex]
 }
 
 export function getImportanceTip(importance) {

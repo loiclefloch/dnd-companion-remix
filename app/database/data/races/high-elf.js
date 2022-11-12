@@ -3,7 +3,7 @@ const highElf = api => ({
 	"name": "High Elf",
 	"race": api.buildRace("elf"),
 	"desc": "As a high elf, you have a keen mind and a mastery of at least the basics of magic. In many fantasy gaming worlds, there are two kinds of high elves. One type is haughty and reclusive, believing themselves to be superior to non-elves and even other elves. The other type is more common and more friendly, and often encountered among humans and other races.",
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("int", 1),
 	],
 	"starting_proficiencies": [

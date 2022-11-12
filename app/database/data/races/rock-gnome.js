@@ -3,7 +3,7 @@ const rockGnome = api => ({
 	"name": "Rock Gnome",
 	"race": api.buildRace("gnome"),
 	"desc": "As a rock gnome, you have a natural inventiveness and hardiness beyond that of other gnomes.",
-	"ability_bonuses": [
+	"abilitybonuses": [
 		api.buildAbilityBonus("con", 1)
 	],
 	"starting_proficiencies": [

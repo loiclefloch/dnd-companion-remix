@@ -35,7 +35,7 @@ function RaceRow({ race  }) {
 }
 
 
-function Form({ races }) {
+function FormView({ races }) {
 	return (
     <div className="flex flex-col">
       <ScreenIntroduction
@@ -60,7 +60,7 @@ export default function ChooseCharacterRace() {
 		<Screen
 			title={"Choix de la race"}
 		>
-			<Form races={races} />
+			<FormView races={races} />
 		</Screen>
 	);
 }

@@ -125,7 +125,7 @@ function merge(race, sub) {
 
 	// arrays to merge
 	const arrayKeys = [
-		'ability_bonuses',
+		'abilitybonuses',
 		'starting_proficiencies',
 		'languages',
 		'traits'

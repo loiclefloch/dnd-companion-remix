@@ -138,7 +138,7 @@ function Form({ show, spellSlot, onSubmit, onClose }) {
 	</>
 }
 
-function EditSpellSlotsScreenAsModal({ spellSlot, onEdit, onCloseScreen }) {
+function EditSpellSlotsScreenAsModal({ spellSlot, onCloseScreen }) {
 	const { tr } = useI18n()
 	const [ showForm, setShowForm ] = useState(false)
 
@@ -196,7 +196,7 @@ function EditSpellSlotsScreenAsModal({ spellSlot, onEdit, onCloseScreen }) {
 						show={showForm}
 						spellSlot={spellSlot}
 						onSubmit={(data) => {
-							onEdit(data)
+							// TODO: remix: submit form
 							onCloseScreen()
 						}}
 						onClose={() => setShowForm(false)} 
@@ -211,10 +211,9 @@ export default function useEditSpellSlotsScreenAsModal() {
 	const { showScreenAsModal } = useScreenAsModal()
 
 	return {
-		showEditSpellSlotsScreenAsModal: ({ spellSlot, onEdit }) => {
+		showEditSpellSlotsScreenAsModal: ({ spellSlot }) => {
 			showScreenAsModal(EditSpellSlotsScreenAsModal, {
 				spellSlot,
-				onEdit,
 			})
 		}
 	}
