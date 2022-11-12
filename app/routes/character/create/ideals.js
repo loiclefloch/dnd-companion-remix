@@ -5,7 +5,7 @@ import ButtonBottomScreen from "~/components/ButtonBottomScreen";
 import ScreenIntroduction from "~/components/ScreenIntroduction";
 import Screen from "~/components/Screen";
 import Textarea from "~/components/Textarea";
-import useI18n from "../../../modules/i18n/useI18n";
+import useI18n from "~/modules/i18n/useI18n";
 import useCreateCharacter from '~/components/useCreateCharacter';
 import ListSelector from '~/components/ListSelector';
 import useTip from '~/components/useTip';

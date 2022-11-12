@@ -1,8 +1,8 @@
 import useRouter from '~/hooks/useRouter'
 
-import useSpell from "../../../modules/api/useSpell";
-import useI18n from "../../../modules/i18n/useI18n";
-import { CharacterProvider} from "../../../modules/character/ContextCharacter"
+import useSpell from "~/modules/api/useSpell";
+import useI18n from "~/modules/i18n/useI18n";
+import { CharacterProvider} from "~/modules/character/ContextCharacter"
 import useCurrentCharacter from "~/components/useCurrentCharacter"
 
 import Screen from "~/components/Screen";

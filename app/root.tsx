@@ -10,8 +10,6 @@ import {
 } from "@remix-run/react";
 import skills from '~/database/data/skills.json'
 import spells from '~/database/data/spells.json'
-import formatCharacter from "~/modules/character/formatCharacter"
-import characters from '~/modules/api/fixtures/characters'
 import subclasses from '~/database/data/subclasses.json'
 import classes from '~/database/data/classes'
 import backgrounds from '~/database/data/backgrounds'
@@ -43,7 +41,7 @@ export const links: LinksFunction = () => {
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Remix Notes",
+  title: "Dnd companion",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -55,7 +53,6 @@ export interface RootLoaderData {
 export async function loader({ request }: LoaderArgs) {
   return json({
     user: await getUser(request),
-    characters: characters().map(formatCharacter),
     subclasses,
     // TODO: add more backgrounds
     backgrounds,

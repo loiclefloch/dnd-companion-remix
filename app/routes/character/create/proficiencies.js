@@ -5,10 +5,10 @@ import ScreenIntroduction from "~/components/ScreenIntroduction";
 import ListSelector from "~/components/ListSelector";
 import Screen from "~/components/Screen";
 import { Link } from "@remix-run/react"
-import useI18n from "../../../modules/i18n/useI18n";
+import useI18n from "~/modules/i18n/useI18n";
 import useCreateCharacter from '~/components/useCreateCharacter';
 import useTipProficiency from "~/components/useTipProficiency"
-import { formatProficiency } from "../../../modules/api/useProficiency"
+import { formatProficiency } from "~/modules/api/useProficiency"
 
 function Proficiency({ proficiency }) {
 	const { tr } = useI18n()

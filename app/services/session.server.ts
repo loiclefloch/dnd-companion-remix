@@ -54,12 +54,13 @@ export async function requireUserId(
 }
 
 export async function requireUser(request: Request) {
-  const userId = await requireUserId(request);
+  // TODO: remix
+  // const userId = await requireUserId(request);
 
-  const user = await getUserById(userId);
-  if (user) return user;
+  // const user = await getUserById(userId);
+  // if (user) return user;
 
-  throw await logout(request);
+  // throw await logout(request);
 }
 
 export async function createUserSession({

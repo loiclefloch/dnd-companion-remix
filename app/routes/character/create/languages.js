@@ -10,9 +10,9 @@ import Screen from "~/components/Screen";
 import useRace from '../../../modules/api/useRace';
 import { Link } from "@remix-run/react"
 import useTipLanguage from "~/components/useTipLanguage";
-import useI18n from "../../../modules/i18n/useI18n";
+import useI18n from "~/modules/i18n/useI18n";
 import useCreateCharacter from '~/components/useCreateCharacter';
-import { arrayHasDuplicates } from "../../../modules/utils/array"
+import { arrayHasDuplicates } from "~/modules/utils/array"
 
 function Form({ race, backgroundLanguagesOptions, updateCharacter }) {
 	const { tr } = useI18n()

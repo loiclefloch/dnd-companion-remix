@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link } from "@remix-run/react";
 import { filterDuplicates } from '../../../modules/utils/array'
-import useI18n from "../../../modules/i18n/useI18n";
+import useI18n from "~/modules/i18n/useI18n";
 import Section from "~/components/Section";
 import Screen from "~/components/Screen";
 import ButtonBottomScreen from "~/components/ButtonBottomScreen";

@@ -11,6 +11,7 @@ export default function useRouter() {
 		query: {}, 
 		// TODO: remix
 		push: (path) => {
+			history.push(path)
 		},
 		asPath: ''
 	}
