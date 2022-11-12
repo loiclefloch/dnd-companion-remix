@@ -7,14 +7,10 @@ import ScreenIntroduction from "~/components/ScreenIntroduction"
 
 function ClassRow({ clss }) {
 	const { tr } = useI18n()
-	const router = useRouter()
-	const url = `/character/create/choose-class/${clss.index}`
 
 	return (
 		<ListSelectRowAsCard 
-			onClick={() => {
-				router.push(url)
-			}}
+			to={`/character/create/choose-class/${clss.index}`}
 			icon={
 				<IconClass
 					withBgColor
@@ -50,7 +46,7 @@ function Form({ classes }) {
 }
 
 function ChooseCharacterClass() {
-	const classes = null // TODO: remix
+	const classes = [] // TODO: remix
 
 	return (
 		<Screen

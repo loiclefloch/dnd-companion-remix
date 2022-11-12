@@ -20,9 +20,8 @@ const useI18n = makeI18n({
 	},
 })
 
-function Content({ index }) {
+function Content({ background }) {
 	const { tr } = useI18n()
-	const background = null // TODO: remix
 	const { showTipProficiency } = useTipProficiency()
 	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
 	const { showTipLanguage } = useTipLanguage()
@@ -158,7 +157,7 @@ function Content({ index }) {
 	)
 }
 
-function BackgroundContent({ index }) {
+function BackgroundContent({ background }) {
 	const map = {
 		acolyte: acolyte,
 		criminal: criminal,
@@ -168,9 +167,9 @@ function BackgroundContent({ index }) {
 		soldier: soldier,
 	}
 
-	const View = map[index]
+	const View = map[background.index]
 	if (View) {
-		return <div className="prose"><View /> <Content index={index} /></div>
+		return <div className="prose"><View /> <Content background={background} /></div>
 	}
 
 	return <p>Background not created yet</p>

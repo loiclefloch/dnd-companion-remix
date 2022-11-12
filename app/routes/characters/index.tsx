@@ -52,18 +52,17 @@ function CharacterRow({ character, selected }: CharacterRowProps) {
   const { tr } = useI18n();
 
   return (
-    <Link to={`/character/${character.id}`}>
-      <ListSelectRowAsCard
-        title={character.name}
-        subtitle={
-          <span>
-            {tr(character.race.nameLocalized)} -{" "}
-            {character.classes.map((clss) => tr(clss.nameLocalized)).join(", ")}
-          </span>
-        }
-        selected={selected}
-      />
-    </Link>
+    <ListSelectRowAsCard
+      to={`/character/${character.id}`}
+      title={character.name}
+      subtitle={
+        <span>
+          {tr(character.race.nameLocalized)} -{" "}
+          {character.classes.map((clss) => tr(clss.nameLocalized)).join(", ")}
+        </span>
+      }
+      selected={selected}
+    />
   );
 }
 

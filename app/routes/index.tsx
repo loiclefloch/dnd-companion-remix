@@ -3,7 +3,6 @@ import Screen from "~/components/Screen";
 import { makeI18n } from "~/modules/i18n/useI18n";
 import useCurrentCharacter from "~/components/useCurrentCharacter";
 import Button from "~/components/Button";
-import useRouter from "~/hooks/useRouter";
 import { ListSelectRowAsCard } from "~/components/ListSelectRow"
 
 const useI18n = makeI18n({
@@ -23,7 +22,6 @@ const useI18n = makeI18n({
 
 function CurrentCharacterView() {
   const currentCharacter = useCurrentCharacter();
-  const router = useRouter()
   const { tr } = useI18n()
 
   if (!currentCharacter) {
@@ -45,6 +43,7 @@ function CurrentCharacterView() {
 
       <div>
         <ListSelectRowAsCard
+          to={`character/${currentCharacter.id}`}
           title={currentCharacter.name}
           subtitle={
             <span>
@@ -52,7 +51,6 @@ function CurrentCharacterView() {
             </span>
           }
           selected
-          onClick={() => router.push(`character/${currentCharacter.id}`)}
         />
       </div>
     </div>

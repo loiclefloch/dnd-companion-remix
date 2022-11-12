@@ -26,17 +26,15 @@ export async function loader({ request }: LoaderArgs) {
 
 function RaceRow({ race }) {
   const { tr } = useI18n();
-  const url = `/race/${race.index}`;
 
   return (
-    <Link to={url}>
-      <ListSelectRowAsCard
-        size="small"
-        icon={<IconRace race={race.index} className="h-8 fill-slate-600" />}
-        title={tr(race.nameLocalized)}
-        subtitle={tr(race.resume)}
-      />
-    </Link>
+    <ListSelectRowAsCard
+      to={`/race/${race.index}`}
+      size="small"
+      icon={<IconRace race={race.index} className="h-8 fill-slate-600" />}
+      title={tr(race.nameLocalized)}
+      subtitle={tr(race.resume)}
+    />
   );
 }
 

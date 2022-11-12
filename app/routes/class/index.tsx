@@ -24,16 +24,13 @@ function ClassRow({ classDto }) {
 	const { tr } = useI18n()
 
 	return (
-    <Link to={`/class/${classDto.index}`}>
-      <ListSelectRowAsCard
-        size="small"
-        icon={
-          <IconClass clss={classDto.index} className="h-8 fill-slate-600" />
-        }
-        title={tr(classDto.nameLocalized)}
-        subtitle={tr(classDto.resume)}
-      />
-    </Link>
+    <ListSelectRowAsCard
+      to={`/class/${classDto.index}`}
+      size="small"
+      icon={<IconClass clss={classDto.index} className="h-8 fill-slate-600" />}
+      title={tr(classDto.nameLocalized)}
+      subtitle={tr(classDto.resume)}
+    />
   );
 }
 

@@ -2,10 +2,11 @@ import { cloneDeep } from 'lodash'
 import equipment from '~/database/data/equipment.json'
 import camelize from "../modules/utils/camelize"
 import { formatEquipmentItem } from './equipment.mapper';
-import { formatProficiency } from "./useProficiency"
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
 import type { BackgroundApiObject } from '~/apiobjects/background.apiobject'
 import type { BackgroundDto } from '~/dtos/background.dto'
+import { formatProficiency } from './proficiency.mapper';
+import classes from '~/database/data/classes';
 
 export function formatBackground(backgroundParam: BackgroundApiObject): BackgroundDto {
   const background = camelize(cloneDeep(backgroundParam))

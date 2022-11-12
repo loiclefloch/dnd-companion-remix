@@ -1,8 +1,23 @@
-import useRouter from '~/hooks/useRouter'
 import Screen from "~/components/Screen";
 import { makeI18n } from '../../modules/i18n/useI18n';
 import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
 import IconAcademicCap from "~/components/icons/IconAcademicCap"
+import { useLoaderData } from '@remix-run/react';
+import type { LoaderArgs} from '@remix-run/server-runtime';
+import { json } from '@remix-run/server-runtime';
+import { formatBackground } from '~/mappers/background.mapper';
+import { getBackgrounds } from '~/services/background.server';
+import { requireUser } from '~/services/session.server';
+
+export async function loader({ request }: LoaderArgs) {
+  const token = await requireUser(request);
+
+  const backgroundApiObjects = await getBackgrounds();
+
+  return json({
+    backgrounds: backgroundApiObjects.map(formatBackground),
+  });
+}
 
 const useI18n = makeI18n({
 	'screen.title': {
@@ -13,22 +28,20 @@ const useI18n = makeI18n({
 
 function BackgroundRow({ background }) {
 	const { tr } = useI18n()
-	const router = useRouter()
-	const url =  `/background/${background.index}`
 
 	return (
-		<ListSelectRowAsCard
-			size="small"
-			onClick={() => router.push(url)}
-			title={tr(background.nameLocalized)}
-			subtitle={tr(background.resume)}
-		/>
-	)
+    <ListSelectRowAsCard
+      to={`/background/${background.index}`}
+      size="small"
+      title={tr(background.nameLocalized)}
+      subtitle={tr(background.resume)}
+    />
+  );
 }
 
 function Backgrounds() {
+	const { backgrounds } = useLoaderData<typeof loader>();
 	const { tr } = useI18n()
-	const backgrounds = useBackgrounds()
 
   return (
     <Screen

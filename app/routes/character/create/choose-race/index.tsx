@@ -22,18 +22,16 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 
-function RaceRow({ race, onSelect }) {
+function RaceRow({ race  }) {
 	const { tr } = useI18n()
 	return (
-		<ListSelectRowAsCard
-			onClick={() => {
-				onSelect()
-			}}
-			icon={<IconRace race={race.index} className="h-8 fill-slate-600" />}
-			title={tr(race.nameLocalized)}
-			subtitle={tr(race.resume)}
-		/>
-	)
+    <ListSelectRowAsCard
+      to={"/character/create/choose-race/" + race.index}
+      icon={<IconRace race={race.index} className="h-8 fill-slate-600" />}
+      title={tr(race.nameLocalized)}
+      subtitle={tr(race.resume)}
+    />
+  );
 }
 
 
@@ -48,12 +46,7 @@ function Form({ races }) {
 
       <ListRowSelectContainer className="mt-12 px-4">
         {races.map((race) => (
-          <Link
-            to={"/character/create/choose-race/" + race.index}
-            key={race.index}
-          >
-            <RaceRow key={race.index} race={race} />
-          </Link>
+          <RaceRow key={race.index} race={race} />
         ))}
       </ListRowSelectContainer>
     </div>
