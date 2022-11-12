@@ -8,7 +8,6 @@ import { Link } from "@remix-run/react"
 import useI18n from "~/modules/i18n/useI18n";
 import useCreateCharacter from '~/components/useCreateCharacter';
 import useTipProficiency from "~/components/useTipProficiency"
-import { formatProficiency } from "~/modules/api/useProficiency"
 
 function Proficiency({ proficiency }) {
 	const { tr } = useI18n()

@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash'
 import equipment from '~/database/data/equipment.json'
 import camelize from "../modules/utils/camelize"
+import { formatEquipmentItem } from './equipment.mapper';
 import { formatProficiency } from "./useProficiency"
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
 import type { BackgroundApiObject } from '~/apiobjects/background.apiobject'
@@ -34,7 +35,7 @@ export function formatBackground(backgroundParam: BackgroundApiObject): Backgrou
   if (background.startingEquipment) {
     background.startingEquipment = background.startingEquipment.map(item => {
       return {
-        ...formatEquipment(equipment.find(i => i.index === item.equipment.index)),
+        ...formatEquipmentItem(equipment.find(i => i.index === item.equipment.index)),
         ...item,
         equipment: undefined
       }

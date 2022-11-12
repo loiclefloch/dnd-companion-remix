@@ -2,7 +2,6 @@ import useRouter from '~/hooks/useRouter'
 import ButtonBottomScreen from "~/components/ButtonBottomScreen";
 import BackgroundContent from "~/components/background/BackgroundContent";
 import Screen from "~/components/Screen";
-import useBackground from "~/modules/api/useBackground"
 import useI18n from "~/modules/i18n/useI18n";
 import useCreateCharacter from '~/components/useCreateCharacter';
 

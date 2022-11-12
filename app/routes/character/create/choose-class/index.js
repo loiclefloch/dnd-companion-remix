@@ -1,6 +1,5 @@
 import useRouter from '~/hooks/useRouter'
 import Screen from "~/components/Screen";
-import useClasses from '../../../../modules/api/useClasses';
 import useI18n from '../../../../modules/i18n/useI18n';
 import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
 import IconClass from "~/components/icons/IconClass"
@@ -51,7 +50,7 @@ function Form({ classes }) {
 }
 
 function ChooseCharacterClass() {
-	const classes = useClasses()
+	const classes = null // TODO: remix
 
 	return (
 		<Screen

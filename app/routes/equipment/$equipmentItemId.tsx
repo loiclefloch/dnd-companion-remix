@@ -1,7 +1,7 @@
 import Screen from "~/components/Screen"
 import EquipmentItemView from "~/components/EquipmentItemView"
 import useI18n from "~/modules/i18n/useI18n";
-import { formatEquipment as formatEquipmentItem } from '~/mappers/equipment.mapper';
+import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 import { getEquipment as getEquipmentItem } from "~/services/equipment.server";

@@ -12,7 +12,7 @@ import type { EquipmentCategoriesDto } from "~/dtos/equipmentcategories.dto";
 // - tools
 // - mounts-and-vehicles
 
-export function formatEquipment(itemParam) {
+export function formatEquipmentItem(itemParam) {
 	if (!itemParam) {
 		return null
 	}
@@ -126,7 +126,7 @@ export function formatEquipmentCategory(
 
   category.equipment = category.equipment.map((item) => {
     if (item.url.startsWith("/api/equipment/")) {
-      return formatEquipment(equipment.find((i) => i.index === item.index));
+      return formatEquipmentItem(equipment.find((i) => i.index === item.index));
     }
     if (item.url.startsWith("/api/magic-items")) {
       return formatMagicItem(magicItems.find((i) => i.index === item.index));

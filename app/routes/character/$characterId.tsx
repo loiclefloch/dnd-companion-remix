@@ -22,7 +22,7 @@ import CharacterRaceTag from "~/components/CharacterRaceTag";
 import CharacterLevelTag from "~/components/CharacterLevelTag";
 import { json } from "@remix-run/server-runtime";
 import type { LoaderArgs } from "@remix-run/server-runtime";
-import formatCharacter from "~/modules/character/formatCharacter";
+import { formatCharacter } from "~/mappers/character.mapper";
 import { getCurrentCharacter } from "~/services/currentcharacter.server";
 import { requireUser } from "~/services/session.server";
 import { notFound } from "~/utils/response";

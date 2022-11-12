@@ -2,7 +2,6 @@ import { useMemo } from "react"
 import Screen from "./Screen";
 import { sortBy } from "lodash";
 import { Link } from "@remix-run/react";
-import useFeats from "~/modules/api/useFeats";
 import { makeI18n } from "~/modules/i18n/useI18n";
 import filterFeatsForCharacter from "~/modules/character/filterFeatsForCharacter"
 import IconAcademicCap from "./icons/IconAcademicCap";
@@ -39,7 +38,7 @@ function FeatRow({ feat }) {
 // TODO: filter: by class, by background
 function Feats({ character }) {
   const { tr } = useI18n();
-  const allFeats = useFeats();
+  const allFeats = null; // TODO: remix
 
   const feats = useMemo(() => {
 		let feats = allFeats

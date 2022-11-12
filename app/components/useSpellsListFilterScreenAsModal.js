@@ -5,8 +5,6 @@ import useI18n from "~/modules/i18n/useI18n";
 import useScreenAsModal from "./screenAsModal/useScreenAsModal"
 import Button from "./Button"
 import BottomScreen from "./BottomScreen"
-import useClasses from "~/modules/api/useClasses"
-import useMagicSchools from "~/modules/api/useMagicSchools"
 import IconMagicSchool from './icons/IconMagicSchool';
 import {FilterSection, FilterListSelector } from "./Filter"
 
@@ -15,7 +13,7 @@ const MAX_SPELL_LEVEL = 9 // maximum spell level
 
 function FilterClasses({ filters, onChange }) {
 	const { tr } = useI18n()
-	const classes = useClasses()
+	const classes = null // TODO: remix
 
 	const options = classes.map(clss => ({
 		index: clss.index,
@@ -45,7 +43,7 @@ function FilterClasses({ filters, onChange }) {
 
 function FilterSpellLevel({ filters, onChange }) {
 	const { tr } = useI18n()
-	const classes = useClasses()
+	const classes = null // TODO: remix
 
 	const options = [...Array(MAX_SPELL_LEVEL + 1)].map((_, index) => ({
 		index: index,
@@ -75,7 +73,7 @@ function FilterSpellLevel({ filters, onChange }) {
 
 function FilterMagicSchool({ filters, onChange }) {
 	const { tr } = useI18n()
-	const magicSchools = useMagicSchools()
+	const magicSchools = null // TODO: remix
 
 	const options = magicSchools.map(magicSchool => ({
 		index: magicSchool.index,

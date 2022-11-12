@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 import equipmentList from '~/database/data/equipment.json'
+import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 
 export function actionAddXp(label, amount) {
 	return {
@@ -170,7 +171,7 @@ export function actionAddEquipment(list) {
 
 // format item to access properties, on the data we only have the index / quantity
 function getFormattedEquipmentItem(equipmentItem) {
-	return formatEquipment({
+	return formatEquipmentItem({
 		...equipmentItem,
 		...equipmentList.find(i => i.index === equipmentItem.index),
 	})	

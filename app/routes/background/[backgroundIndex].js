@@ -1,6 +1,5 @@
 import useRouter from '~/hooks/useRouter'
 import Screen from "~/components/Screen";
-import useBackground from '../../modules/api/useBackground';
 import useI18n from '../../modules/i18n/useI18n';
 import BackgroundContent from '~/components/background/BackgroundContent';
 

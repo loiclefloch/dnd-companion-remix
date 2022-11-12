@@ -1,6 +1,5 @@
 import useRouter from '~/hooks/useRouter'
 
-import useFeat from "../../modules/api/useFeat";
 import useI18n from "../../modules/i18n/useI18n";
 import Screen from "~/components/Screen";
 import FeatContent from "~/components/FeatContent";

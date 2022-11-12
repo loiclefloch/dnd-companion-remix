@@ -1,6 +1,5 @@
 import useRouter from '~/hooks/useRouter'
 import Screen from "~/components/Screen";
-import useBackgrounds from '../../modules/api/useBackgrounds';
 import { makeI18n } from '../../modules/i18n/useI18n';
 import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
 import IconAcademicCap from "~/components/icons/IconAcademicCap"

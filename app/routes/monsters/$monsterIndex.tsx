@@ -14,7 +14,7 @@ import { requireUser } from '~/services/session.server';
 export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
 
-  const monster = await getMonster(params.monsterId as string);
+  const monster = await getMonster(params.monsterIndex as string);
 
   return json({
     monster: formatMonster(monster)

@@ -1,7 +1,6 @@
 import { Link, useLoaderData } from '@remix-run/react';
 import Screen from "~/components/Screen"
 import IconAcademicCap from "~/components/icons/IconAcademicCap"
-import useRules from "../../modules/api/useRules";
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 import { formatRuleSection } from "~/mappers/rule.mapper";

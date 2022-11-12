@@ -1,13 +1,14 @@
 import { isArray } from 'lodash'
 import equipmentItems from '~/database/data/equipment.json'
 import equipmentCategories from '~/database/data/equipment-categories.json'
+import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 
 function formatSubOption(parentOption, option) {
 	if (option.equipment) {
 		parentOption.hasSubChoice = true
 
 		option.isTypeEquipment = true
-		option.item = formatEquipment(equipmentItems.find(i => i.index === option.equipment.index))
+		option.item = formatEquipmentItem(equipmentItems.find(i => i.index === option.equipment.index))
 		return option
 	} else if (option.equipmentOption) {
 		parentOption.hasSubChoice = true

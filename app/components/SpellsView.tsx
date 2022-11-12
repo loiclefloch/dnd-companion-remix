@@ -5,7 +5,6 @@ import clsx from "clsx"
 import { getSpellFiltersMatchingData, buildSpellFiltersForCharacter } from "~/modules/spells/spellsFilter"
 import { sortSpells } from "~/modules/spells/spellsSorter"
 import { makeI18n } from "~/modules/i18n/useI18n";
-import useSpells from "~/modules/api/useSpells";
 import useSpellsListFilterScreenAsModal from "~/components/useSpellsListFilterScreenAsModal"
 import Screen from "~/components/Screen";
 import IconFilter from "~/components/icons/IconFilter";

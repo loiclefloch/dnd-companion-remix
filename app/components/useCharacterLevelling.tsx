@@ -5,7 +5,7 @@ import useCurrentCharacter from "./useCurrentCharacter"
 import useCurrentRawCharacter from "./useCurrentRawCharacter"
 import { getLevellingDataForClassesAndLevel, getSpellsSlotsForCharacterLevel } from "~/modules/levelling"
 import getLevellingSteps from "~/modules/levelling/getLevellingSteps"
-import formatCharacter from "~/modules/character/formatCharacter"
+import { formatCharacter } from "~/mappers/character.mapper"
 import { updateObjectOrCreateOnArray, deleteObjectOnArray } from "~/modules/utils/array";
 import { cloneDeep } from "lodash";
 

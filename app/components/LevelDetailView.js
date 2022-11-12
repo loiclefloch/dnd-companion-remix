@@ -4,7 +4,6 @@ import ScreenIntroduction from "./ScreenIntroduction"
 import SpellLevelData from "./SpellLevelData"
 import { getLevellingDataForClassesAndLevel } from "~/modules/levelling"
 import { isEmpty } from "lodash";
-import useFeature from "~/modules/api/useFeature"
 import useFeatureScreenAsModal from "./useFeatureScreenAsModal"
 import LevellingDetail from "./levellingDetail/LevellingDetail"
 import { getLevellingStages } from "~/modules/levelling"
@@ -30,7 +29,7 @@ const useI18n = makeI18n({
 
 function Feature({ index }) {
 	const { tr } = useI18n()
-	const feature = useFeature(index)
+	const feature = null; // TODO: remix
 	const { showFeatureScreenAsModal } = useFeatureScreenAsModal()
 
 	return (

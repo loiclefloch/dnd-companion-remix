@@ -5,7 +5,6 @@ import sage from "./sage.mdx"
 import soldier from "./soldier.mdx"
 import entertainer from "./entertainer.mdx"
 
-import useBackground from "../../modules/api/useBackground"
 import Section from "../Section"
 import LineInfo from "../LineInfo"
 import { makeI18n } from "../../modules/i18n/useI18n"
@@ -23,7 +22,7 @@ const useI18n = makeI18n({
 
 function Content({ index }) {
 	const { tr } = useI18n()
-	const background = useBackground(index)
+	const background = null // TODO: remix
 	const { showTipProficiency } = useTipProficiency()
 	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
 	const { showTipLanguage } = useTipLanguage()

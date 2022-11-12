@@ -9,7 +9,7 @@ import {
 } from "~/components/ListSelectRow";
 import Screen from "~/components/Screen";
 import { makeI18n } from "../../modules/i18n/useI18n";
-import formatCharacter from "~/modules/character/formatCharacter";
+import { formatCharacter } from "~/mappers/character.mapper";
 import useCurrentCharacter from "~/components/useCurrentCharacter";
 import Button from "~/components/Button";
 import { useLoaderData } from "@remix-run/react";

@@ -5,7 +5,6 @@ import ButtonBottomScreen from "~/components/ButtonBottomScreen"
 import useTipFeature from "../useTipFeature"
 import SubclassListSelector from "./SubclassListSelector"
 import FeatureSpecificSelector from "./FeatureSpecificSelector"
-import useFeature from "../../modules/api/useFeature"
 
 const View = {
 	SELECT_SUB_CLASS: 'SELECT_SUB_CLASS',
@@ -13,7 +12,7 @@ const View = {
 }
 
 function Land({ value, onChange }) {
-	const landFeature = useFeature('circle-of-the-land') 
+	const landFeature = null // TODO: remix
 
 	return (
 		<div>

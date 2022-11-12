@@ -1,5 +1,5 @@
 import type { MyCharacterApiObject } from '~/apiobjects/mycharacters.apiobject';
-import characters from '~/modules/api/fixtures/characters'
+import characters from '~/database/fixtures/characters';
 
 let currentCharacterId: string = null // TODO: move on db
 
@@ -12,7 +12,7 @@ export async function getCurrentCharacterId(): Promise<string | null> {
 }
 
 export async function getCurrentCharacter(): Promise<MyCharacterApiObject> {
-	const character = characters().find(character => character.id === currentCharacterId);
+	const character = characters.find(character => character.id === currentCharacterId);
 	if (!character) {
 		throw new Error(`Character not found with id ${currentCharacterId}`);
 	}

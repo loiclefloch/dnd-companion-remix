@@ -1,12 +1,8 @@
 import { useState, useEffect } from "react"
 import { actionLevellingBardCollege } from "./action"
-import features from "../../database/data/features"
 import ButtonBottomScreen from "~/components/ButtonBottomScreen"
-import useTipFeature from "../useTipFeature"
 import SubclassListSelector from "./SubclassListSelector"
-import FeatureSpecificSelector from "./FeatureSpecificSelector"
 import ListSelector from "../ListSelector"
-import useSkills from "../../modules/api/useSkills"
 
 const View = {
 	SELECT_SUB_CLASS: 'SELECT_SUB_CLASS',
@@ -14,7 +10,7 @@ const View = {
 }
 
 function Lore({ character, value = [], onChange }) {
-	const skills = useSkills() 
+	const skills = null; // TODO: remix
 
 	return (
 		<div>

@@ -6,7 +6,7 @@ import camelize from '../modules/utils/camelize'
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
 import { ClassApiObject } from '../apiobjects/class.apiobject'
 import { ClassDto } from '../dtos/class.dto'
-import { formatEquipment } from './equipment.mapper';
+import { formatEquipmentItem } from './equipment.mapper';
 import { formatProficiency } from './proficiency.mapper';
 
 export function formatClass(clssParam: ClassApiObject): ClassDto {
@@ -22,7 +22,7 @@ export function formatClass(clssParam: ClassApiObject): ClassDto {
   if (clss.startingEquipment) {
     clss.startingEquipment = clss.startingEquipment.map(item => {
       return {
-        ...formatEquipment(equipment.find(i => i.index === item.equipment.index)),
+        ...formatEquipmentItem(equipment.find(i => i.index === item.equipment.index)),
         ...item,
         equipment: undefined
       }

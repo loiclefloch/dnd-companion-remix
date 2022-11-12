@@ -1,7 +1,6 @@
 
 import useRouter from "~/hooks/useRouter"
 import LevelDetailView from "~/components/LevelDetailView"
-import useClass from "~/modules/api/useClass"
 import Screen from "~/components/Screen"
 import useI18n from "~/modules/i18n/useI18n"
 import IconBookOpen from "~/components/icons/IconBookOpen";
@@ -16,7 +15,7 @@ function LevellingClassLevel() {
 
 	const classIndex = router.query.class || 'druid'
 
-	const clss = useClass(classIndex) // TODO:
+	const clss = null // TODO: remix
 	const level = parseInt(router.query.level) || 3 // TODO:
 
 	return (

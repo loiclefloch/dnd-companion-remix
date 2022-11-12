@@ -1,6 +1,5 @@
 import useRouter from '~/hooks/useRouter'
 import Screen from "~/components/Screen";
-import useClass from '../../../../modules/api/useClass';
 import useI18n from '../../../../modules/i18n/useI18n';
 import ClassDetailsView from '~/components/classes/ClassDetailsView';
 import ButtonBottomScreen from '~/components/ButtonBottomScreen';
@@ -35,7 +34,7 @@ function Form({ clss }) {
 function DisplayCharacterClass() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const clss = useClass(router.query.index)
+	const clss = null // TODO: remix
 
 	return (
 		<Screen

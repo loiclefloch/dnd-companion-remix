@@ -2,7 +2,6 @@ import { useMemo } from "react"
 import Screen from "~/components/Screen";
 import { sortBy } from "lodash";
 import { Link } from "@remix-run/react"
-import useFeatures from "../../modules/api/useFeatures";
 import useI18n from "../../modules/i18n/useI18n";
 import IconAcademicCap from "~/components/icons/IconAcademicCap";
 import useLocalSearch from "~/components/useLocalSearch";

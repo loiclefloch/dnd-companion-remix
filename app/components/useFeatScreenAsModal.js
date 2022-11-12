@@ -3,7 +3,6 @@ import useScreenAsModal from "./screenAsModal/useScreenAsModal"
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import { makeI18n } from "~/modules/i18n/useI18n";
 import FeatContent from "./FeatContent"
-import useFeat from "~/modules/api/useFeat";
 
 const useI18n = makeI18n({
 	'screen.title': {
@@ -14,7 +13,7 @@ const useI18n = makeI18n({
 
 function FeatScreenAsModal({ index, character, onCloseScreen }) {
 	const { tr } = useI18n()
-	const feat = useFeat(index)
+	const feat = null // TODO: remix
 
 	return (
 		<ScreenAsModal
