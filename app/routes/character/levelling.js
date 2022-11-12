@@ -1,13 +1,13 @@
 import clsx from "clsx"
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import { CharacterProvider} from "../../modules/character/ContextCharacter"
-import useCurrentCharacter from "~/component/useCurrentCharacter"
-import IconTrendingUp from "~/component/icons/IconTrendingUp"
-import Screen from "~/component/Screen"
-import Button from "~/component/Button"
-import IconPlus from "~/component/icons/IconPlus"
-import useLevellingAddScreenAsModal from "~/component/useLevellingAddScreenAsModal"
-import { useRouter } from "next/router"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import IconTrendingUp from "~/components/icons/IconTrendingUp"
+import Screen from "~/components/Screen"
+import Button from "~/components/Button"
+import IconPlus from "~/components/icons/IconPlus"
+import useLevellingAddScreenAsModal from "~/components/useLevellingAddScreenAsModal"
+import useRouter from "~/hooks/useRouter"
 import { actionAddXp } from "../../modules/character/action"
 
 function HistoryLine({ history }) {
@@ -112,7 +112,7 @@ function CharacterLevelling() {
 					{/* // - ask user to level up its character (popup screen) -> Yes - Later */}
 					{character.levelling.shouldLevelUp && (
 						<div className="mt-4 px-4">
-							<Link href="/level-up/introduction" passHref>
+							<Link to="/level-up/introduction" passHref>
 								<Button variant="contained" color="info">
 									Monter au niveau {character.level + 1}
 								</Button>

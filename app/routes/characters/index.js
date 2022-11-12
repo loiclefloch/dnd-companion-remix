@@ -1,8 +1,8 @@
-import { useRouter } from "next/router"
-import IconPlus from "~/component/icons/IconPlus"
-import IconUsers from "~/component/icons/IconUsers"
-import { ListSelectRowAsCard, ListRowSelectContainer } from "~/component/ListSelectRow"
-import Screen from "~/component/Screen"
+import useRouter from "~/hooks/useRouter"
+import IconPlus from "~/components/icons/IconPlus"
+import IconUsers from "~/components/icons/IconUsers"
+import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
+import Screen from "~/components/Screen"
 import { makeI18n } from "../../modules/i18n/useI18n"
 import useCharacters from "../../modules/api/useCharacters"
 import useCreateCharacter from '~/components/useCreateCharacter'

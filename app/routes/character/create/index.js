@@ -1,9 +1,9 @@
 import { isEmpty } from 'lodash';
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 import { useState } from 'react';
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import Screen from "../'~/components/Screen";
-import useCreateCharacter from "../'~/components/useCreateCharacter"
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import Screen from "~/components/Screen";
+import useCreateCharacter from "~/components/useCreateCharacter"
 
 function Form() {
 	const router = useRouter()

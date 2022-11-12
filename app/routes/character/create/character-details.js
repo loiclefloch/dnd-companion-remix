@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useRouter } from '~/hook/useRouter'
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import Screen from "../'~/components/Screen";
-import Textarea from '../'~/components/Textarea';
-import useCreateCharacter from '../'~/components/useCreateCharacter';
+import useRouter from '~/hooks/useRouter'
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import Screen from "~/components/Screen";
+import Textarea from '~/components/Textarea';
+import useCreateCharacter from '~/components/useCreateCharacter';
 
 // TODO: put on race data
 const defaultData = {

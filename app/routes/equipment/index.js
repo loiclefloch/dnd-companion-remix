@@ -1,12 +1,12 @@
 import { useMemo } from "react"
 import { uniqBy, isEmpty } from "lodash"
-import Link from "next/link"
-import Screen from "~/component/Screen"
+import { Link } from "@remix-run/react"
+import Screen from "~/components/Screen"
 import useEquipmentCategories from "../../modules/api/useEquipmentCategories";
 import useI18n from "../../modules/i18n/useI18n";
-import useTipDamageType from "~/component/useTipDamageType"
-import useLocalSearch from "~/component/useLocalSearch"
-import InputSearch from "~/component/InputSearch"
+import useTipDamageType from "~/components/useTipDamageType"
+import useLocalSearch from "~/components/useLocalSearch"
+import InputSearch from "~/components/InputSearch"
 
 function ItemRow({ item }) {
 	const { tr } = useI18n()
@@ -24,7 +24,7 @@ function ItemRow({ item }) {
 			<div className="pl-1">
 				<div className="flex flex-row">
 					<div className="flex flex-col flex-1">
-						<Link href={item.isMagicItem ? `/magic-item/${item.index}` : `/equipment/${item.index}`} passHref>
+						<Link to={item.isMagicItem ? `/magic-item/${item.index}` : `/equipment/${item.index}`} passHref>
 							<span className="flex flex-row items-center font-semibold">
 								<span>{tr(item.nameLocalized)}</span>
 							</span>

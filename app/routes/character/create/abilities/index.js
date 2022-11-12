@@ -1,16 +1,16 @@
 import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from '~/hook/useRouter'
-import { getAbilityScorePointCost } from "../../../../modules/stats"
-import Screen from "../../'~/components/Screen";
+import { Link } from "@remix-run/react"
+import useRouter from '~/hooks/useRouter'
+import { getAbilityScorePointCost } from "~/modules/stats"
+import Screen from "~/components/Screen";
 import useI18n from '../../../../modules/i18n/useI18n';
-import ScreenIntroduction from '../../'~/components/ScreenIntroduction';
-import ButtonBottomScreen from "../../'~/components/ButtonBottomScreen";
-import useCreateCharacter from '../../'~/components/useCreateCharacter';
-import Button from '../../'~/components/Button';
+import ScreenIntroduction from '~/components/ScreenIntroduction';
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import Button from '~/components/Button';
 import { isEmpty } from "lodash"
-import AbilityScoreChooser from "../../'~/components/AbilityScoreChooser"
-import { getAbilityOptimizedExample } from "../../../../modules/character"
+import AbilityScoreChooser from "~/components/AbilityScoreChooser"
+import { getAbilityOptimizedExample } from "~/modules/character"
 
 function getBonusFromRace(bonusFromRace) {
 	const bonuses = {};
@@ -123,7 +123,7 @@ function AbilitiesScreen() {
 					description="Votre personnage compte sur six abilités. Vous avez 27 points à répartir, todo..."
 					actions={
 						<div className="mt-2">
-							<Link href="/rules/using-ability-scores">
+							<Link to="/rules/using-ability-scores">
 								En savoir plus
 							</Link>
 						</div>

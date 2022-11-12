@@ -1,10 +1,10 @@
-import Screen from "~/component/Screen"
-import IconAcademicCap from "~/component/icons/IconAcademicCap"
+import Screen from "~/components/Screen"
+import IconAcademicCap from "~/components/icons/IconAcademicCap"
 
-import { useRouter } from "next/router"
+import useRouter from "~/hooks/useRouter"
 import useRule from "../../modules/api/useRule"
 
-import RuleContent from "~/component/RuleContent"
+import RuleContent from "~/components/RuleContent"
 
 function Rule() {
 	const router = useRouter()

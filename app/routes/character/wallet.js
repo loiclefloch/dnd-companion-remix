@@ -1,13 +1,13 @@
 import clsx from "clsx"
 import { CharacterProvider} from "../../modules/character/ContextCharacter"
-import useCurrentCharacter from "~/component/useCurrentCharacter"
-import IconCoins from "~/component/icons/IconCoins"
-import Screen from "~/component/Screen"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import IconCoins from "~/components/icons/IconCoins"
+import Screen from "~/components/Screen"
 import useI18n from "../../modules/i18n/useI18n"
-import Button from "~/component/Button"
-import IconMinus from "~/component/icons/IconMinus"
-import IconPlus from "~/component/icons/IconPlus"
-import useEditWallet from "~/component/useEditWallet"
+import Button from "~/components/Button"
+import IconMinus from "~/components/icons/IconMinus"
+import IconPlus from "~/components/icons/IconPlus"
+import useEditWallet from "~/components/useEditWallet"
 import {
 	actionWalletAddIncome,
 	actionWalletAddExpense,

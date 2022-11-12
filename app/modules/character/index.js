@@ -363,8 +363,8 @@ export function getImportanceForClass(clss) {
 			CHA: AbilityImportance.FANTASTIC,
 		},
 
-		warlock: { 
-			// from https://rpgbot.net/dnd5/characters/classes/warlock/
+		wizard: { 
+			// from https://rpgbot.net/dnd5/characters/classes/wizard/
 
 			// Dump stat. A Wizard should know better.
 			STR: AbilityImportance.BAD,

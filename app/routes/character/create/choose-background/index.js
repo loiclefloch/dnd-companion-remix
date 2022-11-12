@@ -1,13 +1,13 @@
 import { useState } from "react"
-import { useRouter } from '~/hook/useRouter'
-import ButtonBottomScreen from "../../'~/components/ButtonBottomScreen";
-import { ListSelectRowAsCard, ListRowSelectContainer } from "../../'~/components/ListSelectRow";
-import ScreenIntroduction from "../../'~/components/ScreenIntroduction";
-import Screen from "../../'~/components/Screen";
-import useBackgrounds from "../../../../modules/api/useBackgrounds"
-import Link from "next/link"
-import useI18n from "../../../../modules/i18n/useI18n";
-import useCreateCharacter from "../../'~/components/useCreateCharacter";
+import useRouter from '~/hooks/useRouter'
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import Screen from "~/components/Screen";
+import useBackgrounds from "~/modules/api/useBackgrounds"
+import { Link } from "@remix-run/react"
+import useI18n from "~/modules/i18n/useI18n";
+import useCreateCharacter from "~/components/useCreateCharacter";
 
 
 function BackgroundRow({ background, clss }) {
@@ -45,7 +45,7 @@ function CreateCharacterBackground() {
 					description={`Donnez à votre personnage personnage ...`}
 					actions={
 						<div className="mt-2">
-							<Link href="/rules/background">
+							<Link to="/rules/background">
 								En savoir plus
 							</Link>
 						</div>

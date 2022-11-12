@@ -1,4 +1,4 @@
-import FeatsListView from "~/component/FeatsListView"
+import FeatsListView from "~/components/FeatsListView"
 
 function Feats() {
   return (

@@ -1,9 +1,9 @@
-import Link from "next/link"
-import Screen from "../'~/components/Screen";
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import CharacterResume from '../'~/components/CharacterResume';
+import { Link } from "@remix-run/react"
+import Screen from "~/components/Screen";
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import CharacterResume from '~/components/CharacterResume';
 
 function CreateCharacterResume() {
 	const { getBuildedCharacter, finalizeCharacter } = useCreateCharacter()
@@ -22,7 +22,7 @@ function CreateCharacterResume() {
 						description={`Donnez à votre personnage ...`}
 						actions={
 							<div className="mt-2">
-								<Link href="">
+								<Link to="">
 									En savoir plus
 								</Link>
 							</div>

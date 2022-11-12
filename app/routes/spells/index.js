@@ -1,4 +1,4 @@
-import SpellsView from "~/component/SpellsView"
+import SpellsView from "~/components/SpellsView"
 
 function Spells() {
   return (

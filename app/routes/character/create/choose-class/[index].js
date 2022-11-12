@@ -1,10 +1,10 @@
-import { useRouter } from '~/hook/useRouter'
-import Screen from "../../'~/components/Screen";
+import useRouter from '~/hooks/useRouter'
+import Screen from "~/components/Screen";
 import useClass from '../../../../modules/api/useClass';
 import useI18n from '../../../../modules/i18n/useI18n';
-import ClassDetailsView from '../../'~/components/classes/ClassDetailsView';
-import ButtonBottomScreen from '../../'~/components/ButtonBottomScreen';
-import useCreateCharacter from '../../'~/components/useCreateCharacter';
+import ClassDetailsView from '~/components/classes/ClassDetailsView';
+import ButtonBottomScreen from '~/components/ButtonBottomScreen';
+import useCreateCharacter from '~/components/useCreateCharacter';
 
 function Form({ clss }) {
 	const { tr } = useI18n()

@@ -1,13 +1,13 @@
 import { useState } from "react"
-import Link from "next/link"
-import { valueToModifierLabel } from "../../../../modules/stats"
-import Screen from "../../'~/components/Screen";
+import { Link } from "@remix-run/react"
+import { valueToModifierLabel } from "~/modules/stats"
+import Screen from "~/components/Screen";
 import useI18n from '../../../../modules/i18n/useI18n';
-import ScreenIntroduction from '../../'~/components/ScreenIntroduction';
-import ButtonBottomScreen from "../../'~/components/ButtonBottomScreen";
-import useCreateCharacter from '../../'~/components/useCreateCharacter';
-import ListSelector from '../../'~/components/ListSelector';
-import AbilityImportanceForClass from "../../'~/components/AbilityImportanceForClass";
+import ScreenIntroduction from '~/components/ScreenIntroduction';
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import ListSelector from '~/components/ListSelector';
+import AbilityImportanceForClass from "~/components/AbilityImportanceForClass";
 
 function getBaseStats(baseStats, statsBonuses) {
 	const stats = { ...baseStats }
@@ -122,7 +122,7 @@ function AbilitiesScreen() {
 					description=""
 					actions={
 						<div className="mt-2">
-							<Link href="/rules/using-ability-scores">
+							<Link to="/rules/using-ability-scores">
 								{/* TODO: example: if half-elf */}
 								En savoir plus
 							</Link>

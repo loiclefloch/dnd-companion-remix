@@ -2,13 +2,13 @@ import { useState } from "react"
 import clsx from "clsx";
 import useI18n from "../../../modules/i18n/useI18n";
 import alignments from "../../../database/data/alignments.json"
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import Screen from "../'~/components/Screen";
-import useTipAlignment from "../'~/components/useTipAlignment";
-import ListSelector from "../'~/components/ListSelector";
-import Link from "next/link"
-import useCreateCharacter from '../'~/components/useCreateCharacter';
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import Screen from "~/components/Screen";
+import useTipAlignment from "~/components/useTipAlignment";
+import ListSelector from "~/components/ListSelector";
+import { Link } from "@remix-run/react"
+import useCreateCharacter from '~/components/useCreateCharacter';
 
 // TODO: put on race data
 const defaultData = {
@@ -51,7 +51,7 @@ function Form() {
 				</span>}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/alignment">
+						<Link to="/rules/alignment">
 							En savoir plus
 						</Link>
 					</div>

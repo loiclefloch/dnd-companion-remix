@@ -1,8 +1,8 @@
 import { makeI18n } from "../../modules/i18n/useI18n"
-import Screen from "~/component/Screen"
-import useCurrentCharacter from "~/component/useCurrentCharacter"
-import CharacterResume from "~/component/CharacterResume"
-import Button from "~/component/Button"
+import Screen from "~/components/Screen"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import CharacterResume from "~/components/CharacterResume"
+import Button from "~/components/Button"
 
 const useI18n = makeI18n({
 	'screen.title': {

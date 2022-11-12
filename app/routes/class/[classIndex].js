@@ -1,6 +1,6 @@
-import { useRouter } from '~/hook/useRouter'
-import Link from "next/link"
-import Screen from "~/component/Screen";
+import useRouter from '~/hooks/useRouter'
+import { Link } from "@remix-run/react"
+import Screen from "~/components/Screen";
 import useClass from '../../modules/api/useClass';
 import useI18n from '../../modules/i18n/useI18n';
 import ClassDetailsView from '~/components/classes/ClassDetailsView';
@@ -22,7 +22,7 @@ function Clss() {
 				<div className="flex flex-col">
 					<div className="relative w-full px-4 mt-12">
 						<>
-							<Link href={`/levelling/${clss.index}/1`}>
+							<Link to={`/levelling/${clss.index}/1`}>
 								Voir la montée de niveau
 							</Link>
 							<ClassDetailsView clss={clss} />

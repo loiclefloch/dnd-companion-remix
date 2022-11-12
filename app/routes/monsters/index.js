@@ -1,18 +1,18 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import { Link } from "@remix-run/react"
+import Image from "~/components/Image"
 import isEmpty from "lodash/isEmpty"
 import clsx from "clsx"
 import { FilterType, getMonsterFiltersMatchingData } from "../../modules/monsters/monstersFilter"
 import { sortMonsters } from "../../modules/monsters/monstersSorter"
 import useI18n from "../../modules/i18n/useI18n";
 import useMonsters from "../../modules/api/useMonsters";
-import useMonstersListFilterScreenAsModal from "~/component/useMonstersListFilterScreenAsModal"
-import Screen from "~/component/Screen";
-import IconFilter from "~/component/icons/IconFilter";
-import Tag from "~/component/Tag"
-import IconMonster from "~/component/icons/IconMonster"
-import useLocalSearch from "~/component/useLocalSearch"
-import InputSearch from "~/component/InputSearch"
+import useMonstersListFilterScreenAsModal from "~/components/useMonstersListFilterScreenAsModal"
+import Screen from "~/components/Screen";
+import IconFilter from "~/components/icons/IconFilter";
+import Tag from "~/components/Tag"
+import IconMonster from "~/components/icons/IconMonster"
+import useLocalSearch from "~/components/useLocalSearch"
+import InputSearch from "~/components/InputSearch"
 
 function MonsterFilters({ monster, filters }) {
 	// ignore some filters, because the data is already displayed
@@ -44,7 +44,7 @@ function Monster({ monster, filters, /*onSelect*/ }) {
 	// TODO: isLegendary
 
   return (
-    <Link href={`/monsters/${monster.index}`} passHref>
+    <Link to={`/monsters/${monster.index}`} passHref>
       <div
         // onClick={onSelect}
         className={clsx("cursor-pointer py-4 p-4 border-b border-slate-100 dark:border-gray-50 border-solid flex")}

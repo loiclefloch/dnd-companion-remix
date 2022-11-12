@@ -1,0 +1,68 @@
+
+/* TODO: remix make it work */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+
+	.debug * {
+		outline: 1px solid #f00 !important;
+	}
+
+	body {
+		overflow: hidden;
+	}
+
+	.text-coolGray-500 {
+		--tw-text-opacity: 1;
+		color: rgba(107, 114, 128, var(--tw-text-opacity))
+	}
+
+	.bg-coolGray-100 {
+		background-color: rgb(243, 244, 246)
+	}
+
+	.hover\:bg-coolGray-100:hover {
+		/* --tw-bg-opacity: 1; */
+		/* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)) */
+		background-color: rgb(243, 244, 246)
+	}
+	 
+  .text-meta {
+		/* TODO: test: */
+		@apply text-coolGray-500
+		/* @apply text-slate-600 dark:text-slate-600 */
+ }
+
+ .bg-list-item-selected {
+	 @apply bg-slate-100
+ }
+
+ .bg-dark {
+	 @apply dark:bg-gray-900
+ }
+
+ .bg-app {
+   background: #f9f9f9 url("/background_texture.png") repeat;
+ }
+
+ .text-success {
+	 @apply text-green-500
+ }
+
+ .text-failure {
+	@apply text-red-500
+ }
+
+ .text-2xs { /* TODO: better name */
+	 font-size: 0.70rem;
+	 line-height: 0.8rem;
+ }
+
+ .text-link {
+	@apply underline;
+	cursor: pointer;
+ }
+
+}

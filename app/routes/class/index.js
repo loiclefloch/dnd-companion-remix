@@ -1,10 +1,10 @@
-import { useRouter } from '~/hook/useRouter'
-import Screen from "~/component/Screen";
+import useRouter from '~/hooks/useRouter'
+import Screen from "~/components/Screen";
 import useClasses from '../../modules/api/useClasses';
 import useI18n from '../../modules/i18n/useI18n';
-import { ListSelectRowAsCard, ListRowSelectContainer } from "~/component/ListSelectRow"
-import IconRace from "~/component/icons/IconRace"
-import IconAcademicCap from "~/component/icons/IconAcademicCap"
+import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
+import IconRace from "~/components/icons/IconRace"
+import IconAcademicCap from "~/components/icons/IconAcademicCap"
 
 function ClassRow({ clss }) {
 	const { tr } = useI18n()

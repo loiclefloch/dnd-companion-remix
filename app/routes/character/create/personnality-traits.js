@@ -1,12 +1,12 @@
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import { useState } from "react"
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import Textarea from "../'~/components/Textarea";
-import Button from "../'~/components/Button";
-import Screen from "../'~/components/Screen";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import ListSelector from '../'~/components/ListSelector';
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import Textarea from "~/components/Textarea";
+import Button from "~/components/Button";
+import Screen from "~/components/Screen";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import ListSelector from '~/components/ListSelector';
 
 function Custom({
 	chosenTraits,
@@ -79,7 +79,7 @@ function Form() {
 				description={`Donnez à votre personnage personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/personnality-traits">
+						<Link to="/rules/personnality-traits">
 							En savoir plus
 						</Link>
 					</div>

@@ -1,17 +1,17 @@
 import { useEffect } from "react"
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import useI18n from "../../../modules/i18n/useI18n"
 import useCharacter from "../../../modules/api/useCharacter"
-import StatsSmall from "../'~/components/StatsSmall"
-import { useRouter } from "next/router"
-import Screen from "../'~/components/Screen"
-import useRestScreenAsModal from "../'~/components/useRestScreenAsModal"
-import useLifeScreenAsModal from "../'~/components/useLifeScreenAsModal"
-import useAcScreenAsModal from "../'~/components/useAcScreenAsModal"
-import useCurrentCharacter from "../'~/components/useCurrentCharacter"
-import IconCampFire from "../'~/components/icons/IconCampFire"
-import IconShield from "../'~/components/icons/IconShield"
-import useTip from "../'~/components/useTip"
+import StatsSmall from "~/components/StatsSmall"
+import useRouter from "~/hooks/useRouter"
+import Screen from "~/components/Screen"
+import useRestScreenAsModal from "~/components/useRestScreenAsModal"
+import useLifeScreenAsModal from "~/components/useLifeScreenAsModal"
+import useAcScreenAsModal from "~/components/useAcScreenAsModal"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import IconCampFire from "~/components/icons/IconCampFire"
+import IconShield from "~/components/icons/IconShield"
+import useTip from "~/components/useTip"
 import {
 	TraitsSection,
 	ProficienciesSection,
@@ -20,10 +20,10 @@ import {
 	FeatsSection,
 	GlobalSection,
 	Infos,
-} from "../'~/components/CharacterResume"
-import CharacterClassTag from "../'~/components/CharacterClassTag"
-import CharacterRaceTag from "../'~/components/CharacterRaceTag"
-import CharacterLevelTag from "../'~/components/CharacterLevelTag"
+} from "~/components/CharacterResume"
+import CharacterClassTag from "~/components/CharacterClassTag"
+import CharacterRaceTag from "~/components/CharacterRaceTag"
+import CharacterLevelTag from "~/components/CharacterLevelTag"
 
 function HpView({character, characterDispatch}) {
 	const { showLifeScreenAsModal } = useLifeScreenAsModal()

@@ -1,11 +1,11 @@
-import { useRouter } from '~/hook/useRouter'
-import Screen from "../../'~/components/Screen";
+import useRouter from '~/hooks/useRouter'
+import Screen from "~/components/Screen";
 import useRaces from '../../../../modules/api/useRaces';
 import useI18n from '../../../../modules/i18n/useI18n';
-import { ListSelectRowAsCard, ListRowSelectContainer } from "../../'~/components/ListSelectRow"
-import IconRace from "../../'~/components/icons/IconRace"
-import ScreenIntroduction from "../../'~/components/ScreenIntroduction"
-import useCreateCharacter from "../../'~/components/useCreateCharacter"
+import { ListSelectRowAsCard, ListRowSelectContainer } from "~/components/ListSelectRow"
+import IconRace from "~/components/icons/IconRace"
+import ScreenIntroduction from "~/components/ScreenIntroduction"
+import useCreateCharacter from "~/components/useCreateCharacter"
 
 function RaceRow({ race, onSelect }) {
 	const { tr } = useI18n()

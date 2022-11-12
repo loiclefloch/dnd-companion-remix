@@ -1,14 +1,14 @@
 import { useState } from "react"
-import Link from "next/link";
+import { Link } from "@remix-run/react";
 import { filterDuplicates } from '../../../modules/utils/array'
 import useI18n from "../../../modules/i18n/useI18n";
-import Section from "../'~/components/Section";
-import Screen from "../'~/components/Screen";
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import EquipmentOptionsChooser from "../'~/components/EquipmentOptionsChooser";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import useEquipmentItemScreenAsModal from '../'~/components/useEquipmentItemScreenAsModal';
+import Section from "~/components/Section";
+import Screen from "~/components/Screen";
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import EquipmentOptionsChooser from "~/components/EquipmentOptionsChooser";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import useEquipmentItemScreenAsModal from '~/components/useEquipmentItemScreenAsModal';
 
 function StartingEquipmentItem({ item }) {
 	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
@@ -66,7 +66,7 @@ function Form() {
 				description={`Donnez à votre personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/create-character-equipment">
+						<Link to="/rules/create-character-equipment">
 							En savoir plus
 						</Link>
 					</div>

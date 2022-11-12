@@ -1,11 +1,11 @@
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 
 import useMonster from "../../modules/api/useMonster";
 import useI18n from "../../modules/i18n/useI18n";
 
-import Screen from "~/component/Screen";
-import MonsterView from "~/component/MonsterView";
-import IconMonster from "~/component/icons/IconMonster";
+import Screen from "~/components/Screen";
+import MonsterView from "~/components/MonsterView";
+import IconMonster from "~/components/icons/IconMonster";
 
 function Monster() {
 	const router = useRouter()

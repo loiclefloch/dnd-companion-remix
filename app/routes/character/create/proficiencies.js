@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { groupBy, map, uniqBy } from "lodash";
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import ListSelector from "../'~/components/ListSelector";
-import Screen from "../'~/components/Screen";
-import Link from "next/link"
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import ListSelector from "~/components/ListSelector";
+import Screen from "~/components/Screen";
+import { Link } from "@remix-run/react"
 import useI18n from "../../../modules/i18n/useI18n";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import useTipProficiency from "../'~/components/useTipProficiency"
+import useCreateCharacter from '~/components/useCreateCharacter';
+import useTipProficiency from "~/components/useTipProficiency"
 import { formatProficiency } from "../../../modules/api/useProficiency"
 
 function Proficiency({ proficiency }) {
@@ -143,7 +143,7 @@ function Form({ race, background, clss, updateCharacter }) {
 				description={`Votre personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/proficiencies">
+						<Link to="/rules/proficiencies">
 							En savoir plus
 						</Link>
 					</div>

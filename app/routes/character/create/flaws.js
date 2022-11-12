@@ -1,14 +1,14 @@
 import { useState } from "react"
-import { useRouter } from '~/hook/useRouter'
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import Screen from "../'~/components/Screen";
-import Textarea from "../'~/components/Textarea";
-import Link from "next/link"
+import useRouter from '~/hooks/useRouter'
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import Screen from "~/components/Screen";
+import Textarea from "~/components/Textarea";
+import { Link } from "@remix-run/react"
 import useI18n from "../../../modules/i18n/useI18n";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import ListSelector from '../'~/components/ListSelector';
-import Button from "../'~/components/Button";
+import useCreateCharacter from '~/components/useCreateCharacter';
+import ListSelector from '~/components/ListSelector';
+import Button from "~/components/Button";
 
 function Custom({
 	chosenFlaws,
@@ -71,7 +71,7 @@ function Form() {
 				description={`Donnez à votre personnage personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/flaws">
+						<Link to="/rules/flaws">
 							En savoir plus
 						</Link>
 					</div>

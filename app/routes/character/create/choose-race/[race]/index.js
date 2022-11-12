@@ -1,10 +1,10 @@
-import { useRouter } from '~/hook/useRouter'
-import Screen from "../../../'~/components/Screen";
-import useRace from '../../../../../modules/api/useRace';
-import useI18n from '../../../../../modules/i18n/useI18n';
-import RaceDetailsView from '../../../'~/components/races/RaceDetailsView';
-import ButtonBottomScreen from '../../../'~/components/ButtonBottomScreen';
-import useCreateCharacter from '../../../'~/components/useCreateCharacter';
+import useRouter from '~/hooks/useRouter'
+import Screen from "~/components/Screen";
+import useRace from '~/modules/api/useRace';
+import useI18n from '~/modules/i18n/useI18n';
+import RaceDetailsView from '~/components/races/RaceDetailsView';
+import ButtonBottomScreen from '~/components/ButtonBottomScreen';
+import useCreateCharacter from '~/components/useCreateCharacter';
 
 function Form({ race }) {
 	const router = useRouter()

@@ -1,19 +1,19 @@
 import { useMemo } from "react"
-import Screen from "~/component/Screen";
+import Screen from "~/components/Screen";
 import { sortBy } from "lodash";
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import useFeatures from "../../modules/api/useFeatures";
 import useI18n from "../../modules/i18n/useI18n";
-import IconAcademicCap from "~/component/icons/IconAcademicCap";
-import useLocalSearch from "~/component/useLocalSearch";
-import InputSearch from "~/component/InputSearch";
+import IconAcademicCap from "~/components/icons/IconAcademicCap";
+import useLocalSearch from "~/components/useLocalSearch";
+import InputSearch from "~/components/InputSearch";
 
 function FeatureRow({ feature }) {
   const { tr } = useI18n();
   const href = `/features/${feature.index}`;
 
   return (
-    <Link href={href} passHref>
+    <Link to={href} passHref>
       <div
         // onClick={onSelect}
         className={`relative cursor-pointer border-b border-solid border-slate-100 py-1  pl-3 dark:border-gray-50`}

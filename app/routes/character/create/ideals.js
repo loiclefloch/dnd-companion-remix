@@ -1,14 +1,14 @@
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import { useState } from "react"
-import { useRouter } from '~/hook/useRouter'
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import Screen from "../'~/components/Screen";
-import Textarea from "../'~/components/Textarea";
+import useRouter from '~/hooks/useRouter'
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import Screen from "~/components/Screen";
+import Textarea from "~/components/Textarea";
 import useI18n from "../../../modules/i18n/useI18n";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
-import ListSelector from '../'~/components/ListSelector';
-import useTip from '../'~/components/useTip';
+import useCreateCharacter from '~/components/useCreateCharacter';
+import ListSelector from '~/components/ListSelector';
+import useTip from '~/components/useTip';
 
 // TODO: could we choose multiple?
 function Form() {
@@ -25,7 +25,7 @@ function Form() {
 				description={`Donnez à votre personnage personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/ideals">
+						<Link to="/rules/ideals">
 							En savoir plus
 						</Link>
 					</div>

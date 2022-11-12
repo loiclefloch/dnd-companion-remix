@@ -1,6 +1,6 @@
-import Link from "next/link"
-import Screen from "~/component/Screen"
-import IconAcademicCap from "~/component/icons/IconAcademicCap"
+import { Link } from "@remix-run/react"
+import Screen from "~/components/Screen"
+import IconAcademicCap from "~/components/icons/IconAcademicCap"
 import useRules from "../../modules/api/useRules";
 
 function RuleSection({ title, subItems }) {
@@ -22,7 +22,7 @@ function RuleSection({ title, subItems }) {
 function SubItem({ title, href }) {
 	return (
 		<div key={href} className="pl-4 py-2 hover:bg-black/20">
-			<Link href={href} passHref>
+			<Link to={href} passHref>
 				<div>{title}</div>
 			</Link>
 		</div>

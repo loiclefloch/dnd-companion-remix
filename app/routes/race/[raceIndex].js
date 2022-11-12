@@ -1,5 +1,5 @@
-import { useRouter } from '~/hook/useRouter'
-import Screen from "~/component/Screen";
+import useRouter from '~/hooks/useRouter'
+import Screen from "~/components/Screen";
 import useRace from '../../modules/api/useRace';
 import useI18n from '../../modules/i18n/useI18n';
 import RaceDetailsView from '~/components/races/RaceDetailsView';

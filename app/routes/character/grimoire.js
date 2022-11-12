@@ -1,22 +1,22 @@
 import isEmpty from "lodash/isEmpty"
 import groupBy from "lodash/groupBy"
 import map from "lodash/map"
-import Link from "next/link"
+import { Link } from "@remix-run/react"
 import useI18n from "../../modules/i18n/useI18n"
-import Screen from "~/component/Screen"
-import useCurrentCharacter from "~/component/useCurrentCharacter"
-import IconBookOpen from "~/component/icons/IconBookOpen"
-import IconPlus from "~/component/icons/IconPlus"
-import IconMagicSchool from "~/component/icons/IconMagicSchool"
-import SpellRunner from "~/component/SpellRunner"
-import useTipConcentration from "~/component/useTipConcentration"
-import useTipRitual from "~/component/useTipRitual"
-import Tag from "~/component/Tag"
+import Screen from "~/components/Screen"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import IconBookOpen from "~/components/icons/IconBookOpen"
+import IconPlus from "~/components/icons/IconPlus"
+import IconMagicSchool from "~/components/icons/IconMagicSchool"
+import SpellRunner from "~/components/SpellRunner"
+import useTipConcentration from "~/components/useTipConcentration"
+import useTipRitual from "~/components/useTipRitual"
+import Tag from "~/components/Tag"
 import clsx from "clsx"
-import useEditSpellSlotsScreenAsModal from "~/component/useEditSpellSlotsScreenAsModal"
+import useEditSpellSlotsScreenAsModal from "~/components/useEditSpellSlotsScreenAsModal"
 import { actionEditSpellSlots } from "../../modules/character/action"
-import CharacterSpellSource from "~/component/CharacterSpellSource"
-import CharacterSpellTag from "~/component/CharacterSpellTag"
+import CharacterSpellSource from "~/components/CharacterSpellSource"
+import CharacterSpellTag from "~/components/CharacterSpellTag"
 
 function Spell({ spell, character /*onSelect*/ }) {
 	const { tr } = useI18n();
@@ -34,7 +34,7 @@ function Spell({ spell, character /*onSelect*/ }) {
 			<div className="pl-3">
 				<div className="flex flex-row">
 					<div className="flex flex-col flex-1">
-						<Link href={`/character/spells/${spell.index}`} passHref>
+						<Link to={`/character/spells/${spell.index}`} passHref>
 							<span className="flex flex-row items-center font-semibold">
 								{/* <IconMagicSchool
               school={spell.school.name}
@@ -103,7 +103,7 @@ function Spell({ spell, character /*onSelect*/ }) {
 					<CharacterSpellSource character={character} spell={spell} />
 				</div>
 
-				<Link href={`/character/spells/${spell.index}`} passHref>
+				<Link to={`/character/spells/${spell.index}`} passHref>
 					<p className="pt-2 pr-2 text-sm">{tr(spell.resume)}</p>
 				</Link>
 			</div>
@@ -203,7 +203,7 @@ function Grimoire() {
 							<p className="prose text-center text-lg">
 								{`Vous n'avez pas encore appris de sorts.`}
 								<br />
-								Retrouvez les sorts disponibles dans la <Link href="/character/spells">liste des sorts</Link>.
+								Retrouvez les sorts disponibles dans la <Link to="/character/spells">liste des sorts</Link>.
 							</p>
 						</div>
 					)}

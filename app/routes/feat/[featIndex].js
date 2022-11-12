@@ -1,10 +1,10 @@
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 
 import useFeat from "../../modules/api/useFeat";
 import useI18n from "../../modules/i18n/useI18n";
-import Screen from "~/component/Screen";
-import FeatContent from "~/component/FeatContent";
-import IconBookOpen from "~/component/icons/IconBookOpen";
+import Screen from "~/components/Screen";
+import FeatContent from "~/components/FeatContent";
+import IconBookOpen from "~/components/icons/IconBookOpen";
 
 function Feat() {
 	const router = useRouter()

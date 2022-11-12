@@ -1,11 +1,11 @@
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 
 import useSpell from "../../modules/api/useSpell";
 import useI18n from "../../modules/i18n/useI18n";
 
-import Screen from "~/component/Screen";
-import SpellView from "~/component/SpellView";
-import IconBookOpen from "~/component/icons/IconBookOpen";
+import Screen from "~/components/Screen";
+import SpellView from "~/components/SpellView";
+import IconBookOpen from "~/components/icons/IconBookOpen";
 
 function Spell() {
 	const router = useRouter()

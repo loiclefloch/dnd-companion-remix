@@ -1,6 +1,6 @@
 import { CharacterProvider} from "../../modules/character/ContextCharacter"
-import useCurrentCharacter from "~/component/useCurrentCharacter"
-import FeatsListView from "~/component/FeatsListView"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
+import FeatsListView from "~/components/FeatsListView"
 
 /**
  * Feats list with the character as context

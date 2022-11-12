@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import Screen from "~/component/Screen"
-import EquipmentItemView from "~/component/EquipmentItemView"
+import useRouter from "~/hooks/useRouter";
+import Screen from "~/components/Screen"
+import EquipmentItemView from "~/components/EquipmentItemView"
 import useI18n from "../../modules/i18n/useI18n";
 import useMagicItem from "../../modules/api/useMagicItem";
 

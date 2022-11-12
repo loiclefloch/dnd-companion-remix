@@ -1,15 +1,15 @@
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 
 import useSpell from "../../../modules/api/useSpell";
 import useI18n from "../../../modules/i18n/useI18n";
 import { CharacterProvider} from "../../../modules/character/ContextCharacter"
-import useCurrentCharacter from "../'~/components/useCurrentCharacter"
+import useCurrentCharacter from "~/components/useCurrentCharacter"
 
-import Screen from "../'~/components/Screen";
-import SpellView from "../'~/components/SpellView";
-import IconBookOpen from "../'~/components/icons/IconBookOpen";
-import IconPencil from "../'~/components/icons/IconPencil";
-import useEditEditCharacterSpellScreenAsModal from "../'~/components/useEditEditCharacterSpellScreenAsModal";
+import Screen from "~/components/Screen";
+import SpellView from "~/components/SpellView";
+import IconBookOpen from "~/components/icons/IconBookOpen";
+import IconPencil from "~/components/icons/IconPencil";
+import useEditEditCharacterSpellScreenAsModal from "~/components/useEditEditCharacterSpellScreenAsModal";
 
 function Spell() {
 	const router = useRouter()

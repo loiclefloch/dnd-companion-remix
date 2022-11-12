@@ -1,8 +1,8 @@
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 import useI18n from '../../modules/i18n/useI18n'
-import Screen from "~/component/Screen"
-import useCharacterLevelling from "~/component/useCharacterLevelling"
-import LevellingStep from "~/component/levelling/LevellingStep"
+import Screen from "~/components/Screen"
+import useCharacterLevelling from "~/components/useCharacterLevelling"
+import LevellingStep from "~/components/levelling/LevellingStep"
 
 function LevelUp() {
 	const { tr } = useI18n()

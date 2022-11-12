@@ -1,17 +1,17 @@
 import { useState } from "react"
 import clsx from "clsx"
-import { useRouter } from '~/hook/useRouter'
+import useRouter from '~/hooks/useRouter'
 // TODO: add exotic languages?
 import languages from "../../../database/data/languages.json"
-import ButtonBottomScreen from "../'~/components/ButtonBottomScreen";
-import ScreenIntroduction from "../'~/components/ScreenIntroduction";
-import ListSelector from "../'~/components/ListSelector";
-import Screen from "../'~/components/Screen";
+import ButtonBottomScreen from "~/components/ButtonBottomScreen";
+import ScreenIntroduction from "~/components/ScreenIntroduction";
+import ListSelector from "~/components/ListSelector";
+import Screen from "~/components/Screen";
 import useRace from '../../../modules/api/useRace';
-import Link from "next/link"
-import useTipLanguage from "../'~/components/useTipLanguage";
+import { Link } from "@remix-run/react"
+import useTipLanguage from "~/components/useTipLanguage";
 import useI18n from "../../../modules/i18n/useI18n";
-import useCreateCharacter from '../'~/components/useCreateCharacter';
+import useCreateCharacter from '~/components/useCreateCharacter';
 import { arrayHasDuplicates } from "../../../modules/utils/array"
 
 function Form({ race, backgroundLanguagesOptions, updateCharacter }) {
@@ -38,7 +38,7 @@ function Form({ race, backgroundLanguagesOptions, updateCharacter }) {
 				description={`Votre personnage ...`}
 				actions={
 					<div className="mt-2">
-						<Link href="/rules/languages">
+						<Link to="/rules/languages">
 							En savoir plus
 						</Link>
 					</div>

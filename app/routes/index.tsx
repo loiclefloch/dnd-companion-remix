@@ -1,10 +1,10 @@
-import Link from "next/link"
-import Screen from "../components/Screen";
-import { makeI18n } from "../modules/i18n/useI18n";
-import useCurrentCharacter from "../components/useCurrentCharacter";
-import Button from "../components/Button";
-import { useRouter } from "next/router";
-import { ListSelectRowAsCard } from "../components/ListSelectRow"
+import { Link } from "@remix-run/react"
+import Screen from "~/components/Screen";
+import { makeI18n } from "~/modules/i18n/useI18n";
+import useCurrentCharacter from "~/components/useCurrentCharacter";
+import Button from "~/components/Button";
+import useRouter from "~/hooks/useRouter";
+import { ListSelectRowAsCard } from "~/components/ListSelectRow"
 
 const useI18n = makeI18n({
   'screen.title': {
@@ -30,7 +30,7 @@ function CurrentCharacterView() {
     return (
       <div className="px-4 py-2">
         <h3 className="prose">{tr`title.myCharacter`}</h3>       
-        <Link href={`/characters`} passHref>
+        <Link to={`/characters`} passHref>
           <Button variant="outlined" className="mt-2">
            {tr`select character`} 
           </Button>

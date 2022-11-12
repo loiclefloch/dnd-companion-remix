@@ -1,14 +1,14 @@
 
-import { useRouter } from "next/router"
-import LevelDetailView from "../../'~/components/LevelDetailView"
-import useClass from "../../../../modules/api/useClass"
-import Screen from "../../'~/components/Screen"
-import useI18n from "../../../../modules/i18n/useI18n"
-import IconBookOpen from "../../'~/components/icons/IconBookOpen";
-import BottomScreen from '../../'~/components/BottomScreen';
-import Button from '../../'~/components/Button';
-import IconChevronRight from "../../'~/components/icons/IconChevronRight"
-import IconChevronLeft from "../../'~/components/icons/IconChevronLeft"
+import useRouter from "~/hooks/useRouter"
+import LevelDetailView from "~/components/LevelDetailView"
+import useClass from "~/modules/api/useClass"
+import Screen from "~/components/Screen"
+import useI18n from "~/modules/i18n/useI18n"
+import IconBookOpen from "~/components/icons/IconBookOpen";
+import BottomScreen from '~/components/BottomScreen';
+import Button from '~/components/Button';
+import IconChevronRight from "~/components/icons/IconChevronRight"
+import IconChevronLeft from "~/components/icons/IconChevronLeft"
 
 function LevellingClassLevel() {
 	const router = useRouter()
