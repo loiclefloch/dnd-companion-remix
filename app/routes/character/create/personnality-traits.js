@@ -66,7 +66,6 @@ function Form() {
 		CUSTOM: 'CUSTOM',
 	}
 
-	const { background, character, updateCharacter } = useCreateCharacter()
 	const [chosenTraits, setChosenTraits ] = useState(character?.personnalityTraits || [])
 	const [mode, setMode] = useState(null)
 

@@ -4,12 +4,20 @@ import camelize from "../modules/utils/camelize"
 import { formatEquipmentItem } from './equipment.mapper';
 import formatStartingEquipmentOptions from "~/mappers/startingequipmentoptions.mapper"
 import type { BackgroundApiObject } from '~/apiobjects/background.apiobject'
-import type { BackgroundDto } from '~/dtos/background.dto'
+import type { BackgroundDto, BackgroundForCharacterDto } from '~/dtos/background.dto'
 import { formatProficiency } from './proficiency.mapper';
 import classes from '~/database/data/classes';
+import type { ClassApiEnum } from '~/apiobjects/class.apiobject';
 
-export function formatBackground(backgroundParam: BackgroundApiObject): BackgroundDto {
-  const background = camelize(cloneDeep(backgroundParam))
+export function formatBackgroundForCharacter(backgroundApiObject: BackgroundApiObject, classIndex: ClassApiEnum): BackgroundForCharacterDto {
+  return {
+    ...formatBackground(backgroundApiObject),
+    isGoodForClass: backgroundApiObject.goodForClasses && backgroundApiObject.goodForClasses.some(c => c.index === classIndex)
+  }
+}
+
+export function formatBackground(backgroundApiObject: BackgroundApiObject): BackgroundDto {
+  const background = camelize(cloneDeep(backgroundApiObject))
   background.nameLocalized = {
     en: background.name
   }

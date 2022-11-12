@@ -24,12 +24,24 @@ import getCharacterHasProficiencyForItem from "../modules/character/getCharacter
 import { formatSpell } from '~/mappers/spell.mapper';
 import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 import { formatRace } from "~/mappers/race.mapper"
-import type { CharacterApiObject } from '~/apiobjects/characters.apiobject'
-import type { CharacterDto } from '~/dtos/characters.dto'
 import { formatClass, formatSubclass } from './class.mapper'
 import { formatFeat } from './feat.mapper'
 import { formatFeature } from './feature.mapper'
 import { formatProficiency } from './proficiency.mapper'
+import type { CharacterDetailsApiObject, CharacterDetailsDto } from '../apiobjects/character.apiobject';
+
+export function transformCharacterDetails(characterDetailsApiObject: CharacterDetailsApiObject): CharacterDetailsDto {
+  return {
+    age: characterDetailsApiObject.age,
+    genre: characterDetailsApiObject.genre,
+    height: characterDetailsApiObject.height,
+    weight: characterDetailsApiObject.weight,
+    hairColor: characterDetailsApiObject.hairColor,
+    eyeColor: characterDetailsApiObject.eyeColor,
+    skinColor: characterDetailsApiObject.skinColor,
+    physicalCaracteristics: characterDetailsApiObject.physicalCaracteristics,
+  }
+}
 
 function formatCurrencies(walletHistory) {
 	const currencies = {

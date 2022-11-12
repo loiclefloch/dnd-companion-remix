@@ -3,28 +3,39 @@ import ScreenIntroduction from "~/components/ScreenIntroduction";
 import Screen from "~/components/Screen";
 import { Link, useLoaderData } from "@remix-run/react"
 import useI18n from "~/modules/i18n/useI18n";
-import useCreateCharacter from "~/components/useCreateCharacter";
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 import { formatBackground } from "~/mappers/background.mapper";
 import { getBackgrounds } from "~/services/background.server";
 import { requireUser } from "~/services/session.server";
+import { getCharacterCreation } from "~/services/createcaracter.server";
+import type { BackgroundDto } from '~/dtos/background.dto';
 
 export async function loader({ request }: LoaderArgs) {
   const token = await requireUser(request);
 
+	const characterCreationApiObject = await getCharacterCreation();
+
   const backgroundApiObjects = await getBackgrounds();
 
+	const backgroundsGoodForClass = backgroundApiObjects
+    .filter((backgroundApiObject) =>
+      backgroundApiObject.goodForClasses?.some(
+        (c) => c.index === characterCreationApiObject.classIndex
+      )
+    )
+    .map((background) => background.index);
+
+
   return json({
-    background: backgroundApiObjects.map(formatBackground),
+    backgrounds: backgroundApiObjects.map(formatBackground),
+		backgroundsGoodForClass,
   });
 }
 
-function BackgroundRow({ background, clss }) {
+function BackgroundRow({ background, isGoodForClass }) {
 	const { tr } = useI18n()
 	
-	const isGoodForClass = background.goodForClasses && background.goodForClasses.some(c => c.index === clss)
-
 	return (
     <ListSelectRowAsCard
       to={`/character/create/choose-background/${background.index}`}
@@ -44,33 +55,33 @@ function BackgroundRow({ background, clss }) {
 }
 
 function CreateCharacterBackground() {
-	const { character } = useCreateCharacter()
-	const { backgrounds } = useLoaderData<typeof loader>();
+	const { backgrounds, backgroundsGoodForClass } = useLoaderData<typeof loader>();
 
 	return (
-		<Screen
-			title={"Background"}
-			withBottomSpace
-		>
-			<div className="flex flex-col">
-				<ScreenIntroduction
-					title="Choisissez le background de votre personnage"
-					description={`Donnez à votre personnage personnage ...`}
-					actions={
-						<div className="mt-2">
-							<Link to="/rules/background">
-								En savoir plus
-							</Link>
-						</div>
-					}
-				/>
+    <Screen title={"Background"} withBottomSpace>
+      <div className="flex flex-col">
+        <ScreenIntroduction
+          title="Choisissez le background de votre personnage"
+          description={`Donnez à votre personnage personnage ...`}
+          actions={
+            <div className="mt-2">
+              <Link to="/rules/background">En savoir plus</Link>
+            </div>
+          }
+        />
 
-				<ListRowSelectContainer className="px-4 mt-6">
-					{backgrounds.map(background => (
-						<BackgroundRow key={background.index} background={background} clss={character?.classes[0]} />
-					))}
-				</ListRowSelectContainer>
-			</div>
+        <ListRowSelectContainer className="mt-6 px-4">
+          {backgrounds.map((background: BackgroundDto) => (
+            <BackgroundRow
+              key={background.index}
+              background={background}
+              isGoodForClass={backgroundsGoodForClass.includes(
+                background.index
+              )}
+            />
+          ))}
+        </ListRowSelectContainer>
+      </div>
     </Screen>
   );
 }

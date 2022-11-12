@@ -1,11 +1,10 @@
-import useRouter from "~/hooks/useRouter";
 import Screen from "~/components/Screen";
 import useI18n from "~/modules/i18n/useI18n";
 import RaceDetailsView from "~/components/races/RaceDetailsView";
 import ButtonBottomScreen from "~/components/ButtonBottomScreen";
-import useCreateCharacter from "~/components/useCreateCharacter";
 import { Form, useLoaderData } from "@remix-run/react";
-import { ActionArgs, LoaderArgs, redirect } from "@remix-run/server-runtime";
+import type { ActionArgs, LoaderArgs} from "@remix-run/server-runtime";
+import { redirect } from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
 import { formatRace } from "~/mappers/race.mapper";
 import { getRace } from "~/services/race.server";
@@ -17,14 +16,13 @@ export async function loader({ request, params }: LoaderArgs) {
   const token = await requireUser(request);
 
   const characterCreationApiObject = await getCharacterCreation();
-  const race = await getRace(params.raceId);
+  const race = await getRace(params.raceId as string);
 
   return json({
     race: formatRace(race),
     characterCreation: transformCharacterCreation(characterCreationApiObject),
   });
 }
-
 
 export async function action({ request }: ActionArgs) {
 	const formData = await request.formData();

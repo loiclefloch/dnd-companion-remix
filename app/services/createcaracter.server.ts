@@ -1,4 +1,5 @@
-import type { CharacterCreationApiObject } from "~/apiobjects/charactercreation.apiobject";
+import type { CharacterCreationApiObject, CharacterCreationFeatureApiObject } from "~/apiobjects/charactercreation.apiobject";
+import { CharacterDetailsApiObject } from '../apiobjects/character.apiobject';
 
 function initCharacterCreation() {
 	return {
@@ -13,6 +14,7 @@ function initCharacterCreation() {
 			WIS: 10,
 			CHA: 8,
 		},
+		characterDetails: {}
 	}
 }
 
@@ -22,9 +24,9 @@ export async function getCharacterCreation(): Promise<CharacterCreationApiObject
 }
 
 function updateCharacterCreationData(payload: any) {
-	console.log({
+	console.log(JSON.stringify({
     payload,
-  });
+  }));
 }
 
 export async function updateCreateCharacterInitialStep(name: string) {
@@ -38,7 +40,6 @@ export async function updateCreateCharacterInitialStep(name: string) {
 export async function updateCreateCharacterChooseRaceStep(raceIndex: string) {
 	// TODO: update data	
 
-	
 	return updateCharacterCreationData({
 		raceIndex
 	})
@@ -53,6 +54,15 @@ export async function updateCreateCharacterChooseClassStep(classIndex: string) {
 	})
 }
 
+export async function updateCreateCharacterChooseBackgroundStep(backgroundIndex: string, features: Array<CharacterCreationFeatureApiObject>) {
+	// TODO: update data	
+
+	
+	return updateCharacterCreationData({
+		backgroundIndex,
+		features,
+	})
+}
 
 export async function updateCreateCharacterChooseAbilities(abilities, abilitiesBonuses = []) {
 	// TODO: update data	
@@ -60,5 +70,13 @@ export async function updateCreateCharacterChooseAbilities(abilities, abilitiesB
 	return updateCharacterCreationData({
 		abilities, 
 		abilitiesBonuses,
+	})
+}
+
+export async function updateCreateCharacterChooseCharacterDetailsStep(characterDetails: CharacterDetailsApiObject) {
+	// TODO: update data	
+
+	return updateCharacterCreationData({
+		characterDetails,
 	})
 }
