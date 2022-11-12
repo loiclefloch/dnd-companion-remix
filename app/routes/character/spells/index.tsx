@@ -2,7 +2,7 @@ import SpellsView from "~/components/SpellsView"
 import { useLoaderData } from "@remix-run/react";
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { formatCurrentCharacter } from "~/mappers/character.mapper";
+import { formatCharacter } from "~/mappers/character.mapper";
 import { formatSpell } from "~/mappers/spell.mapper";
 import { getCurrentCharacter } from "~/services/currentcharacter.server";
 import { requireUser } from "~/services/session.server";
@@ -16,7 +16,7 @@ export async function loader({ request, params }: LoaderArgs) {
 
   return json({
     spells: spells.map(formatSpell),
-		character: formatCurrentCharacter(currentCharacter)
+		character: formatCharacter(currentCharacter)
   });
 }
 

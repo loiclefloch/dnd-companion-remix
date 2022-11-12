@@ -1,10 +1,11 @@
-import { EquipmentApiObject } from '~/apiobjects/equipment.apiobject';
-import { EquipmentCategoryApiObject } from '~/apiobjects/equipmentcategories.apiobject';
+import type { EquipmentApiObject } from '~/apiobjects/equipment.apiobject';
+import type { EquipmentCategoryApiObject } from '~/apiobjects/equipmentcategories.apiobject';
 import equipmentCategories from '~/database/data/equipment-categories.json'
 import equipment from '~/database/data/equipment.json'
+import { cloneDeep } from 'lodash';
 
 export async function getEquipmentCategories(): Promise<Array<EquipmentCategoryApiObject>> {
-	return equipmentCategories
+	return cloneDeep(equipmentCategories)
 }
 
 export async function getEquipment(index: string): Promise<EquipmentApiObject> {
@@ -13,5 +14,5 @@ export async function getEquipment(index: string): Promise<EquipmentApiObject> {
 		throw new Error(`Equipment not found for id ${index}`)
 	}
 
-	return item
+	return cloneDeep(item)
 }

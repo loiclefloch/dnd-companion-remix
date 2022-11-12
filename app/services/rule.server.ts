@@ -1,10 +1,10 @@
 import ruleSections from '~/database/data/rules-sections.json'
-import rules from '~/database/data/rules.json' // TODO: rename
-
+import rules from '~/database/data/rules.json' 
 import type { RuleApiObject, RuleSectionApiObject } from "~/apiobjects/rule.apiobject";
+import { cloneDeep } from 'lodash';
 
 export async function getRuleSections(): Promise<Array<RuleSectionApiObject>>  {
-	return ruleSections
+	return cloneDeep(ruleSections)
 }
 
 export async function getRule(ruleId: string): Promise<RuleApiObject> {
@@ -14,5 +14,5 @@ export async function getRule(ruleId: string): Promise<RuleApiObject> {
 		throw new Error(`Rule not found with id ${ruleId}`);
 	}
 
-	return rule
+	return cloneDeep(rule)
 }

@@ -19,6 +19,7 @@ import type { ReactNode } from "react";
 import type { UserDto } from "./dtos/User.dto";
 import { getCurrentCharacter } from '~/services/currentcharacter.server';
 import { formatCharacter } from "./mappers/character.mapper";
+import type { CharacterDto } from "./dtos/character.dto";
 
 export const links: LinksFunction = () => {
   return [
@@ -34,7 +35,7 @@ export const meta: MetaFunction = () => ({
 
 export interface RootLoaderData {
   user: UserDto;
-  characters: CharacterDto[]; // TODO: remix
+  currentCharacter?: CharacterDto;
 }
 
 export async function loader({ request }: LoaderArgs) {

@@ -1,8 +1,9 @@
 import backgrounds from "~/database/data/backgrounds";
 import type { BackgroundApiObject } from "../apiobjects/background.apiobject";
+import { cloneDeep } from 'lodash';
 
 export async function getBackgrounds(): Promise<Array<BackgroundApiObject>> {
-  return backgrounds;
+  return cloneDeep(backgrounds);
 }
 
 export async function getBackground(
@@ -14,5 +15,5 @@ export async function getBackground(
     throw new Error(`Background not found for index ${index}`);
   }
 
-  return background;
+  return cloneDeep(background);
 }

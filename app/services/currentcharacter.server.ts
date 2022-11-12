@@ -1,7 +1,7 @@
-import type { CharacterApiObject } from '~/apiobjects/characters.apiobject';
-import characters from '~/database/fixtures/characters';
+import type { CharacterApiObject } from '~/apiobjects/character.apiobject';
+import { getCharacter } from './characters.server';
 
-let currentCharacterId: string = null // TODO: move on db
+let currentCharacterId: string = "ylvir" // TODO: move on db
 
 export async function setCurrentCharacter(characterId: string) {
 	currentCharacterId = characterId
@@ -16,9 +16,5 @@ export async function getCurrentCharacter(): Promise<CharacterApiObject | null> 
 		return null
 	}
 
-	const character = characters.find(character => character.id === currentCharacterId);
-	if (!character) {
-		throw new Error(`Character not found with id ${currentCharacterId}`);
-	}
-	return character
+	return getCharacter(currentCharacterId)
 }

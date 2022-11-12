@@ -19,7 +19,7 @@ export function formatRace(raceParam: RaceApiObject): RaceDto {
     race.subraces = race.subraces.map(formatRace)
   }
 
-  race.traits = race.traits.map(t => traits.find(trait => trait.index === t.index))
+  race.traits = race.traits?.map(t => traits.find(trait => trait.index === t.index))
 
   return race
 }

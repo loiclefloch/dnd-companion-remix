@@ -1,8 +1,9 @@
 import classes from '~/database/data/classes';
 import type { ClassApiObject } from '../apiobjects/class.apiobject';
+import { cloneDeep } from 'lodash';
 
 export async function getClasses(): Promise<Array<ClassApiObject>> {
-	return classes
+	return cloneDeep(classes);
 }
 
 export async function getClass(index: string): Promise<ClassApiObject> {
@@ -12,5 +13,5 @@ export async function getClass(index: string): Promise<ClassApiObject> {
 		throw new Error(`class not found for index ${index}`);
 	}
 
-	return classApiObject;
+	return cloneDeep(classApiObject);
 }

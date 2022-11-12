@@ -1,8 +1,9 @@
 import type { SpellApiObject } from '~/apiobjects/spell.apiobject';
 import spells from '~/database/data/spells.json'
+import { cloneDeep } from 'lodash';
 
 export async function getSpells(): Promise<Array<SpellApiObject>> {
-	return spells
+	return cloneDeep(spells)
 }
 
 export async function getSpell(spellId: string): Promise<SpellApiObject> {
@@ -12,5 +13,5 @@ export async function getSpell(spellId: string): Promise<SpellApiObject> {
     throw new Error(`Spell not found for id ${spellId}`);
   }
 
-	return spell
+	return cloneDeep(spell)
 }

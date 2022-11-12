@@ -1,8 +1,9 @@
 import feats from "~/database/data/feats";
 import type { FeatApiObject } from "../apiobjects/feat.apiobject";
+import { cloneDeep } from 'lodash';
 
 export async function getFeats(): Promise<Array<FeatApiObject>> {
-  return feats;
+  return cloneDeep(feats);
 }
 
 export async function getFeat(
@@ -14,5 +15,5 @@ export async function getFeat(
     throw new Error(`Feat not found for index ${index}`);
   }
 
-  return feat;
+  return cloneDeep(feat);
 }

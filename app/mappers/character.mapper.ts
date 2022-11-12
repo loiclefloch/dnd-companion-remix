@@ -25,7 +25,7 @@ import { formatSpell } from '~/mappers/spell.mapper';
 import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 import { formatRace } from "~/mappers/race.mapper"
 import type { CharacterApiObject } from '~/apiobjects/characters.apiobject'
-import { CharacterDto } from '~/dtos/characters.dto'
+import type { CharacterDto } from '~/dtos/characters.dto'
 import { formatClass, formatSubclass } from './class.mapper'
 import { formatFeat } from './feat.mapper'
 import { formatFeature } from './feature.mapper'

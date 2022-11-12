@@ -11,7 +11,7 @@ import { useLoaderData } from '@remix-run/react';
 import { requireUser } from '~/services/session.server';
 import type { LoaderArgs} from '@remix-run/server-runtime';
 import { json} from '@remix-run/server-runtime';
-import { formatCurrentCharacter } from '~/mappers/character.mapper';
+import { formatCharacter } from '~/mappers/character.mapper';
 import { formatSpell } from '~/mappers/spell.mapper';
 import { getCurrentCharacter } from '~/services/currentcharacter.server';
 import { getSpell } from '~/services/spells.server';
@@ -24,7 +24,7 @@ export async function loader({ request, params }: LoaderArgs) {
 
   return json({
     spell: formatSpell(spell),
-		character: formatCurrentCharacter(currentCharacter)
+		character: formatCharacter(currentCharacter)
   });
 }
 
