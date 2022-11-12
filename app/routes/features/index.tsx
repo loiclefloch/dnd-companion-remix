@@ -1,18 +1,32 @@
 import { useMemo } from "react"
 import Screen from "~/components/Screen";
 import { sortBy } from "lodash";
-import { Link } from "@remix-run/react"
+import { Link, useLoaderData } from "@remix-run/react"
 import useI18n from "../../modules/i18n/useI18n";
 import IconAcademicCap from "~/components/icons/IconAcademicCap";
 import useLocalSearch from "~/components/useLocalSearch";
 import InputSearch from "~/components/InputSearch";
+import type { LoaderArgs} from "@remix-run/server-runtime";
+import { json } from "@remix-run/server-runtime";
+import { formatFeature } from "~/mappers/feature.mapper";
+import { getFeatures } from "~/services/feature.server";
+import { requireUser } from "~/services/session.server";
+
+export async function loader({ request }: LoaderArgs) {
+  const token = await requireUser(request);
+
+  const featureApiObjects = await getFeatures();
+
+  return json({
+    features: featureApiObjects.map(formatFeature),
+  });
+}
 
 function FeatureRow({ feature }) {
   const { tr } = useI18n();
-  const href = `/features/${feature.index}`;
 
   return (
-    <Link href={href} >
+    <Link to={`/features/${feature.index}`} >
       <div
         // onClick={onSelect}
         className={`relative cursor-pointer border-b border-solid border-slate-100 py-1  pl-3 dark:border-gray-50`}
@@ -35,11 +49,11 @@ function FeatureRow({ feature }) {
 
 
 // TODO: filter: by class, by background
-function Features() {
-  const features = useFeatures();
+export default function Features() {
+	const { features } = useLoaderData<typeof loader>();
 
   const sortedFeatures = useMemo(() => {
-    return sortBy(features.data, ['background', 'class', 'level', 'name'])
+    return sortBy(features, ['background', 'class', 'level', 'name'])
   }, [features]);
 
   const {
@@ -58,7 +72,6 @@ function Features() {
     <Screen
       title={"Les features"}
       titleIcon={<IconAcademicCap className="h-6 w-6" />}
-      isLoading={features.isLoading}
       withBottomSpace
     >
       <div className="flex flex-col">
@@ -91,5 +104,3 @@ function Features() {
     </Screen>
   );
 }
-
-export default Features;

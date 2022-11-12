@@ -18,7 +18,7 @@ export async function loader({ request, params }: LoaderArgs) {
   });
 }
 
-function Background() {
+export default function Background() {
 	const { background } = useLoaderData<typeof loader>();
 	const { tr } = useI18n()
 
@@ -32,6 +32,3 @@ function Background() {
     </Screen>
   );
 }
-
-export default Background;
-

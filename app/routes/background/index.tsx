@@ -39,7 +39,7 @@ function BackgroundRow({ background }) {
   );
 }
 
-function Backgrounds() {
+export default function Backgrounds() {
 	const { backgrounds } = useLoaderData<typeof loader>();
 	const { tr } = useI18n()
 
@@ -61,4 +61,3 @@ function Backgrounds() {
   );
 }
 
-export default Backgrounds;

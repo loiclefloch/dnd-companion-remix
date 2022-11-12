@@ -3,10 +3,6 @@ import type { FeatureDto } from '~/dtos/feature.dto'
 import camelize from '../modules/utils/camelize'
 
 export function formatFeature(featureParam: FeatureApiObject): FeatureDto {
-  if (!featureParam) {
-    return null
-  }
-
   const feature = camelize(featureParam)
 
   feature.forBackground = !!feature.background
