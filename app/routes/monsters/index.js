@@ -87,7 +87,7 @@ function Monster({ monster, filters, /*onSelect*/ }) {
 
 function Monsters() {
   const { lang } = useI18n()
-  const monstersResponse = useMonsters();
+  const monsters = useMonsters();
 	// TODO: how to keep filters when we go back on the page?
   const { filters, filterMonsters, showMonstersListFilterScreen } = useMonstersListFilterScreenAsModal([])
   
@@ -99,7 +99,7 @@ function Monsters() {
 		onRemoveHistoryQuery,
 		// reset
 	} = useLocalSearch('monsters', {
-		data: monstersResponse.data,
+		data: monsters,
 		options: useLocalSearch.searchOptions.monsters
 	})
 
@@ -110,7 +110,6 @@ function Monsters() {
       root
 			withCharacterMenu
 			withBottomSpace
-      isLoading={monstersResponse.isLoading}
       rightAction={
         <button onClick={showMonstersListFilterScreen}>
           <IconFilter className={clsx("h-6 w-6 text-gray-500", {
@@ -138,7 +137,7 @@ function Monsters() {
 							/>
 						))
 					) : (
-						sortMonsters(filterMonsters(monstersResponse.data), lang)?.map((monster) => (
+						sortMonsters(filterMonsters(monsters), lang)?.map((monster) => (
 							<Monster
 								key={monster.name}
 								monster={monster}

@@ -30,13 +30,12 @@ function SubItem({ title, href }) {
 }
 
 function Rules() {
-	const rulesResponse = useRules()
+	const rules = useRules()
 
 	return (
 		<Screen
 			title={"Règles"}
 			titleIcon={<IconAcademicCap className="w-6 h-6" />}
-			isLoading={rulesResponse.isLoading}
 			root
 			withBottomSpace
 		>
@@ -101,7 +100,7 @@ function Rules() {
 				/>
 
 
-				{rulesResponse.data?.map(section => (
+				{rules.map(section => (
 					<RuleSection
 						key={section.index}
 						title={section.name}

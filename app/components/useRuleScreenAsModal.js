@@ -14,14 +14,14 @@ const useI18n = makeI18n({
 
 function RuleScreenAsModal({ index, onCloseScreen }) {
 	const { tr } = useI18n()
-	const ruleResponse = useRule(index)
+	const rule = useRule(index)
 
 	return (
 		<ScreenAsModal 
 			title={tr`screen.title`} 
 			onCloseScreen={onCloseScreen}
 		>
-			<RuleContent index={index} ruleResponse={ruleResponse} />
+			<RuleContent index={index} rule={rule} />
 		</ScreenAsModal>
 	)
 }

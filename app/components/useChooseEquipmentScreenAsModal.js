@@ -144,11 +144,11 @@ function Category({ category, selectedItems, onSelect }) {
 function ChooseEquipmentScreenAsModal({ onChooseEquipment, onCloseScreen }) {
 	const { tr } = useI18n()
 	const [selectedItems, setSelectedItems] = useState([])
-	const equipmentCategoriesResponse = useEquipmentCategories()
+	const equipmentCategories = useEquipmentCategories()
 
 	const equipmentList = useMemo(
-		() => uniqBy(equipmentCategoriesResponse.data?.map(group => group.equipment).flat(), item => item.index), 
-		[equipmentCategoriesResponse.data]
+		() => uniqBy(equipmentCategories.map(group => group.equipment).flat(), item => item.index), 
+		[equipmentCategories]
 	)
 
 	const {
@@ -171,7 +171,6 @@ function ChooseEquipmentScreenAsModal({ onChooseEquipment, onCloseScreen }) {
 		<ScreenAsModal
 			title={`Équipement`}
 			onCloseScreen={onCloseScreen}
-			isLoading={equipmentCategoriesResponse.isLoading}
 			withBottomSpace
 		>
 			<InputSearch
@@ -195,7 +194,7 @@ function ChooseEquipmentScreenAsModal({ onChooseEquipment, onCloseScreen }) {
 				</div>
 			) :
 				<div className="pt-2">
-					{equipmentCategoriesResponse.data?.map(category => (
+					{equipmentCategories.data?.map(category => (
 						<Category
 							key={category.index}
 							category={category}

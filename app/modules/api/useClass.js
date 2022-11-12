@@ -1,6 +1,5 @@
 import { cloneDeep, isArray } from 'lodash'
-import classes from '~/database/data/classes'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 import equipment from '~/database/data/equipment.json'
 import proficiencies from '~/database/data/proficiencies.json'
 import camelize from '../utils/camelize'
@@ -46,7 +45,8 @@ export function formatClass(clssParam) {
 }
 
 function useClass(index) {
-  return useData(formatClass(classes.find(clss => clss.index === index)))
+  const { classes } = useRootData()
+  return formatClass(classes.find(clss => clss.index === index))
 }
 
 export default useClass

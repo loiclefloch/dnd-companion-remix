@@ -15,9 +15,9 @@ const MAX_SPELL_LEVEL = 9 // maximum spell level
 
 function FilterClasses({ filters, onChange }) {
 	const { tr } = useI18n()
-	const classesResponse = useClasses()
+	const classes = useClasses()
 
-	const options = classesResponse.data?.map(clss => ({
+	const options = classes.map(clss => ({
 		index: clss.index,
 		label: tr(clss.nameLocalized),
 		value: clss.index,
@@ -26,7 +26,6 @@ function FilterClasses({ filters, onChange }) {
 	return (
 		<FilterSection
 			title="Classes"
-			isLoading={classesResponse.isLoading}
 			filters={filters}
 			type={FilterType.CLASS}
 			onChange={onChange}
@@ -46,7 +45,7 @@ function FilterClasses({ filters, onChange }) {
 
 function FilterSpellLevel({ filters, onChange }) {
 	const { tr } = useI18n()
-	const classesResponse = useClasses()
+	const classes = useClasses()
 
 	const options = [...Array(MAX_SPELL_LEVEL + 1)].map((_, index) => ({
 		index: index,
@@ -57,7 +56,6 @@ function FilterSpellLevel({ filters, onChange }) {
 	return (
 		<FilterSection 
 			title="Spell level" 
-			isLoading={classesResponse.isLoading} 
 			filters={filters} 
 			type={FilterType.SPELL_LEVEL} 
 			onChange={onChange}
@@ -77,9 +75,9 @@ function FilterSpellLevel({ filters, onChange }) {
 
 function FilterMagicSchool({ filters, onChange }) {
 	const { tr } = useI18n()
-	const magicSchoolsResponse = useMagicSchools()
+	const magicSchools = useMagicSchools()
 
-	const options = magicSchoolsResponse.data?.map(magicSchool => ({
+	const options = magicSchools.map(magicSchool => ({
 		index: magicSchool.index,
 		label: (
 			<span className='flex items-center'>
@@ -93,7 +91,6 @@ function FilterMagicSchool({ filters, onChange }) {
 	return (
 		<FilterSection
 			title="Magic schools"
-			isLoading={magicSchoolsResponse.isLoading}
 			filters={filters}
 			options={options}
 			type={FilterType.MAGIC_SCHOOL}

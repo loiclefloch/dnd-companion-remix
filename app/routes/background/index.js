@@ -29,19 +29,18 @@ function BackgroundRow({ background }) {
 
 function Backgrounds() {
 	const { tr } = useI18n()
-	const backgroundsResponse = useBackgrounds()
+	const backgrounds = useBackgrounds()
 
   return (
     <Screen
       title={tr`screen.title`}
 			titleIcon={<IconAcademicCap className="w-6 h-6" />}
-			isLoading={backgroundsResponse.isLoading}
 			withBottomSpace
     >
 			<div className="flex flex-col">
 
 				<ListRowSelectContainer className="px-4 mt-4">
-					{backgroundsResponse.data?.map(background => (
+					{backgrounds.map(background => (
 						<BackgroundRow key={`background_${background.index}`} background={background} />
 					))}
 				</ListRowSelectContainer>

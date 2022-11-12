@@ -9,17 +9,16 @@ import RuleContent from "~/components/RuleContent"
 function Rule() {
 	const router = useRouter()
 	const index = router.query.ruleIndex || 'the-order-of-combat'
-	const ruleResponse = useRule(index)
+	const rule = useRule(index)
 
   return (
 		<Screen
-			title={`Règles - ${ruleResponse.data?.name || ''}`}
+			title={`Règles - ${rule.name || ''}`}
 			titleIcon={<IconAcademicCap className="w-6 h-6" />}
-			isLoading={ruleResponse.isLoading}
 			withBottomSpace
 		>
 			<div className="flex flex-col gap-2 p-4" data-cy-id="spells-list">
-				<RuleContent index={index} ruleResponse={ruleResponse} />
+				<RuleContent index={index} rule={rule} />
 			</div>
 		</Screen>
 	);

@@ -30,14 +30,8 @@ const useI18n = makeI18n({
 
 function Feature({ index }) {
 	const { tr } = useI18n()
-	const featuresResponse = useFeature(index)
+	const feature = useFeature(index)
 	const { showFeatureScreenAsModal } = useFeatureScreenAsModal()
-
-	const feature = featuresResponse.data
-
-	if (!feature) {
-		return null // loading
-	}
 
 	return (
 		<div 

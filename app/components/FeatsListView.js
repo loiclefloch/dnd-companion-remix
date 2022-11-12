@@ -39,15 +39,15 @@ function FeatRow({ feat }) {
 // TODO: filter: by class, by background
 function Feats({ character }) {
   const { tr } = useI18n();
-  const featsResponse = useFeats();
+  const allFeats = useFeats();
 
   const feats = useMemo(() => {
-		let feats = featsResponse.data
+		let feats = allFeats
 		if (character) {
 			feats = filterFeatsForCharacter(feats, character)
 		}
 		return sortBy(feats, ['background', 'class', 'level', 'name'])
-  }, [character, featsResponse.data]);
+  }, [character, allFeats]);
 
   const {
     searchHistory,
@@ -65,7 +65,6 @@ function Feats({ character }) {
     <Screen
       title={tr`feats.title`}
       titleIcon={<IconAcademicCap className="h-6 w-6" />}
-      isLoading={featsResponse.isLoading}
       withBottomSpace
     >
       <div className="flex flex-col">

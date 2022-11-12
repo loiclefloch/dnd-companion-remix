@@ -1,5 +1,5 @@
 import allRaces from '~/database/data/allRaces'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 import { formatRace } from "./useRace"
 

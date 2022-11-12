@@ -23,19 +23,18 @@ function RaceRow({ race }) {
 }
 
 function Race() {
-	const racesResponse = useRaces()
+	const races = useRaces()
 
   return (
     <Screen
       title={"Les races"}
 			titleIcon={<IconAcademicCap className="w-6 h-6" />}
-			isLoading={racesResponse.isLoading}
 			withBottomSpace
     >
 			<div className="flex flex-col">
 
 				<ListRowSelectContainer className="px-4 mt-4">
-					{racesResponse.data?.map(race => (
+					{races.map(race => (
 						<RaceRow key={`race_${race.index}`} race={race} />
 					))}
 				</ListRowSelectContainer>

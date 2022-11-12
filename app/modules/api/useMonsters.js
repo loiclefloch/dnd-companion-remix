@@ -1,10 +1,10 @@
-import monsters from '~/database/data/monsters.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 import { formatMonster } from "./useMonster"
 
 function useMonsters() {
-  return useData(monsters.map(formatMonster))
+  const { monsters } = useRootData()
+  return monsters.map(formatMonster)
 }
 
 export default useMonsters

@@ -1,6 +1,6 @@
 import features from '~/database/data/features'
 import camelize from '../utils/camelize'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 export function formatFeature(featureParam) {
   if (!featureParam) {

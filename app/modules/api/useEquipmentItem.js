@@ -1,6 +1,5 @@
-import equipment from "../../database/data/equipment.json"
 import camelize from "../utils/camelize"
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 // possible equipment_category
 // - weapon
@@ -86,7 +85,8 @@ export function formatEquipmentItem(itemParam) {
 }
 
 function useEquipmentItem(index) {
-	return useData(formatEquipmentItem(equipment.find(item => item.index === index)))
+	const { equipment } = useRootData()
+	return formatEquipmentItem(equipment.find(item => item.index === index))
 }
 
 export default useEquipmentItem

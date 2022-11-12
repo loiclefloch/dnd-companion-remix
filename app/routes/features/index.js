@@ -13,7 +13,7 @@ function FeatureRow({ feature }) {
   const href = `/features/${feature.index}`;
 
   return (
-    <Link to={href} passHref>
+    <Link href={href} passHref>
       <div
         // onClick={onSelect}
         className={`relative cursor-pointer border-b border-solid border-slate-100 py-1  pl-3 dark:border-gray-50`}
@@ -37,11 +37,11 @@ function FeatureRow({ feature }) {
 
 // TODO: filter: by class, by background
 function Features() {
-  const featuresResponse = useFeatures();
+  const features = useFeatures();
 
-  const features = useMemo(() => {
-    return sortBy(featuresResponse.data, ['background', 'class', 'level', 'name'])
-  }, [featuresResponse.data]);
+  const sortedFeatures = useMemo(() => {
+    return sortBy(features.data, ['background', 'class', 'level', 'name'])
+  }, [features]);
 
   const {
     searchHistory,
@@ -51,7 +51,7 @@ function Features() {
     onRemoveHistoryQuery,
     // reset
   } = useLocalSearch("spells", {
-    data: features,
+    data: sortedFeatures,
     options: useLocalSearch.searchOptions.features,
   });
 
@@ -59,7 +59,7 @@ function Features() {
     <Screen
       title={"Les features"}
       titleIcon={<IconAcademicCap className="h-6 w-6" />}
-      isLoading={featuresResponse.isLoading}
+      isLoading={features.isLoading}
       withBottomSpace
     >
       <div className="flex flex-col">
@@ -81,7 +81,7 @@ function Features() {
                   />
                 );
               })
-            : features.map((feature) => (
+            : sortedFeatures.map((feature) => (
                 <FeatureRow
                   key={`feature_${feature.index}`}
                   feature={feature}

@@ -1,5 +1,6 @@
 import IconSpin from "../icons/IconSpin"
 
+// TODO: remix remove
 function ScreenAsModalLoading() {
 	return (
 		<div className="flex w-full h-full justify-center">

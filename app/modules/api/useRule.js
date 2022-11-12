@@ -1,5 +1,4 @@
-import ruleSections from '~/database/data/rule-sections.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 export function format(rule) {
   if (!rule) {
@@ -13,7 +12,8 @@ export function format(rule) {
 }
 
 function useRule(index) {
-  return useData(format(ruleSections.find(rule => rule.index === index)))
+  const { ruleSections } = useRootData()
+  return format(ruleSections.find(rule => rule.index === index))
 }
 
 export default useRule

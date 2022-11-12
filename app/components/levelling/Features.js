@@ -17,9 +17,7 @@ const useI18n = makeI18n({
 
 function Feature({ character, value = { type: '', }, onChange, index }) {
 	const { tr } = useI18n()
-	const featureResponse = useFeature(index)
-
-	const feature = featureResponse.data
+	const feature = useFeature(index)
 
 	return (
     <Section 

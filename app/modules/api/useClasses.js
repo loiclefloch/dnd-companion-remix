@@ -1,9 +1,9 @@
-import classes from '~/database/data/classes'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 import { formatClass } from "./useClass"
 
 function useClasses() {
-  return useData(classes.map(formatClass))
+  const { classes } = useRootData()
+  return classes.map(formatClass)
 }
 
 export default useClasses

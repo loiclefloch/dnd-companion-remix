@@ -14,15 +14,14 @@ const useI18n = makeI18n({
 
 function FeatScreenAsModal({ index, character, onCloseScreen }) {
 	const { tr } = useI18n()
-	const featResponse = useFeat(index)
+	const feat = useFeat(index)
 
 	return (
 		<ScreenAsModal
-			title={tr('screen.title', { 'feat.name': tr(featResponse.data.nameLocalized)})} 
-			isFetching={featResponse.isFetching}
+			title={tr('screen.title', { 'feat.name': tr(feat.nameLocalized)})} 
 			onCloseScreen={onCloseScreen}
 		>
-			<FeatContent index={index} feat={featResponse.data} character={character} />
+			<FeatContent index={index} feat={feat} character={character} />
 		</ScreenAsModal>
 	)
 }

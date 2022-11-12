@@ -51,14 +51,13 @@ function Form({ classes }) {
 }
 
 function ChooseCharacterClass() {
-	const classesResponse = useClasses()
+	const classes = useClasses()
 
 	return (
 		<Screen
 			title={"Choix de la classe"}
-			isLoading={classesResponse.isLoading}
 		>
-			{classesResponse.data && (<Form classes={classesResponse.data} />)}
+			{classes && (<Form classes={classes} />)}
 		</Screen>
   );
 }

@@ -13,16 +13,12 @@ const View = {
 }
 
 function Land({ value, onChange }) {
-	const landFeatureResponse = useFeature('circle-of-the-land') 
-
-	if (!landFeatureResponse.data) {
-		return null
-	}
+	const landFeature = useFeature('circle-of-the-land') 
 
 	return (
 		<div>
 			<FeatureSpecificSelector
-				feature={landFeatureResponse.data}
+				feature={landFeature}
 			 	value={value}
 				onChange={(featureSpecificData) => onChange(featureSpecificData)}
 			/>

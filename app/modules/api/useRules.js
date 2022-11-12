@@ -1,8 +1,8 @@
-import rules from '~/database/data/rules.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 function useRules() {
-  return useData(rules)
+  const { rules } = useRootData()
+  return rules
 }
 
 export default useRules

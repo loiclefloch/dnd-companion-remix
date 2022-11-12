@@ -7,7 +7,6 @@ import ButtonBottomScreen from '~/components/ButtonBottomScreen';
 import useCreateCharacter from '~/components/useCreateCharacter';
 
 function Form({ race }) {
-	const router = useRouter()
 	const { updateCharacter } = useCreateCharacter()
 
 	return (
@@ -32,14 +31,11 @@ function Form({ race }) {
 function DisplayCharacterRace() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const raceResponse = useRace(router.query.race)
-
-	const race = raceResponse.data
+	const race = useRace(router.query.race)
 
 	return (
 		<Screen
 			title={tr(race?.nameLocalized)}
-			isLoading={raceResponse.isLoading}
 		>
 			{race && (
 				<Form race={race} />

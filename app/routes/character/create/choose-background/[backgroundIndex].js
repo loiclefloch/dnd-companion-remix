@@ -10,15 +10,12 @@ function CreateCharacterBackgroundDetail() {
 	const { tr } = useI18n()
 	const router = useRouter()
 	const { updateCharacter } = useCreateCharacter()
-	const backgroundResponse = useBackground(router.query.backgroundIndex)
-
-	const background = backgroundResponse.data
+	const background = useBackground(router.query.backgroundIndex)
 
 	return (
 		<Screen
 			title={background ? `Background - ${background.name}` : ''}
 			withBottomSpace
-			isPending={backgroundResponse.isPending}
 		>
 			<div className="flex flex-col px-4">
 				<BackgroundContent index={router.query.backgroundIndex} />

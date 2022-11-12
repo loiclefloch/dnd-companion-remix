@@ -521,13 +521,13 @@ export function useFeatStepScreenAsModal() {
 
 export function FeatSelector({ selectedFeat, setSelectedFeat, character }) {
 	const { tr } = useI18n()
-	const featsResponse = useFeats()
+	const feats = useFeats()
 	const { showFeatScreenAsModal } = useFeatScreenAsModal()
 
-	const feats = useMemo(() => filterFeatsForCharacter(featsResponse.data, character)
+	const featsForCharacter = useMemo(() => filterFeatsForCharacter(feats, character)
 		// TODO: only on dev
 		.filter(f => process.env.NODE_ENV !== 'development' ? true : ['alert', 'fey-touched', 'linguist', 'fighting-initiate'].includes(f.index)),
-		[character, featsResponse.data]
+		[character, feats]
 	)
 
 	/* TODO: learn more */
@@ -538,7 +538,7 @@ export function FeatSelector({ selectedFeat, setSelectedFeat, character }) {
 		<ListSelector
 			className="px-0"
 			value={selectedFeat}
-			options={feats?.map(feat => {
+			options={featsForCharacter?.map(feat => {
 				const selected = feat.index === selectedFeat?.index
 
 				return {

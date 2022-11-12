@@ -5,10 +5,8 @@ import ListSelector from "../ListSelector"
 
 function SubclassListSelector({ clss, selectedSubclass, onSelect }) {
 	const { tr } = useI18n()
-	const subclassesResponse = useSubclasses(clss)
+	const subclasses = useSubclasses(clss)
 	const { showSubclassScreenAsModal } = useSubclassScreenAsModal()
-
-	const subclasses = subclassesResponse.data
 
 	return (
 		<ListSelector

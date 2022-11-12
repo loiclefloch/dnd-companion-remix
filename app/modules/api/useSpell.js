@@ -1,5 +1,4 @@
-import spells from '~/database/data/spells.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 export function formatSpell(spell) {
   if (!spell) {
@@ -15,7 +14,8 @@ export function formatSpell(spell) {
 }
 
 function useSpell(index) {
-  return useData(formatSpell(spells.find(spell => spell.index === index)))
+  const { spells } = useRootData()
+  return formatSpell(spells.find(spell => spell.index === index))
 }
 
 export default useSpell

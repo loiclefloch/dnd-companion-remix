@@ -1,10 +1,10 @@
-import magicSchools from '~/database/data/magic-schools.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 import { format } from './useMagicSchool'
 
 function useMagicSchools() {
-  return useData(magicSchools.map(format))
+  const { magicSchools } = useRootData()
+  return magicSchools.map(format)
 }
 
 export default useMagicSchools

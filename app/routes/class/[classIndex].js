@@ -8,14 +8,12 @@ import ClassDetailsView from '~/components/classes/ClassDetailsView';
 function Clss() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const clssResponse = useClass(router.query.classIndex)
+	const clss = useClass(router.query.classIndex)
 
-	const clss = clssResponse.data
 
 	return (
 		<Screen
 			title={tr(clss?.nameLocalized)}
-			isLoading={clssResponse.isLoading}
 			withBottomSpace
 		>
 			{clss && (

@@ -1,7 +1,6 @@
 import { isEmpty } from 'lodash'
-import feats from '~/database/data/feats'
 import camelize from '../utils/camelize'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 export function formatFeat(featParam) {
   if (!featParam) {
@@ -38,7 +37,8 @@ export function formatFeat(featParam) {
 }
 
 function useFeat(index) {
-  return useData(formatFeat(feats.find(feature => feature.index === index)))
+  const { feats } = useRootData()
+  return formatFeat(feats.find(feature => feature.index === index))
 }
 
 export default useFeat

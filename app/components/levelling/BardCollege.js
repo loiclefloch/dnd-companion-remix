@@ -14,13 +14,7 @@ const View = {
 }
 
 function Lore({ character, value = [], onChange }) {
-	const skillsResponse = useSkills() 
-
-	if (!skillsResponse.data) {
-		return null
-	}
-
-	const skills = skillsResponse.data
+	const skills = useSkills() 
 
 	return (
 		<div>

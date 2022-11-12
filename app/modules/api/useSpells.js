@@ -1,10 +1,11 @@
 import spells from '~/database/data/spells.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 import { formatSpell } from './useSpell'
 
 function useSpells() {
-  return useData(() => spells.map(formatSpell))
+  const { spells } = useRootData()
+  return spells.map(formatSpell)
 }
 
 export default useSpells

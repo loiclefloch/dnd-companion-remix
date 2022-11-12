@@ -1,7 +1,6 @@
-import allRaces from '~/database/data/allRaces'
 import traits from '~/database/data/traits.json'
 import isEmpty from 'lodash/isEmpty'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 import camelize from '../utils/camelize'
 import { cloneDeep } from 'lodash'
 
@@ -29,7 +28,8 @@ export function formatRace(raceParam) {
 }
 
 function useRace(index) {
-  return useData(formatRace(allRaces.find(race => race.index === index)))
+  const { allRaces } = useRootData()
+  return formatRace(allRaces.find(race => race.index === index))
 }
 
 export default useRace

@@ -22,8 +22,7 @@ function RaceRow({ race, onSelect }) {
 }
 
 
-function Form({ racesResponse }) {
-	const { updateCharacter } = useCreateCharacter()
+function Form({ races }) {
 	const router = useRouter()
 
 	return (
@@ -37,7 +36,7 @@ function Form({ racesResponse }) {
 			/>
 
 			<ListRowSelectContainer className="px-4 mt-12">
-				{racesResponse.data?.map(race => (
+				{races.map(race => (
 					<RaceRow
 						key={race.index}
 						race={race}
@@ -52,14 +51,13 @@ function Form({ racesResponse }) {
 }
 
 function ChooseCharacterRace() {
-	const racesResponse = useRaces()
+	const races = useRaces()
 
 	return (
 		<Screen
 			title={"Choix de la race"}
-			isLoading={racesResponse.isLoading}
 		>
-			<Form racesResponse={racesResponse} />
+			<Form races={races} />
 		</Screen>
 	);
 }

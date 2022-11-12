@@ -48,7 +48,7 @@ function CharactersScreen() {
 	const { tr } = useI18n()
 	const router = useRouter()
 	const { startCreateCharacter } = useCreateCharacter()
-	const charactersResponse = useCharacters()
+	const characters = useCharacters()
 	const { character: currentCharacter } = useCurrentCharacter()
 
 	return (
@@ -56,7 +56,6 @@ function CharactersScreen() {
 			title={tr`screen.title`}
 			titleIcon={<IconUsers className="w-6 h-6" />}
 			root
-			isLoading={charactersResponse.isLoading}
 			rightAction={
 				<button onClick={() => {
 					startCreateCharacter()
@@ -67,7 +66,7 @@ function CharactersScreen() {
 			}
 		>
 			<div>
-				{charactersResponse.data && isEmpty(charactersResponse.data) && (
+				{isEmpty(characters) && (
 					<div className="flex flex-col items-center w-full p-4 mt-4">
 						<p>{tr`no characters yet`}</p>
 						<Button 
@@ -80,7 +79,7 @@ function CharactersScreen() {
 					</div>
 				)}
 				<ListRowSelectContainer className="px-4 pb-12 mt-12" data-cy-id="characters-list">
-					{charactersResponse.data?.map((character) => (
+					{characters.map((character) => (
 						<Character
 							key={character.id}
 							character={character}

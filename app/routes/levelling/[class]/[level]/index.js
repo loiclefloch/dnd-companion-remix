@@ -16,16 +16,13 @@ function LevellingClassLevel() {
 
 	const classIndex = router.query.class || 'druid'
 
-	const classResponse = useClass(classIndex) // TODO:
+	const clss = useClass(classIndex) // TODO:
 	const level = parseInt(router.query.level) || 3 // TODO:
-
-	const clss = classResponse.data
 
 	return (
 		<Screen
 			title={clss && `${tr(clss.nameLocalized)} - Niveau ${level}`}
 			titleIcon={<IconBookOpen className="w-6 h-6" />}
-			isLoading={classResponse.isLoading}
 		>
 			{clss && (
 				<LevelDetailView clss={clss} level={level} />

@@ -1,5 +1,5 @@
 import equipment from "../../database/data/equipment.json"
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 import { formatEquipmentItem } from "./useEquipmentItem"
 

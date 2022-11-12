@@ -9,15 +9,12 @@ import IconBookOpen from "~/components/icons/IconBookOpen";
 function Feat() {
 	const router = useRouter()
 	const { tr } = useI18n()
-	const featResponse = useFeat(router.query.featIndex);
-
-	const feat = featResponse.data;
+	const feat = useFeat(router.query.featIndex);
 
 	return (
 		<Screen
 			title={!feat ? 'feat' : `feat - ${tr(feat?.nameLocalized)}`}
 			titleIcon={<IconBookOpen className="w-6 h-6" />}
-			isLoading={featResponse.isLoading}
 		>
 			{feat && (
 				<div className='mt-8'>

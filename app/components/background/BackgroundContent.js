@@ -23,16 +23,10 @@ const useI18n = makeI18n({
 
 function Content({ index }) {
 	const { tr } = useI18n()
-	const backgroundResponse = useBackground(index)
+	const background = useBackground(index)
 	const { showTipProficiency } = useTipProficiency()
 	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
 	const { showTipLanguage } = useTipLanguage()
-
-	const background = backgroundResponse.data
-
-	if (!background) {
-		return null
-	}
 
 	// TODO: display data
 	// - starting_currencies

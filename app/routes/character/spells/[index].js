@@ -14,18 +14,15 @@ import useEditEditCharacterSpellScreenAsModal from "~/components/useEditEditChar
 function Spell() {
 	const router = useRouter()
 	const { tr } = useI18n()
-	const spellResponse = useSpell(router.query.index);
+	const spell = useSpell(router.query.index);
 	const { showEditCharacterSpellModal } = useEditEditCharacterSpellScreenAsModal()
 	const { character, characterDispatch } = useCurrentCharacter()
-
-	const spell = spellResponse.data;
 
 	return (
 		<CharacterProvider character={character}>
 			<Screen
 				title={!spell ? 'Sort' : `${tr(spell?.nameLocalized)}`}
 				titleIcon={<IconBookOpen className="w-6 h-6" />}
-				isLoading={spellResponse.isLoading}
 				rightAction={
 					<IconPencil
 						className="w-5 h-5 text-slate-700"
@@ -33,9 +30,7 @@ function Spell() {
 					/>
 				}
 			>
-				{spell && (
-					<SpellView spell={spell} character={character} />
-				)}
+				<SpellView spell={spell} character={character} />
 			</Screen>
 		</CharacterProvider>
 	)

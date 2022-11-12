@@ -111,7 +111,7 @@ function Spell({ spell, filters, character /*onSelect*/ }) {
 
 function Spells({ contextCharacter }) {
   const { tr, lang } = useI18n()
-  const spellsResponse = useSpells();
+  const spells = useSpells();
   const defaultFilters  = useMemo(() => {
     console.log('a')
     if (contextCharacter) {
@@ -124,7 +124,7 @@ function Spells({ contextCharacter }) {
     defaultFilters
   )
 
-  const filteredSpells = useMemo(() => filterSpells(spellsResponse.data, lang), [filterSpells, spellsResponse.data, lang])
+  const filteredSpells = useMemo(() => filterSpells(spells, lang), [filterSpells, spells, lang])
 
   // useEffect(() => {
     // ritual
@@ -165,7 +165,7 @@ function Spells({ contextCharacter }) {
       root
       withCharacterMenu
       withBottomSpace
-      isLoading={spellsResponse.isLoading}
+      isLoading={spells.isLoading}
       rightAction={
         <button onClick={() => showSpellsListFilterScreen()}>
           <IconFilter

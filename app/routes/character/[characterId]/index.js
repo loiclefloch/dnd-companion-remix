@@ -120,8 +120,7 @@ function Content({
 
 function Character() {
 	const router = useRouter()
-	const characterResponse = useCharacter(router.query.characterId)
-	const character = characterResponse.data
+	const character = useCharacter(router.query.characterId)
 	const { character: currentCharacter, setCurrentCharacter, characterDispatch } = useCurrentCharacter()
 
 	useEffect(() => {
@@ -134,7 +133,6 @@ function Character() {
 		<Screen
 			title={currentCharacter?.name}
 			// titleIcon={<IconUsers className="w-6 h-6" />}
-			isLoading={characterResponse.isLoading}
 			root
 			withCharacterMenu
 			withBottomSpace

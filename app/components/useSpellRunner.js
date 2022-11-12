@@ -62,10 +62,6 @@ const useI18n = makeI18n({
 		fr: "Les dés sont pour un niveau supérieur à votre niveau",
 		en: "The dice are for a level above your maximum level",
 	},
-	'spell level': {
-		fr: `Niveau de sort`,
-		en: `Spell level`,
-	},
 	'dice above character spell level maximum': {
 		en: "The dice are for a level above the character spell maximum level",
 		fr: "Les dés sont pour niveau supérieur à votre maximum",

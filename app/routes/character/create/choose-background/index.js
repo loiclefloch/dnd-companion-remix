@@ -31,13 +31,12 @@ function BackgroundRow({ background, clss }) {
 
 function CreateCharacterBackground() {
 	const { character } = useCreateCharacter()
-	const backgroundsResponse = useBackgrounds()
+	const backgrounds = useBackgrounds()
 
 	return (
 		<Screen
 			title={"Background"}
 			withBottomSpace
-			isPending={backgroundsResponse.isPending}
 		>
 			<div className="flex flex-col">
 				<ScreenIntroduction
@@ -53,7 +52,7 @@ function CreateCharacterBackground() {
 				/>
 
 				<ListRowSelectContainer className="px-4 mt-6">
-					{backgroundsResponse.data?.map(background => (
+					{backgrounds.map(background => (
 						<BackgroundRow key={background.index} background={background} clss={character.classes[0]} />
 					))}
 				</ListRowSelectContainer>

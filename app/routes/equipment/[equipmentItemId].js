@@ -7,23 +7,19 @@ import useI18n from "../../modules/i18n/useI18n";
 function EquipmentItem() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const itemResponse = useEquipmentItem(router.query.equipmentItemId)
-
-	const item = itemResponse.data
+	const item = useEquipmentItem(router.query.equipmentItemId)
 
   return (
 		<Screen
 			title={`Équipement - ${tr(item?.nameLocalized || '')}`}
 			// titleIcon={<IconScale className="w-6 h-6" />}
-			isLoading={itemResponse.isLoading}
 			withBottomSpace
 		>
 			{item && (
-				<EquipmentItemView item={itemResponse.data} />
+				<EquipmentItemView item={item} />
 			)}
 		</Screen>
 	);
 }
 
 export default EquipmentItem;
-useEquipmentItem

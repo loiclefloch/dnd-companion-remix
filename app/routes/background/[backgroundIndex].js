@@ -7,14 +7,11 @@ import BackgroundContent from '~/components/background/BackgroundContent';
 function Background() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const backgroundResponse = useBackground(router.query.backgroundIndex)
-
-	const background = backgroundResponse.data
+	const background = useBackground(router.query.backgroundIndex)
 
 	return (
 		<Screen
 			title={tr(background?.nameLocalized)}
-			isLoading={backgroundResponse.isLoading}
 			withBottomSpace
 		>
 			{background && (

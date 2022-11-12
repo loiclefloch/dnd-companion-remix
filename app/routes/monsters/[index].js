@@ -10,19 +10,15 @@ import IconMonster from "~/components/icons/IconMonster";
 function Monster() {
 	const router = useRouter()
 	const { tr } = useI18n()
-	const monsterResponse = useMonster(router.query.index);
-	const monster = monsterResponse.data;
+	const monster = useMonster(router.query.index);
 
 	return (
 		<Screen
 			title={!monster ? 'Monstre' : `${tr(monster?.nameLocalized)}`}
 			titleIcon={<IconMonster className="w-6 h-6 fill-slate-700" />}
-			isLoading={monsterResponse.isLoading}
 			withBottomSpace
 		>
-			{monster && (
-				<MonsterView monster={monster} />
-			)}
+			<MonsterView monster={monster} />
 		</Screen>
 	)
 }

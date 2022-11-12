@@ -103,11 +103,11 @@ function Category({ category }) {
 }
 
 function Equipments() {
-	const equipmentCategoriesResponse = useEquipmentCategories()
+	const equipmentCategories = useEquipmentCategories()
 
 	const equipmentList = useMemo(
-		() => uniqBy(equipmentCategoriesResponse.data?.map(group => group.equipment).flat(), item => item.index), 
-		[equipmentCategoriesResponse.data]
+		() => uniqBy(equipmentCategories.map(group => group.equipment).flat(), item => item.index), 
+		[equipmentCategories]
 	)
 
 	const {
@@ -126,7 +126,6 @@ function Equipments() {
 		<Screen
 			title={"Équipements"}
 			// titleIcon={<IconScale className="w-6 h-6" />}
-			isLoading={equipmentCategoriesResponse.isLoading}
 			root
 			withBottomSpace
 		>
@@ -149,7 +148,7 @@ function Equipments() {
 					</div>
 				) : (
 					<div className="flex flex-col" data-cy-id="equipments-list">
-						{equipmentCategoriesResponse.data?.map(category => (
+						{equipmentCategories.map(category => (
 							<Category key={category.index} category={category} />
 						))}
 						{/* <Group title="Armes" items={grouped.weapon} />

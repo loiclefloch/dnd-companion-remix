@@ -6,17 +6,14 @@ import useI18n from "~/modules/i18n/useI18n"
 
 function SubclassScreenAsModal({ index, onCloseScreen }) {
 	const { tr } = useI18n()
-	const subclassResponse = useSubclass(index)
-
-	const subclass = subclassResponse?.data
+	const subclass = useSubclass(index)
 
 	return (
 		<ScreenAsModal 
 			title={tr(subclass?.nameLocalized)} 
-			isLoading={subclassResponse.isLoading}
 			onCloseScreen={onCloseScreen}
 		>
-			<SubclassContent subclass={subclassResponse.data} />
+			<SubclassContent subclass={subclass} />
 		</ScreenAsModal>
 	)
 }

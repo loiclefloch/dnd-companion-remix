@@ -1,12 +1,6 @@
-import { cloneDeep, isArray } from 'lodash'
-import subclasses from '~/database/data/subclasses.json'
-import useData from "./useData"
-import equipment from '~/database/data/equipment.json'
-import proficiencies from '~/database/data/proficiencies.json'
+import { cloneDeep } from 'lodash'
+import useRootData from "~/hooks/useRootData"
 import camelize from '../utils/camelize'
-import { formatEquipmentItem  } from './useEquipmentItem'
-import { formatProficiency } from "./useProficiency"
-import formatStartingEquipmentOptions from "./formatStartingEquipmentOptions"
 
 export function formatSubclass(subclassParam) {
   if (!subclassParam) { // required for build
@@ -39,7 +33,8 @@ export function formatSubclass(subclassParam) {
 }
 
 function useSubclass(index) {
-  return useData(formatSubclass(subclasses.find(subclass => subclass.index === index)))
+	const { subclasses } = useRootData()
+  return formatSubclass(subclasses.find(subclass => subclass.index === index))
 }
 
 export default useSubclass

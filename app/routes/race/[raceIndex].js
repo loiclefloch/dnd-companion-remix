@@ -7,20 +7,16 @@ import RaceDetailsView from '~/components/races/RaceDetailsView';
 function Race() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const raceResponse = useRace(router.query.raceIndex)
-
-	const race = raceResponse.data
+	const race = useRace(router.query.raceIndex)
 
 	return (
 		<Screen
 			title={tr(race?.nameLocalized)}
-			isLoading={raceResponse.isLoading}
+			isLoading={race.isLoading}
 			withBottomSpace
 		>
 			<div className="p-4">
-				{race && (
-					<RaceDetailsView race={race} />
-				)}
+				<RaceDetailsView race={race} />
 			</div>
 		</Screen>
   );

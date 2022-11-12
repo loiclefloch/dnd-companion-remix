@@ -1,10 +1,8 @@
-import skills from '~/database/data/skills.json'
-import useData from "./useData"
-
-import { formatSpell } from './useSpell'
+import useRootData from "~/hooks/useRootData"
 
 function useSkills() {
-  return useData(() => skills)
+  const { skills } = useRootData()
+  return skills
 }
 
 export default useSkills

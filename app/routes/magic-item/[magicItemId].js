@@ -7,19 +7,16 @@ import useMagicItem from "../../modules/api/useMagicItem";
 function MagicItem() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const itemResponse = useMagicItem(router.query.magicItemId)
-
-	const item = itemResponse.data
+	const item = useMagicItem(router.query.magicItemId)
 
   return (
 		<Screen
 			title={`Item magique - ${tr(item?.nameLocalized || '')}`}
 			// titleIcon={<IconScale className="w-6 h-6" />}
-			isLoading={itemResponse.isLoading}
 			withBottomSpace
 		>
 			{item && (
-				<EquipmentItemView item={itemResponse.data} />
+				<EquipmentItemView item={item} />
 			)}
 		</Screen>
 	);

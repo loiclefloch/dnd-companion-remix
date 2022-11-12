@@ -35,18 +35,13 @@ function Form({ clss }) {
 function DisplayCharacterClass() {
 	const { tr } = useI18n()
 	const router = useRouter()
-	const clssResponse = useClass(router.query.index || 'druid') // TODO:
-
-	const clss = clssResponse.data
+	const clss = useClass(router.query.index)
 
 	return (
 		<Screen
 			title={tr(clss?.nameLocalized)}
-			isLoading={clssResponse.isLoading}
 		>
-			{clss && (
-				<Form clss={clss} />
-			)}
+			<Form clss={clss} />
 		</Screen>
   );
 }

@@ -9,19 +9,14 @@ import IconBookOpen from "~/components/icons/IconBookOpen";
 function Feature() {
 	const router = useRouter()
 	const { tr } = useI18n()
-	const featureResponse = useFeature(router.query.featureIndex);
-
-	const feature = featureResponse.data;
+	const feature = useFeature(router.query.featureIndex);
 
 	return (
 		<Screen
 			title={!feature ? 'Feature' : `Feature - ${tr(feature?.nameLocalized)}`}
 			titleIcon={<IconBookOpen className="w-6 h-6" />}
-			isLoading={featureResponse.isLoading}
 		>
-			{feature && (
-				<FeatureView feature={feature} />
-			)}
+			<FeatureView feature={feature} />
 		</Screen>
 	)
 }

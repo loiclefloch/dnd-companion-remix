@@ -10,18 +10,14 @@ import IconBookOpen from "~/components/icons/IconBookOpen";
 function Spell() {
 	const router = useRouter()
 	const { tr } = useI18n()
-	const spellResponse = useSpell(router.query.index);
-	const spell = spellResponse.data;
+	const spell = useSpell(router.query.index);
 
 	return (
 		<Screen
 			title={!spell ? 'Sort' : `${tr(spell?.nameLocalized)}`}
 			titleIcon={<IconBookOpen className="w-6 h-6" />}
-			isLoading={spellResponse.isLoading}
 		>
-			{spell && (
-				<SpellView spell={spell} />
-			)}
+			<SpellView spell={spell} />
 		</Screen>
 	)
 }

@@ -7,14 +7,11 @@ import EquipmentItemView from "./EquipmentItemView";
 
 function MagicItemScreenAsModal({ index, onCloseScreen }) {
 	const { tr } = useI18n()
-	const itemResponse = useMagicItem(index)
-
-	const item = itemResponse.data
+	const item = useMagicItem(index)
 
 	return (
 		<ScreenAsModal 
 			title={!item ? '' : tr(item.nameLocalized)}
-			isLoading={itemResponse.isLoading}
 			onCloseScreen={onCloseScreen}
 		>
 			{item && <EquipmentItemView item={item} />}

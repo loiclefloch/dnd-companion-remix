@@ -1,9 +1,9 @@
-import feats from '~/database/data/feats'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 import { formatFeat } from "./useFeat"
 
 function useFeats() {
-  return useData(feats.map(formatFeat))
+  const { feats } = useRootData()
+  return feats.map(formatFeat)
 }
 
 export default useFeats

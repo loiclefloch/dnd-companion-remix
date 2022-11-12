@@ -1,7 +1,6 @@
-import equipmentCategories from '~/database/data/equipment-categories.json'
 import equipment from '~/database/data/equipment.json'
 import magicItems from '~/database/data/magic-items.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 import uniqBy from "lodash/uniqBy"
 
 import { formatEquipmentItem } from './useEquipmentItem'
@@ -28,7 +27,8 @@ function formatEquipmentCategory(category) {
 }
 
 function useEquipmentCategories() {
-  return useData(equipmentCategories.map(formatEquipmentCategory))
+  const { equipmentCategories }  = useRootData()
+  return equipmentCategories.map(formatEquipmentCategory)
 }
 
 export default useEquipmentCategories

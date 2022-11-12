@@ -1,6 +1,5 @@
 import { cloneDeep, last } from 'lodash'
-import monsters from '~/database/data/monsters.json'
-import useData from "./useData"
+import useRootData from "~/hooks/useRootData"
 
 export function formatMonster(monster) {
   if (!monster) {
@@ -62,7 +61,8 @@ export function formatMonster(monster) {
 }
 
 function useMonster(index) {
-  return useData(formatMonster(cloneDeep(monsters.find(monster => monster.index === index))))
+  const { monsters } = useRootData()
+  return formatMonster(cloneDeep(monsters.find(monster => monster.index === index)))
 }
 
 export default useMonster

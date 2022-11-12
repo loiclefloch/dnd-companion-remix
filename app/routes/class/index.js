@@ -23,19 +23,18 @@ function ClassRow({ clss }) {
 }
 
 function Race() {
-	const classResponse = useClasses()
+	const clss = useClasses()
 
   return (
     <Screen
       title={"Les classes"}
 			titleIcon={<IconAcademicCap className="w-6 h-6" />}
-			isLoading={classResponse.isLoading}
 			withBottomSpace
     >
 			<div className="flex flex-col">
 
 				<ListRowSelectContainer className="px-4 mt-4">
-					{classResponse.data?.map(clss => (
+					{clss.map(clss => (
 						<ClassRow key={`class_${clss.index}`} clss={clss} />
 					))}
 				</ListRowSelectContainer>
