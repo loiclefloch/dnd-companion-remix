@@ -36,9 +36,8 @@ function FeatRow({ feat }) {
 
 
 // TODO: filter: by class, by background
-function Feats({ character }) {
+function Feats({ feats: allFeats, character }) {
   const { tr } = useI18n();
-  const allFeats = null; // TODO: remix
 
   const feats = useMemo(() => {
 		let feats = allFeats

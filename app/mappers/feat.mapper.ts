@@ -1,9 +1,9 @@
 import { isEmpty } from 'lodash'
 import camelize from '../modules/utils/camelize'
-import type { FeatApiOjbect } from "~/apiobjects/feat.apiobject"
+import type { FeatApiObject } from "~/apiobjects/feat.apiobject"
 import type { FeatDto } from "~/dtos/feat.dto"
 
-export function formatFeat(featParam: FeatApiOjbect): FeatDto {
+export function formatFeat(featParam: FeatApiObject): FeatDto {
   const feat = camelize(featParam)
   feat.nameLocalized = {
     en: feat.name,
