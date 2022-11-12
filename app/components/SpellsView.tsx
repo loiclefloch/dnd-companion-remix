@@ -109,9 +109,13 @@ function Spell({ spell, filters, character /*onSelect*/ }) {
   );
 }
 
-function Spells({ contextCharacter }) {
+interface Props {
+  spells: Array<SpellDto>;
+  contextCharacter?: MyCharacterDto;
+}
+
+function Spells({ spells, contextCharacter }: Props) {
   const { tr, lang } = useI18n()
-  const spells = useSpells();
   const defaultFilters  = useMemo(() => {
     console.log('a')
     if (contextCharacter) {
