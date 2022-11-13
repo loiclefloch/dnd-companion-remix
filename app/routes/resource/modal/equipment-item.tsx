@@ -1,10 +1,10 @@
 import { useFetcher } from "@remix-run/react";
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { useEffect } from "react";
 import invariant from "tiny-invariant";
 import EquipmentItemView from "~/components/EquipmentItemView"
-import ScreenAsModal from "~/components/screenAsModal/ScreenAsModal"
+import type { ResourceModalProps } from "~/components/modal/ResourceModal";
+import ResourceModal from "~/components/modal/ResourceModal";
 import useScreenAsModal from "~/components/screenAsModal/useScreenAsModal";
 import { formatEquipmentItem } from "~/mappers/equipment.mapper";
 import useI18n from "~/modules/i18n/useI18n"
@@ -20,46 +20,41 @@ export async function loader({ request }: LoaderArgs) {
 
 	const item = await getEquipmentItem(equipmentItemId as string);
 
-	// force loading to be displayed.
-	await new Promise(r => setTimeout(r, 30)) 
-
   return json({
     item: formatEquipmentItem(item)
   });
 }
 
+export interface EquipmentItemModalProps extends ResourceModalProps {
+	equipmentItemId: string;
+}
 
-function EquipmentItemScreenAsModal({ equipmentItemId, onCloseScreen }) {
+export default function EquipmentItemModal({ equipmentItemId, onCloseScreen }: EquipmentItemModalProps) {
 	const { tr } = useI18n()
-	const equipmentItemFetcher = useFetcher<typeof loader>()
-	const item = equipmentItemFetcher.data?.item
-
-	useEffect(() => {
-		equipmentItemFetcher.submit(
-			{ equipmentItemId: equipmentItemId },
-			{ method: 'get', action: '/resource/modal/equipment-item' },
-		)
-	}, [])
-
-	const isLoading = equipmentItemFetcher.state !== 'idle'
+	const fetcher = useFetcher<typeof loader>()
 
 	return (
-		<ScreenAsModal 
-			title={!item ? '' : tr(item?.nameLocalized)}
-			isLoading={isLoading}
-			onCloseScreen={onCloseScreen}
-		>
-			{item && <EquipmentItemView item={item} onCloseScreen={onCloseScreen} />}
-		</ScreenAsModal>
-	)
+    <ResourceModal
+			name="equipment-item"
+      component={EquipmentItemView}
+      fetcher={fetcher}
+      params={{ equipmentItemId }}
+      title={({ item }) => tr(item?.nameLocalized)}
+      onCloseScreen={onCloseScreen}
+    />
+  );
 }
+
+// TODO: remove
+// use:
+// const showEquipmentItemScreenAsModal = useResourceModal(EquipmentItemModal)
 
 export function useEquipmentItemScreenAsModal() {
 	const { showScreenAsModal } = useScreenAsModal()
 
 	return {
 		showEquipmentItemScreenAsModal: (item) => {
-			showScreenAsModal(EquipmentItemScreenAsModal, {
+			showScreenAsModal(EquipmentItemModal, {
 				equipmentItemId: item.index
 			})
 		}

@@ -4,13 +4,14 @@ import { makeI18n } from "~/modules/i18n/useI18n";
 import StatsSmall from "./StatsSmall";
 import useTipTrait from "./useTipTrait"
 import useTipProficiency from "./useTipProficiency"
-import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
+import EquipmentItemModal, { EquipmentItemModalProps } from "~/routes/resource/modal/equipment-item"
 import LineInfo from "./LineInfo"
 import useTipFeature  from "./useTipFeature"
 import CharacterClassTag from "./CharacterClassTag"
 import useFeatScreenAsModal from "./useFeatScreenAsModal"
 import Section from "./Section"
 import useDice from "./useDice";
+import useResourceModal from "~/components/modal/useResourceModal"
 
 const useI18n = makeI18n({
 	'link to background': {
@@ -250,7 +251,8 @@ export function TraitsSection({ character }) {
 }
 
 function EquipmentSection({ character }) {
-	const { showEquipmentItemScreenAsModal } = useEquipmentItemScreenAsModal()
+	const showEquipmentItemScreenAsModal = useResourceModal<EquipmentItemModalProps>(EquipmentItemModal)
+
 	const { tr } = useI18n()
 	return (
 		<Section title={tr`equipment.title`}>

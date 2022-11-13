@@ -12,7 +12,7 @@ function ScreenLoading() {
 	)
 }
 
-function ScreenAsModal({ title, leftAction, isLoading, onCloseScreen, children, withBottomSpace }) {
+function ScreenAsModal({ title, leftAction = null, isLoading = false, onCloseScreen, children, withBottomSpace = false }) {
 	useEscapeEffect(onCloseScreen)
 	useBeforePopState(() => {
 		onCloseScreen()

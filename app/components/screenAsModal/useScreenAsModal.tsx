@@ -20,7 +20,7 @@ function ScreenAsModalProvider({ children }) {
 
 export { ScreenAsModalContext, ScreenAsModalProvider };
 
-function useScreenAsModal() {
+function useScreenAsModal<ModalsProps>() {
 	let { show, showScreenAsModal, hideScreenAsModal } = useContext(ScreenAsModalContext);
 
 	return { show, showScreenAsModal, hideScreenAsModal }
