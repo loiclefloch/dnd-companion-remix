@@ -4,7 +4,7 @@ import { makeI18n } from "~/modules/i18n/useI18n";
 import StatsSmall from "./StatsSmall";
 import useTipTrait from "./useTipTrait"
 import useTipProficiency from "./useTipProficiency"
-import useEquipmentItemScreenAsModal from "./useEquipmentItemScreenAsModal"
+import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
 import LineInfo from "./LineInfo"
 import useTipFeature  from "./useTipFeature"
 import CharacterClassTag from "./CharacterClassTag"

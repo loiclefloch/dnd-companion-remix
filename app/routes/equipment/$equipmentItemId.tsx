@@ -4,7 +4,7 @@ import useI18n from "~/modules/i18n/useI18n";
 import { formatEquipmentItem } from '~/mappers/equipment.mapper';
 import type { LoaderArgs} from "@remix-run/server-runtime";
 import { json } from "@remix-run/server-runtime";
-import { getEquipment as getEquipmentItem } from "~/services/equipment.server";
+import { getEquipmentItem } from "~/services/equipment.server";
 import { useLoaderData } from '@remix-run/react';
 import { requireUser } from "~/services/session.server";
 

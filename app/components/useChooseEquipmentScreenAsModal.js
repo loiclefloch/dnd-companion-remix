@@ -5,7 +5,7 @@ import useScreenAsModal from "./screenAsModal/useScreenAsModal"
 import ScreenAsModal from "./screenAsModal/ScreenAsModal"
 import { makeI18n } from "~/modules/i18n/useI18n";
 import useTipDamageType from "./useTipDamageType"
-import useEquipmentItemScreenAsModal from "./useEquipmentItemScreenAsModal"
+import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
 import ButtonBottomScreen from "./ButtonBottomScreen"
 import { toggleObjectOnArray } from "~/modules/utils/array"
 import IconChevronToggle from "./icons/IconChevronToggle"

@@ -9,7 +9,7 @@ import Section from "../Section"
 import LineInfo from "../LineInfo"
 import { makeI18n } from "../../modules/i18n/useI18n"
 import useTipProficiency from "../useTipProficiency"
-import useEquipmentItemScreenAsModal from "../useEquipmentItemScreenAsModal"
+import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
 import useTipLanguage from "../useTipLanguage"
 import StartingEquipmentOptionsDetail from "../StartingEquipmentOptionsDetail"
 

@@ -3,7 +3,7 @@ import useI18n from "~/modules/i18n/useI18n"
 import clsx from "clsx";
 import { existsOnArray } from '~/modules/utils/array'
 import ListSelector from "./ListSelector";
-import useEquipmentItemScreenAsModal from "./useEquipmentItemScreenAsModal"
+import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
 import getCharacterHasProficiencyForItem from "~/modules/character/getCharacterHasProficiencyForItem"
 
 const isProefficientClassName = "text-blue-500"

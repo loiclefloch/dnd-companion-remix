@@ -116,7 +116,6 @@ interface Props {
 function Spells({ spells, contextCharacter }: Props) {
   const { tr, lang } = useI18n()
   const defaultFilters  = useMemo(() => {
-    console.log('a')
     if (contextCharacter) {
       return buildSpellFiltersForCharacter(contextCharacter)
     }
@@ -168,7 +167,6 @@ function Spells({ spells, contextCharacter }: Props) {
       root
       withCharacterMenu
       withBottomSpace
-      isLoading={spells.isLoading}
       rightAction={
         <button onClick={() => showSpellsListFilterScreen()}>
           <IconFilter

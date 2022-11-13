@@ -48,15 +48,8 @@ export async function loader({ request }: LoaderArgs) {
 }
 
 function Document({ children }: { children: ReactNode }) {
-  // TODO: allow choose theme on settings
-  const theme = "light";
-
   return (
-    <div
-      className={clsx("bg-app", theme, {
-        debug: false,
-      })}
-    >
+    <>
       <ModalProvider>
         <SidebarMenuProvider>
           <ScreenAsModalProvider>
@@ -68,18 +61,21 @@ function Document({ children }: { children: ReactNode }) {
       </ModalProvider>
 
       <div id="modal-root" />
-    </div>
+    </>
   );
 }
 
 export default function App() {
+  // TODO: allow choose theme on settings
+  const theme = "light";
+
   return (
     <html lang="en" className="h-full">
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body className={clsx("bg-app", "h-full", theme)}>
         <Document>
           <Outlet />
         </Document>

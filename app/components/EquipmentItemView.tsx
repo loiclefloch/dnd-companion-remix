@@ -1,6 +1,6 @@
 import { isEmpty } from "lodash"
 import { makeI18n } from "~/modules/i18n/useI18n";
-import useEquipmentItemScreenAsModal from "~/components/useEquipmentItemScreenAsModal"
+import { useEquipmentItemScreenAsModal } from "~/routes/resource/modal/equipment-item"
 import { 
 	actionEquip,
 	actionUnequip,

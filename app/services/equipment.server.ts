@@ -8,7 +8,7 @@ export async function getEquipmentCategories(): Promise<Array<EquipmentCategoryA
 	return cloneDeep(equipmentCategories)
 }
 
-export async function getEquipment(index: string): Promise<EquipmentApiObject> {
+export async function getEquipmentItem(index: string): Promise<EquipmentApiObject> {
 	const item = equipment.find(e => e.index === index);
 	if (!item) {
 		throw new Error(`Equipment not found for id ${index}`)
